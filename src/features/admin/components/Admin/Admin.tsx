@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Redirect, Route, Switch } from 'wouter'
 import { Aside, Header } from './components'
 import { Dashboard } from '@/views/Dashboard/Dashboard'
+import { Documentation } from '@/views/Documentation/Documentation'
 
 export const Admin = () => {
   const [asideIsOpen, setAsideIsOpen] = useState(false)
@@ -17,14 +18,10 @@ export const Admin = () => {
       <Aside isOpen={asideIsOpen} {...{ handleClose }} />
       <main>
         <Switch>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/documentation">{/* <Documentation /> */}</Route>
-          <Route path="/checks">{/* <Checks /> */}</Route>
-          <Route>
-            <Redirect to="/dashboard" />
-          </Route>
+          <Route path="/dashboard" children={<Dashboard />} />
+          <Route path="/documentation" children={<Documentation />} />
+          {/* <Route path="/checks" children={ <Checks />} /> */}
+          <Route children={<Redirect to="/dashboard" />} />
         </Switch>
       </main>
     </div>

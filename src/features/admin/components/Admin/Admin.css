@@ -18,6 +18,8 @@
     width: 100%;
     max-width: 120rem;
 
+    overflow: auto;
+
     @media (width <= 25rem) {
       --gutter: var(--pal-size-m);
     }

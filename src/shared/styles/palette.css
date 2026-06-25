@@ -136,6 +136,7 @@
 
   /* TIME */
 
+  --pal-time-2xs: 0.05s;
   --pal-time-xs: 0.1s;
   --pal-time-s: 0.2s;
   --pal-time-m: 0.4s;
