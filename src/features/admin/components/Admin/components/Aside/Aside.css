@@ -1,0 +1,103 @@
+.cmp-aside {
+  --collapse-padding: var(--pal-size-xs);
+  --collapse-width: calc(var(--collapse-padding) * 2 + var(--pal-size-2xl));
+  --expand-width: 18rem;
+
+  grid-area: aside;
+
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--pal-color-a-150);
+  border-right-width: var(--line-thickness);
+  width: var(--collapse-width);
+
+  overflow: hidden;
+
+  transition:
+    width var(--pal-time-m) ease,
+    translate var(--pal-time-m) ease;
+
+  > button {
+    position: fixed;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  > .container {
+    display: flex;
+    height: 100%;
+
+    translate: calc(var(--expand-width) * -1);
+
+    transition: translate var(--pal-time-m) ease;
+
+    > .aside {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pal-size-2xl);
+      height: 100%;
+
+      background-color: var(--pal-color-a-50);
+
+      > * {
+        display: flex;
+        flex-direction: column;
+        gap: var(--pal-size-xs);
+      }
+
+      > nav {
+        flex-grow: 1;
+      }
+    }
+
+    > .expand {
+      border-width: 0;
+      border-style: solid;
+      border-color: var(--pal-color-a-150);
+      border-right-width: var(--line-thickness);
+      padding: var(--pal-size-m);
+      width: var(--expand-width);
+
+      > img {
+        padding: var(--pal-size-m);
+      }
+    }
+
+    > .collapse {
+      padding: var(--collapse-padding);
+      width: var(--collapse-width);
+
+      > img {
+        padding: var(--pal-size-2xs);
+      }
+    }
+  }
+
+  &.is-open {
+    width: var(--expand-width);
+
+    > .container {
+      translate: initial;
+    }
+  }
+
+  @media (width <= 35rem) {
+    position: fixed;
+    z-index: 1;
+
+    height: 100%;
+
+    translate: calc(var(--collapse-width) * -1);
+
+    > .container {
+      translate: initial;
+    }
+
+    &.is-open {
+      box-shadow: var(--pal-shadow-1);
+      translate: initial;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.cmp-background {
+  position: absolute;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    display: block;
+    height: 100%;
+
+    content: '';
+
+    background-color: var(--pal-color-a-50);
+    background-image: url('/logo.png');
+    background-position: center 50dvh;
+    background-size: 150dvh 200dvh;
+    opacity: 0.4;
+    filter: blur(160px);
+  }
+}

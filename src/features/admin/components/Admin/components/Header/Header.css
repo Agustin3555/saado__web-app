@@ -1,0 +1,53 @@
+.cmp-header {
+  grid-area: header;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pal-size-l);
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--pal-color-a-150);
+  border-bottom-width: var(--line-thickness);
+  padding: var(--pal-size-xs);
+
+  background-color: var(--pal-color-a-50);
+
+  > .searchbar {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-s);
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-a-150);
+    padding-inline: var(--pal-size-s);
+    max-width: 20rem;
+    height: var(--ui-height);
+
+    border-radius: var(--ui-border-radius);
+
+    > .cmp-icon {
+      opacity: 0.5;
+    }
+
+    > input {
+      flex-grow: 1;
+
+      font-size: var(--ui-font-size);
+    }
+  }
+
+  > .user {
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-a-150);
+    aspect-ratio: 1;
+    height: 100%;
+
+    border-radius: var(--pill-radius);
+    background-image: url('https://www.loremfaces.net/96/id/5.jpg');
+    background-size: cover;
+  }
+}

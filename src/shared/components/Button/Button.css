@@ -1,0 +1,123 @@
+:root {
+  --cmp-button-bg-color: var(--pal-color-white);
+  --cmp-button-border-color: var(--pal-color-a-150);
+  --cmp-button-hover-color: var(--pal-color-a-500);
+}
+
+.cmp-button {
+  --cmp-loader-size: var(--ui-loader-size);
+  --cmp-icon-size: var(--ui-icon-size);
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-gap);
+  padding-inline: var(--ui-padding-inline);
+
+  font-size: var(--ui-font-size);
+  line-height: 1.4;
+
+  border-radius: var(--ui-border-radius);
+  background-position: center;
+  background-size: var(--pal-size-l);
+  overflow: hidden;
+
+  transition:
+    background-size var(--pal-time-m) var(--pal-timing-func-b),
+    background-color var(--pal-time-xs) ease-out,
+    box-shadow var(--pal-time-xs) ease-out,
+    scale var(--pal-time-xs) ease-out,
+    var(--cmp-button-transition, var(--transition-dummy));
+
+  .item {
+    scale: 0;
+    opacity: 0;
+
+    transition:
+      scale var(--pal-time-m) ease,
+      opacity var(--pal-time-m) ease;
+
+    &.on-screen {
+      scale: initial;
+      opacity: initial;
+    }
+  }
+
+  > .status-group {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ui-icon-size);
+
+    > * {
+      position: absolute;
+    }
+
+    > .loading {
+      display: flex;
+    }
+  }
+
+  > .body {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-gap);
+
+    text-align: start;
+  }
+
+  &.keep-body > .status-group {
+    position: relative;
+  }
+
+  &.ui-l,
+  &.ui-m {
+    font-weight: 800;
+  }
+
+  &.primary {
+    background-color: var(--cmp-button-bg-color);
+  }
+
+  &.secondary {
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--cmp-button-border-color);
+  }
+
+  &.filled {
+    width: 100%;
+  }
+
+  &.inverted > .body > .cmp-icon {
+    order: -1;
+  }
+
+  &:not(.wrap) {
+    height: var(--ui-height);
+  }
+
+  &.wrap {
+    padding-block: calc(var(--ui-font-size) * 0.5);
+  }
+
+  &.square {
+    padding: 0;
+    aspect-ratio: 1;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 0.125rem 0 var(--cmp-button-hover-color);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
