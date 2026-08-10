@@ -1,0 +1,38 @@
+.cmp-input {
+  display: flex;
+  align-items: center;
+  gap: var(--pal-size-2xs);
+
+  width: 100%;
+
+  > input {
+    flex-grow: 1;
+
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-a-300);
+    padding-inline: var(--ui-padding-inline);
+
+    height: var(--ui-height);
+
+    font-size: var(--ui-font-size);
+    border-radius: var(--ui-border-radius);
+
+    background-color: var(--pal-color-white);
+  }
+
+  > .actions {
+    display: flex;
+    padding-inline: 0.1875rem;
+  }
+
+  @media (hover: hover) {
+    > .actions {
+      display: none;
+    }
+
+    &:hover > .actions {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.cmp-dropdown {
+  --gap: var(--pal-size-3xs);
+
+  position-area: bottom;
+  position-try-fallbacks: flip-block;
+
+  flex-direction: column;
+  border-width: var(--line-thickness);
+  border-color: var(--pal-color-n-100);
+  padding: var(--gap);
+
+  border-radius: calc(var(--pal-size-xs) + var(--gap));
+  box-shadow: var(--pal-shadow-1);
+  scale: 0.9;
+  opacity: 0;
+  transform-origin: top left;
+
+  transition:
+    display var(--pal-time-s) allow-discrete,
+    overlay var(--pal-time-s) allow-discrete,
+    scale var(--pal-time-s) var(--pal-timing-func-b),
+    opacity var(--pal-time-s) var(--pal-timing-func-b);
+
+  > * {
+    flex-shrink: 0;
+  }
+
+  &:popover-open {
+    display: flex;
+
+    scale: initial;
+    opacity: initial;
+
+    &.gallery {
+      display: grid;
+    }
+
+    @starting-style {
+      scale: 0.9;
+      opacity: 0;
+    }
+  }
+
+  &.gallery {
+    grid-template-columns: repeat(var(--c), 1fr);
+    grid-template-rows: repeat(var(--r), 1fr);
+  }
+}

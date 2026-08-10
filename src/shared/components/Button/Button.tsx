@@ -1,6 +1,6 @@
 import './Button.css'
 import { type ButtonHTMLAttributes, type MouseEventHandler } from 'react'
-import type { ActionState } from '@/shared/hooks/useActionState'
+import type { ActionState } from '@/shared/hooks/useActionState.hook'
 import { Icon } from '../Icon/Icon'
 import { Loader } from '../Loader/Loader'
 import { classList } from '@/shared/helpers'

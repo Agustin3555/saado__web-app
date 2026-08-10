@@ -1,0 +1,47 @@
+.cmp-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-xs);
+
+  > header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    > .title {
+      --cmp-icon-size: var(--pal-size-font-xs);
+
+      display: flex;
+      align-items: center;
+      gap: var(--pal-size-s);
+
+      font-size: var(--pal-size-font-2xs);
+      font-weight: 700;
+      text-transform: uppercase;
+
+      > .ti-asterisk {
+        font-size: var(--pal-size-font-2xs);
+
+        color: var(--pal-color-d-500);
+      }
+    }
+
+    > .cmp-dropdown > .tooltip {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pal-size-s);
+      padding: var(--pal-size-s);
+      max-width: 25rem;
+
+      > .content {
+        font-size: var(--pal-size-font-xs);
+
+        color: var(--pal-color-a-800);
+      }
+    }
+  }
+
+  &:not(:has([required])) > header > .title > .ti-asterisk {
+    display: none;
+  }
+}

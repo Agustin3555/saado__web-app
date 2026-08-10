@@ -1,0 +1,51 @@
+.cmp-modal {
+  align-content: center;
+  border: none;
+  padding: var(--pal-size-m);
+  width: 100dvw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+
+  background-color: color-mix(in srgb, transparent, #000 25%);
+  opacity: 0;
+  backdrop-filter: blur(4px);
+  pointer-events: all;
+
+  transition:
+    display var(--pal-time-m) var(--pal-timing-func-a) allow-discrete,
+    opacity var(--pal-time-m) var(--pal-timing-func-a),
+    overlay var(--pal-time-m) var(--pal-timing-func-a) allow-discrete;
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-inline: auto;
+    max-height: 100%;
+
+    border-radius: var(--pal-size-xs);
+    background-color: var(--pal-color-a-100);
+    box-shadow: var(--pal-shadow-1);
+    translate: 0 var(--pal-size-xl);
+    overflow: auto;
+
+    transition: translate var(--pal-time-m) var(--pal-timing-func-a);
+  }
+
+  &[open] {
+    opacity: initial;
+
+    > .content {
+      translate: initial;
+
+      @starting-style {
+        translate: 0 var(--pal-size-xl);
+      }
+    }
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}

@@ -40,21 +40,33 @@
   }
 }
 
-.layout-card {
-  align-content: center;
-  padding: var(--pal-size-l);
-  width: 100%;
-  height: 100%;
+.modal-form > .content {
+  max-width: 35rem;
 
-  overflow: auto;
+  color: var(--pal-color-a-850);
 
-  > .card {
-    margin-inline: auto;
-    border-width: var(--line-thickness);
-    border-style: solid;
-    border-color: var(--pal-color-a-200);
+  > form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-2xl);
+    padding: var(--pal-size-l);
+    width: 100%;
 
-    border-radius: var(--pal-size-s);
-    background-color: var(--pal-color-a-100);
+    > h1 {
+      font-size: var(--pal-size-font-l) !important;
+      font-weight: 700 !important;
+
+      color: var(--pal-color-a-550);
+    }
+
+    > .fields {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pal-size-s);
+    }
+
+    > .cmp-button {
+      align-self: flex-start;
+    }
   }
 }

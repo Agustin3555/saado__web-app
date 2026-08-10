@@ -1,0 +1,30 @@
+.cmp-path-picker {
+  display: flex;
+  align-items: center;
+  border-width: var(--line-thickness);
+  border-style: solid;
+  border-color: var(--pal-color-a-300);
+  width: 100%;
+
+  border-radius: var(--ui-border-radius);
+  background-color: var(--pal-color-white);
+
+  > .cmp-button {
+    --cmp-button-border-color: var(--pal-color-a-300);
+
+    margin-left: var(--pal-size-2xs);
+
+    border-radius: var(--pal-size-2xs);
+  }
+
+  > input {
+    flex-grow: 1;
+
+    padding-inline: var(--ui-padding-inline);
+    height: var(--ui-height);
+
+    font-size: var(--pal-size-font-xs);
+
+    pointer-events: none;
+  }
+}
