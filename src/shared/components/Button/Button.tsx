@@ -75,13 +75,13 @@ export const Button = ({
             <Loader />
           </div>
           <Icon
-            iconClass="fa-solid fa-xmark"
+            iconClass="ti ti-x"
             handlingClass={classList('item', {
               onScreen: actionState === 'error',
             })}
           />
           <Icon
-            iconClass="fa-solid fa-check"
+            iconClass="ti ti-check"
             handlingClass={classList('item', {
               onScreen: actionState === 'success',
             })}

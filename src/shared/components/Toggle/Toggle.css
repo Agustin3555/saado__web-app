@@ -1,0 +1,95 @@
+.cmp-toggle {
+  --cmp-icon-size: var(--ui-icon-size);
+  --border-radius: var(--ui-border-radius);
+
+  color: var(--pal-color-gs-400);
+
+  cursor: pointer;
+
+  > input {
+    display: none;
+  }
+
+  > * {
+    border-radius: var(--border-radius);
+  }
+
+  > .toggle {
+    align-content: center;
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-n-200);
+    aspect-ratio: 1;
+    width: var(--ui-height);
+
+    transition:
+      border-color var(--pal-time-xs) ease-out,
+      color var(--pal-time-xs) ease-out,
+      background-color var(--pal-time-xs) ease-out;
+
+    > * {
+      margin-inline: auto;
+    }
+
+    .cmp-toggle:has(input:checked) > & {
+      border-color: var(--pal-color-a-500);
+
+      color: var(--pal-color-white);
+
+      background-color: var(--pal-color-a-500);
+    }
+  }
+
+  > .switch {
+    --height: var(--ui-height);
+    --width: calc(var(--height) * 1.5);
+
+    position: relative;
+
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-a-200);
+    width: var(--width);
+    height: var(--height);
+
+    background: linear-gradient(
+      90deg,
+      var(--pal-color-a-500) 0%,
+      var(--pal-color-a-500) 50%,
+      var(--pal-color-n-200) 50%,
+      var(--pal-color-n-200) 100%
+    );
+    overflow: hidden;
+
+    transition:
+      border-color var(--pal-time-xs) ease-out,
+      color var(--pal-time-xs) ease-out;
+
+    > .lever {
+      position: absolute;
+      left: 0;
+
+      align-content: center;
+      aspect-ratio: 1;
+      height: 100%;
+
+      border-radius: calc(var(--border-radius) - var(--line-thickness));
+      background-color: var(--pal-color-white);
+
+      transition: left var(--pal-time-s) ease;
+
+      > .cmp-icon {
+        margin-inline: auto;
+      }
+    }
+
+    .cmp-toggle:has(input:checked) > & {
+      border-color: var(--pal-color-a-500);
+      color: var(--pal-color-a-500);
+
+      > .lever {
+        left: calc(var(--width) - var(--height));
+      }
+    }
+  }
+}

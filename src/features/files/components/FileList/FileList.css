@@ -1,0 +1,6 @@
+.cmp-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-s);
+  width: 100%;
+}

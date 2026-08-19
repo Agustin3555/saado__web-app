@@ -234,17 +234,3 @@
     drop-shadow(18.5px 37.1px 46.6px rgba(0, 0, 0, 0.08))
     drop-shadow(25px 50px 62.9px rgba(0, 0, 0, 0.08));
 }
-
-@keyframes pulsar {
-  from {
-    outline-color: rgba(var(--pal-color-base-b), 0.375);
-    outline-offset: initial;
-    outline-width: 0;
-  }
-  25%,
-  to {
-    outline-color: transparent;
-    outline-offset: var(--pal-size-m);
-    outline-width: 0.0625rem;
-  }
-}

@@ -15,7 +15,7 @@
     background-image: url('/logo.png');
     background-position: center 50dvh;
     background-size: 150dvh 200dvh;
-    opacity: 0.4;
+    opacity: 0.5;
     filter: blur(160px);
   }
 }

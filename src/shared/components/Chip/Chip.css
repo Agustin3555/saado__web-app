@@ -1,0 +1,21 @@
+.cmp-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-gap);
+  padding-inline: var(--ui-padding-inline);
+  height: var(--ui-height);
+
+  font-size: var(--ui-font-size);
+  white-space: nowrap;
+
+  border-radius: var(--pill-radius);
+  background-color: var(--pal-color-a-50);
+  list-style: none;
+  overflow: hidden;
+
+  > .cmp-icon {
+    --cmp-icon-size: var(--ui-icon-size);
+
+    color: var(--pal-color-a-500);
+  }
+}

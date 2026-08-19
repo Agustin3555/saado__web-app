@@ -1,0 +1,39 @@
+.cmp-obra-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  row-gap: var(--pal-size-m);
+  column-gap: var(--pal-size-xl);
+
+  > h1 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-s);
+
+    > span {
+      font-size: var(--pal-size-font-l);
+      font-weight: 800;
+    }
+
+    > strong {
+      max-width: 24rem;
+
+      font-size: var(--pal-size-font-xs);
+      font-weight: 600;
+      text-wrap: balance;
+
+      color: var(--pal-color-a-500);
+    }
+  }
+
+  > ul {
+    flex-grow: 1;
+    flex-basis: 22rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pal-size-xs);
+    max-width: max-content;
+  }
+}

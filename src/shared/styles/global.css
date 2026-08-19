@@ -47,7 +47,10 @@ strong {
 }
 
 hr {
-  border: none;
+  border-width: 0;
+  border-style: solid;
+  border-color: color;
+  border-top-width: var(--line-thickness);
 }
 
 p {

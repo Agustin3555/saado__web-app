@@ -7,21 +7,21 @@
   height: 100%;
 
   > main {
-    --gutter: var(--pal-size-xl);
+    --layout-gutter: var(--pal-size-xl);
 
     grid-area: main;
 
     container: --main / inline-size;
 
     margin-inline: auto;
-    padding: var(--gutter);
+    padding-inline: var(--layout-gutter);
     width: 100%;
     max-width: 120rem;
 
     overflow: auto;
 
     @media (width <= 25rem) {
-      --gutter: var(--pal-size-m);
+      --layout-gutter: var(--pal-size-m);
     }
   }
 }

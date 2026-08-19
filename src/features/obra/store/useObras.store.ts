@@ -1,17 +1,10 @@
-import axios from 'axios'
+import { publicInstance } from '@/infra/http/axios/instances'
 import { create } from 'zustand'
+import type { SimpleObra } from '../obra.types'
 
-export interface Obra {
-  id: number
-  companyId: number
-  name?: string
-  numeroExpediente: string
-  updatedAt: string
-}
-
-interface ProjectStore {
-  obras?: Obra[]
-  obrasRecord?: Record<number, Obra>
+interface ObrasStore {
+  obras?: SimpleObra[]
+  obrasRecord?: Record<number, SimpleObra>
   refetchObras: () => Promise<void>
   newObra: (data: {
     companyId: number
@@ -21,11 +14,9 @@ interface ProjectStore {
   // deleteObra: (obraId: number) => Promise<void>
 }
 
-export const useObrasStore = create<ProjectStore>((set, get) => ({
+export const useObrasStore = create<ObrasStore>((set, get) => ({
   refetchObras: async () => {
-    const { data: obras } = await axios.get<Obra[]>(
-      'http://localhost:3000/v1/obras',
-    )
+    const { data: obras } = await publicInstance.get<SimpleObra[]>('obras')
 
     const obrasRecord = Object.fromEntries(obras.map(o => [o.id, o]))
 
@@ -33,7 +24,7 @@ export const useObrasStore = create<ProjectStore>((set, get) => ({
   },
 
   newObra: async data => {
-    await axios.post<Obra>('http://localhost:3000/v1/obras', data)
+    await publicInstance.post<SimpleObra>('obras', data)
 
     await get().refetchObras()
   },

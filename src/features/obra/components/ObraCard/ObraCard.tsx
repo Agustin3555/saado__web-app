@@ -1,24 +1,48 @@
 import './ObraCard.css'
-import type { Obra } from '../../store/useObras.store'
+import { useCompaniesStore } from '@/features/company/store/useCompanies.store'
+import { Link } from 'wouter'
+import type { SimpleObra } from '../../obra.types'
+import { varList } from '@/shared/helpers/varList.helper'
 
 interface ObraCardProps {
-  data: Obra
+  i?: number
+  data: SimpleObra
 }
 
 export const ObraCard = ({
-  data: { numeroExpediente, name, updatedAt },
+  i,
+  data: { id, companyId, numeroExpediente, name, updatedAt },
 }: ObraCardProps) => {
+  const companiesRecord = useCompaniesStore(s => s.companiesRecord)!
+
   return (
-    <li className="cmp-obra-card" title={name}>
-      <h1>{numeroExpediente}</h1>
+    <li
+      className="cmp-obra-card show-animation-item"
+      title={name ?? undefined}
+      style={varList({ i })}
+    >
+      <Link href={`/${id}`}>{numeroExpediente}</Link>
       <div className="details">
         <p>
           <span className="title">Obra:</span>
-          <span className="value">{name}</span>
+          <span className="value">{name ?? '-'}</span>
         </p>
+        {companyId && (
+          <p>
+            <span className="title">Empresa:</span>
+            <span className="value">{companiesRecord[companyId].name}</span>
+          </p>
+        )}
         <p>
           <span className="title">Actualizado:</span>
-          <span className="value">{updatedAt}</span>
+          <span className="value">
+            {Temporal.Instant.from(updatedAt)
+              .toZonedDateTimeISO(Temporal.Now.timeZoneId())
+              .toLocaleString('es-ES', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+              })}
+          </span>
         </p>
       </div>
     </li>

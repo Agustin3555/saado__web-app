@@ -1,0 +1,93 @@
+.cmp-upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-l);
+
+  transition:
+    padding var(--pal-time-s) ease-out,
+    border-radius var(--pal-time-s) ease-out,
+    background-color var(--pal-time-s) ease-out;
+
+  > label {
+    --cmp-icon-size: var(--pal-size-l);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pal-size-m);
+    border-width: var(--pal-size-3xs);
+    border-style: dashed;
+    border-color: var(--pal-color-a-200);
+    padding: var(--pal-size-xl);
+
+    border-radius: var(--pal-size-s);
+    color: var(--pal-color-a-500);
+    cursor: pointer;
+
+    transition: border-radius var(--pal-time-s) ease-out;
+
+    > span {
+      font-size: var(--pal-size-font-2xs);
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    &.drag-over,
+    &:hover {
+      background-color: var(--pal-color-a-100);
+    }
+  }
+
+  &:has(> ul) {
+    --padding: var(--pal-size-xs);
+
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-a-200);
+    padding: var(--padding);
+
+    border-radius: var(--pal-size-s);
+
+    > label {
+      border-radius: calc(var(--pal-size-s) - var(--padding));
+    }
+  }
+
+  > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: var(--pal-size-2xs);
+    max-width: fit-content;
+
+    list-style: none;
+
+    > li {
+      display: flex;
+      align-items: center;
+      gap: var(--pal-size-xs);
+      padding-right: var(--pal-size-xs);
+
+      font-size: var(--pal-size-font-2xs);
+
+      border-radius: var(--pal-size-2xs);
+      background-color: var(--pal-color-white);
+      overflow: hidden;
+
+      > .cmp-button {
+        color: var(--pal-color-d-500);
+      }
+
+      > span {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        overflow: hidden;
+      }
+    }
+  }
+
+  > .cmp-button {
+    --cmp-button-bg-color: var(--pal-color-a-200);
+  }
+}

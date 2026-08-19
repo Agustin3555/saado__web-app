@@ -9,7 +9,7 @@ export const NewObraButton = () => {
   const { handleSubmit, actionState } = useSubmitAction(
     async ({ formValues }) => {
       const data = {
-        companyId: formValues.get.number('companyId')!,
+        // companyId: formValues.get.number('companyId')!,
         name: formValues.get.string('name'),
         numeroExpediente: formValues.get.string('numeroExpediente')!,
       }

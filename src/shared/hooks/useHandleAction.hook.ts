@@ -7,10 +7,10 @@ export const useHandleAction = <E = Element>(
   const { actionState, setLoading, setError, setSuccess } = useActionState()
 
   const handleAction = useCallback<MouseEventHandler<E>>(
-    async event => {
+    async e => {
       try {
         await setLoading()
-        await callback(event)
+        await callback(e)
         await setSuccess()
       } catch (error) {
         console.log(error)

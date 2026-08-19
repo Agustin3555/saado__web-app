@@ -1,0 +1,11 @@
+.cmp-toaster li {
+  &.warning {
+    border-color: var(--pal-color-c-400);
+    background-color: var(--pal-color-c-300);
+  }
+
+  &.error {
+    border-color: var(--pal-color-d-400);
+    background-color: var(--pal-color-d-300);
+  }
+}

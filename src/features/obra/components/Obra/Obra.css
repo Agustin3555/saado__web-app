@@ -1,0 +1,29 @@
+.cmp-obra {
+  container: --cmp-obra / inline-size;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-xl);
+  padding-block: var(--layout-gutter);
+
+  > hr {
+    color: var(--pal-color-a-200);
+  }
+
+  > section {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    gap: var(--pal-size-xl);
+
+    @container --cmp-obra (width <= 65rem) {
+      grid-auto-flow: row;
+    }
+  }
+
+  &:has(> .cmp-loader) {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}

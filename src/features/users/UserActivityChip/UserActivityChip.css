@@ -1,0 +1,26 @@
+.cmp-user-activity {
+  > .user {
+    display: flex;
+    align-items: center;
+    background-color: var(--pal-color-a-100);
+    padding-inline: var(--ui-padding-inline);
+    gap: var(--ui-gap);
+    height: 100%;
+
+    > .icon {
+      border-width: var(--line-thickness);
+      border-style: solid;
+      border-color: var(--pal-color-a-150);
+      aspect-ratio: 1;
+      height: var(--pal-size-m);
+
+      border-radius: var(--pill-radius);
+      background-image: url('https://www.loremfaces.net/96/id/5.jpg');
+      background-size: cover;
+    }
+  }
+
+  &:has(> .user) {
+    padding-right: 0;
+  }
+}

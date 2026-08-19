@@ -8,15 +8,16 @@
   outline-width: 0;
   outline-style: solid;
   outline-color: color-mix(in srgb, var(--pal-color-a-500) 25%, transparent);
-  cursor: pointer;
 
   transition: outline-width var(--pal-time-2xs) ease;
 
-  > h1 {
+  > a {
+    display: block;
     padding-bottom: var(--gap);
 
     font-size: var(--pal-size-font-m);
     font-weight: 800;
+    text-decoration: none;
 
     color: var(--pal-color-a-500);
   }
@@ -39,6 +40,8 @@
       gap: var(--pal-size-xs);
 
       > .title {
+        flex-shrink: 0;
+
         /* width: 4rem; */
 
         color: var(--pal-color-a-500);

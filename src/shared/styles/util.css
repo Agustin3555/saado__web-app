@@ -17,11 +17,11 @@
 }
 
 .ui-s {
-  --ui-gap: var(--pal-size-2xs);
+  --ui-gap: var(--pal-size-xs);
   --ui-padding-inline: var(--pal-size-xs);
   --ui-height: var(--pal-size-l);
   --ui-font-size: var(--pal-size-font-2xs);
-  --ui-icon-size: var(--pal-size-s);
+  --ui-icon-size: 0.875rem;
   --ui-border-radius: var(--pal-size-2xs);
 }
 
@@ -69,4 +69,23 @@
       align-self: flex-start;
     }
   }
+}
+
+@keyframes show-item {
+  to {
+    translate: initial;
+    opacity: initial;
+  }
+}
+
+:root {
+  --show-animation-item-delay: var(--pal-time-2xs);
+}
+
+.show-animation-item {
+  translate: 0 var(--pal-size-2xl);
+  opacity: 0;
+
+  animation: show-item var(--pal-time-s)
+    calc(var(--i, 1) * var(--show-animation-item-delay)) ease forwards;
 }
