@@ -1,4 +1,4 @@
-import { publicInstance } from '@/infra/http/axios/instances'
+import { privateInstance } from '@/infra/http/axios/instances'
 import { create } from 'zustand'
 import type { SimpleObra } from '../obra.types'
 
@@ -16,7 +16,7 @@ interface ObrasStore {
 
 export const useObrasStore = create<ObrasStore>((set, get) => ({
   refetchObras: async () => {
-    const { data: obras } = await publicInstance.get<SimpleObra[]>('obras')
+    const { data: obras } = await privateInstance.get<SimpleObra[]>('obras')
 
     const obrasRecord = Object.fromEntries(obras.map(o => [o.id, o]))
 
@@ -24,7 +24,7 @@ export const useObrasStore = create<ObrasStore>((set, get) => ({
   },
 
   newObra: async data => {
-    await publicInstance.post<SimpleObra>('obras', data)
+    await privateInstance.post<SimpleObra>('obras', data)
 
     await get().refetchObras()
   },

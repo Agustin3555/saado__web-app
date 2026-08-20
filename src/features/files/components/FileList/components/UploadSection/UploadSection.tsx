@@ -4,7 +4,7 @@ import { useHandleAction } from '@/shared/hooks/useHandleAction.hook'
 import { Button, Icon } from '@/shared/components'
 import { classList, varList } from '@/shared/helpers'
 import { toast } from 'sonner'
-import { publicInstance } from '@/infra/http/axios/instances'
+import { privateInstance } from '@/infra/http/axios/instances'
 
 const MAX_FILE_SIZE = 1024 * 1024 * 500
 
@@ -107,7 +107,7 @@ export const UploadSection = ({ obraId }: UploadSectionProps) => {
 
     const {
       data: { uploaded, omit },
-    } = await publicInstance.post<{
+    } = await privateInstance.post<{
       uploaded: number
       omit: { name: string }[]
     }>('files', formData)

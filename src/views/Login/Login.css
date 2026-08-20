@@ -1,0 +1,104 @@
+.cmp-login {
+  align-content: center;
+  padding: var(--pal-size-xl);
+  height: 100%;
+
+  > .card {
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: auto;
+    max-width: 50rem;
+
+    border-radius: var(--pal-size-s);
+    background-color: var(--pal-color-white);
+    box-shadow: var(--pal-shadow-1);
+    overflow: hidden;
+
+    h1 {
+      font-size: var(--pal-size-font-l);
+      font-weight: 800;
+    }
+
+    > * {
+      flex-grow: 1;
+      flex-basis: 50%;
+    }
+
+    > .banner {
+      color: var(--pal-color-white);
+      background-image: url('/kelly-sikkema-0oZpRxG5Hkk-unsplash.jpg');
+      background-position: -10rem 0;
+
+      > header {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--pal-size-m);
+
+        background: linear-gradient(var(--pal-color-a-900), transparent);
+
+        > .title {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          > h1 {
+            font-size: var(--pal-size-font-m);
+          }
+
+          > h2 {
+            max-width: 15rem;
+
+            font-size: var(--pal-size-font-2xs);
+            text-wrap: balance;
+          }
+        }
+
+        > .logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          aspect-ratio: 1;
+          width: 3.5rem;
+
+          border-radius: var(--pal-size-xs);
+          background-color: var(--pal-color-a-50);
+
+          > img {
+            height: var(--pal-size-l);
+          }
+        }
+      }
+    }
+
+    > form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pal-size-2xl);
+      padding: 4rem;
+
+      > .fields {
+        display: flex;
+        flex-direction: column;
+        gap: var(--pal-size-s);
+      }
+
+      > .cmp-button {
+        --cmp-button-bg-color: var(--pal-color-a-500);
+
+        color: var(--pal-color-white);
+      }
+    }
+
+    @media (width < 45rem) {
+      max-width: 25rem;
+
+      > .banner {
+        background-position: -6rem -10rem;
+      }
+
+      > form {
+        padding: var(--pal-size-2xl);
+      }
+    }
+  }
+}

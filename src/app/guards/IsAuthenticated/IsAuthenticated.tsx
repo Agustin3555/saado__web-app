@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import { useAuthStore } from '@/shared/store/useAuth.store'
 import { Redirect } from 'wouter'
 
 interface IsAuthenticatedProps {
@@ -6,9 +7,7 @@ interface IsAuthenticatedProps {
 }
 
 export const IsAuthenticated = ({ children }: IsAuthenticatedProps) => {
-  const hasAccess = true
+  const token = useAuthStore(s => s.token)
 
-  if (!hasAccess) return <Redirect to="/login" />
-
-  return children
+  return token ? children : <Redirect to="~/login" />
 }

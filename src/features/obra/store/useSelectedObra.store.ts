@@ -1,4 +1,4 @@
-import { publicInstance } from '@/infra/http/axios/instances'
+import { privateInstance } from '@/infra/http/axios/instances'
 import { create } from 'zustand'
 import type { Obra } from '../obra.types'
 
@@ -14,7 +14,9 @@ export const useSelectedObraStore = create<SelectedObraStore>((set, get) => ({
     const currentSelectedObra = get().selectedObra
     const id = obraId === undefined ? currentSelectedObra?.id : obraId
 
-    const { data: selectedObra } = await publicInstance.get<Obra>(`obras/${id}`)
+    const { data: selectedObra } = await privateInstance.get<Obra>(
+      `obras/${id}`,
+    )
 
     set({ selectedObra })
   },

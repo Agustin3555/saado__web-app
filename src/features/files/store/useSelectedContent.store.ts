@@ -1,4 +1,4 @@
-import { publicInstance } from '@/infra/http/axios/instances'
+import { privateInstance } from '@/infra/http/axios/instances'
 import { create } from 'zustand'
 
 type ContentType = 'preview' | 'extractedText'
@@ -29,13 +29,13 @@ export const useSelectedContentStore = create<SelectedContentStore>(
         let content: string | null
 
         if (contentType === 'extractedText') {
-          const { data } = await publicInstance.get<{ content: string | null }>(
-            `files/${id}/content`,
-          )
+          const { data } = await privateInstance.get<{
+            content: string | null
+          }>(`files/${id}/content`)
 
           content = data.content
         } else {
-          const response = await publicInstance.get(`files/${id}/download`, {
+          const response = await privateInstance.get(`files/${id}/download`, {
             responseType: 'blob',
           })
 

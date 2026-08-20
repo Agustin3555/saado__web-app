@@ -1,4 +1,4 @@
-import { publicInstance } from '@/infra/http/axios/instances'
+import { privateInstance } from '@/infra/http/axios/instances'
 import { create } from 'zustand'
 import type { SimpleCompany } from '../company.types'
 
@@ -11,7 +11,7 @@ interface CompaniesStore {
 export const useCompaniesStore = create<CompaniesStore>(set => ({
   refetchCompanies: async () => {
     const { data: companies } =
-      await publicInstance.get<SimpleCompany[]>('companies')
+      await privateInstance.get<SimpleCompany[]>('companies')
 
     const companiesRecord = Object.fromEntries(companies.map(o => [o.id, o]))
 
