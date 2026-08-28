@@ -43,8 +43,6 @@
 .modal-form > .content {
   max-width: 30rem;
 
-  color: var(--pal-color-a-850);
-
   > form {
     display: flex;
     flex-direction: column;
