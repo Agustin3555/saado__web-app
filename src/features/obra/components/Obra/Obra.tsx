@@ -17,6 +17,8 @@ export const Obra = () => {
   const reset = useSelectedContentStore(s => s.reset)
 
   useEffect(() => {
+    reset()
+
     const numberId = parseInt(id)
     const exist = obras?.some(o => o.id === numberId)
 
@@ -27,11 +29,6 @@ export const Obra = () => {
 
     if (window.history.length > 1) window.history.back()
     else setLocation('/')
-
-    return () => {
-      // BUG: no se resetea correctamente
-      reset()
-    }
   }, [id, obras, refetchSelectedObra, reset, setLocation])
 
   return (

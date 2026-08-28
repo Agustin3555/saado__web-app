@@ -13,8 +13,8 @@ export const ContentView = () => {
         const key = [id, type].join('_')
 
         const components: Record<typeof type, ReactNode> = {
-          extractedText: <ExtractedTextContentCard key={key} fileId={id} />,
-          preview: <PreviewContentCard key={key} fileId={id} />,
+          viewerUrl: <PreviewContentCard key={key} fileId={id} />,
+          text: <ExtractedTextContentCard key={key} fileId={id} />,
         }
 
         return components[type]

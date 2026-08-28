@@ -1,59 +1,74 @@
 .cmp-obra-card {
   --gap: var(--pal-size-m);
 
-  padding: var(--gap);
-
   border-radius: var(--pal-size-xs);
   background-color: var(--pal-color-white);
+  overflow: hidden;
   outline-width: 0;
   outline-style: solid;
   outline-color: color-mix(in srgb, var(--pal-color-a-500) 25%, transparent);
 
   transition: outline-width var(--pal-time-2xs) ease;
 
-  > a {
-    display: block;
-    padding-bottom: var(--gap);
-
-    font-size: var(--pal-size-font-m);
-    font-weight: 800;
-    text-decoration: none;
-
-    color: var(--pal-color-a-500);
-  }
-
-  > .details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--pal-size-2xs);
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--pal-color-a-150);
-    border-top-width: var(--line-thickness);
-    padding-top: var(--pal-size-s);
+  > .status {
+    padding-inline: var(--pal-size-xs);
+    padding-block: var(--pal-size-2xs);
 
     font-size: var(--pal-size-font-2xs);
+    text-transform: uppercase;
+    letter-spacing: 0.015625rem;
 
-    > p {
+    color: var(--pal-color-white);
+    background-color: var(--pal-color-b-500);
+  }
+
+  > .content {
+    padding: var(--gap);
+
+    > a {
+      display: block;
+      padding-bottom: var(--gap);
+
+      font-size: var(--pal-size-font-m);
+      font-weight: 800;
+      text-decoration: none;
+
+      color: var(--pal-color-a-500);
+    }
+
+    > .details {
       display: flex;
-      align-items: center;
-      gap: var(--pal-size-xs);
+      flex-direction: column;
+      gap: var(--pal-size-2xs);
+      border-width: 0;
+      border-style: solid;
+      border-color: var(--pal-color-a-150);
+      border-top-width: var(--line-thickness);
+      padding-top: var(--pal-size-s);
 
-      > .title {
-        flex-shrink: 0;
+      font-size: var(--pal-size-font-2xs);
 
-        /* width: 4rem; */
+      > p {
+        display: flex;
+        align-items: center;
+        gap: var(--pal-size-xs);
 
-        color: var(--pal-color-a-500);
-      }
+        > .title {
+          flex-shrink: 0;
 
-      > .value {
-        flex-grow: 1;
+          /* width: 4rem; */
 
-        white-space: nowrap;
-        text-overflow: ellipsis;
+          color: var(--pal-color-a-500);
+        }
 
-        overflow: hidden;
+        > .value {
+          flex-grow: 1;
+
+          white-space: nowrap;
+          text-overflow: ellipsis;
+
+          overflow: hidden;
+        }
       }
     }
   }

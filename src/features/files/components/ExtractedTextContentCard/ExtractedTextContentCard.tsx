@@ -11,10 +11,10 @@ interface ExtractedTextContentCardProps {
 export const ExtractedTextContentCard = ({
   fileId,
 }: ExtractedTextContentCardProps) => {
-  const extractedTextItems = useSelectedContentStore(s => s.extractedTextItems)
+  const textRecord = useSelectedContentStore(s => s.textRecord)
   const toggleFile = useSelectedContentStore(s => s.toggleFile)
 
-  const fileContent = extractedTextItems[fileId]
+  const fileContent = textRecord[fileId]
 
   const copyAction = useHandleAction(async () => {
     if (fileContent) await navigator.clipboard.writeText(fileContent)
@@ -29,9 +29,9 @@ export const ExtractedTextContentCard = ({
             ? 'noContent'
             : 'ready'
       }
-      iconClass="ti ti-text-scan-ai"
+      iconClass="ti ti-text-scan-2"
       noContentText="No se encontró contenido extraído de este archivo"
-      onDelete={() => toggleFile(fileId, 'extractedText')}
+      onDelete={() => toggleFile(fileId, 'text')}
       actions={
         fileContent && (
           <Button

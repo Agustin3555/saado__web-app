@@ -5,6 +5,7 @@ import { Button, Icon } from '@/shared/components'
 import { classList, varList } from '@/shared/helpers'
 import { toast } from 'sonner'
 import { privateInstance } from '@/infra/http/axios/instances'
+import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
 
 const MAX_FILE_SIZE = 1024 * 1024 * 500
 
@@ -43,6 +44,7 @@ interface UploadSectionProps {
 export const UploadSection = ({ obraId }: UploadSectionProps) => {
   const [dragOver, setDragOver] = useState(false)
   const [toUpload, setToUpload] = useState<File[]>([])
+  const refetchSelectedObra = useSelectedObraStore(s => s.refetchSelectedObra)
 
   const addFiles = (incomingFiles: FileList | null) => {
     if (!incomingFiles) return
@@ -103,28 +105,36 @@ export const UploadSection = ({ obraId }: UploadSectionProps) => {
     formData.append('obraId', String(obraId))
     toUpload.forEach(file => formData.append('files', file))
 
-    setToUpload([])
-
     const {
-      data: { uploaded, omit },
+      data: { omittedCount },
     } = await privateInstance.post<{
-      uploaded: number
-      omit: { name: string }[]
+      created: []
+      omittedCount: number
     }>('files', formData)
 
-    if (uploaded < 0) return
-    toast.success(
-      `${uploaded} archivo${uploaded === 0 ? '' : 's'} subido${uploaded === 0 ? '' : 's'}`,
+    // if (uploaded < 0) return
+    // toast.success(
+    //   `${uploaded} archivo${uploaded === 0 ? '' : 's'} subido${uploaded === 0 ? '' : 's'}`,
+    // )
+
+    // if (omit.length <= 0) return
+    // toast.warning(
+    //   `${omit.length} archivo${omit.length === 0 ? '' : 's'} omitido${omit.length === 0 ? '' : 's'}`,
+    // )
+
+    toast.warning(
+      `${omittedCount} archivo${omittedCount === 0 ? '' : 's'} omitido${omittedCount === 0 ? '' : 's'}`,
     )
 
-    if (omit.length <= 0) return
-    toast.warning(
-      `${omit.length} archivo${omit.length === 0 ? '' : 's'} omitido${omit.length === 0 ? '' : 's'}`,
-    )
+    await refetchSelectedObra()
+    setToUpload([])
   })
 
   return (
-    <div className="cmp-upload-section">
+    <div
+      className="cmp-upload-section"
+      inert={uploadAction.actionState !== 'ready'}
+    >
       <label
         className={classList({ dragOver })}
         onDragLeave={handleDragLeave}

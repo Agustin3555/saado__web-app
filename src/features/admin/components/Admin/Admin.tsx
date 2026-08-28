@@ -2,6 +2,8 @@ import './Admin.css'
 import { useEffect, useState } from 'react'
 import { useUsersStore } from '@/features/users/store/useUsers.store'
 import { useCompaniesStore } from '@/features/company/store/useCompanies.store'
+import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
+import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
 import { Redirect, Route, Switch } from 'wouter'
 import { Aside, Header } from './components'
 import { Dashboard } from '@/views/Dashboard/Dashboard'
@@ -13,6 +15,8 @@ export const Admin = () => {
   const companies = useCompaniesStore(s => s.companies)
   const refetchUsers = useUsersStore(s => s.refetchUsers)
   const refetchCompanies = useCompaniesStore(s => s.refetchCompanies)
+  const refetchDocuments = useDocumentsStore(s => s.refetchDocuments)
+  const refetchOrigins = useOriginsStore(s => s.refetchOrigins)
   const [asideIsOpen, setAsideIsOpen] = useState(false)
 
   const handleAsideToggle = () => setAsideIsOpen(prev => !prev)
@@ -22,7 +26,9 @@ export const Admin = () => {
   useEffect(() => {
     refetchUsers()
     refetchCompanies()
-  }, [refetchCompanies, refetchUsers])
+    refetchDocuments()
+    refetchOrigins()
+  }, [refetchCompanies, refetchDocuments, refetchOrigins, refetchUsers])
 
   return (
     <div className="cmp-admin">

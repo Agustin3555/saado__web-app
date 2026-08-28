@@ -12,7 +12,7 @@ export const Router = () => (
       </IsAuthenticated>
     </Route>
     <Route>
-      <Redirect to="/login" replace />
+      <Redirect to="/admin" replace />
     </Route>
   </Switch>
 )

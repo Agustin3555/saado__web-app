@@ -1,0 +1,51 @@
+.cmp-update {
+  --color-b: var(--pal-color-a-50);
+
+  > .content {
+    > .change {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: var(--pal-size-xs);
+      row-gap: var(--pal-size-2xs);
+
+      font-size: var(--pal-size-font-2xs);
+
+      opacity: 0.375;
+
+      transition: opacity var(--pal-time-xs) ease-out;
+
+      .cmp-chip {
+        background-color: var(--pal-color-white);
+
+        &.document {
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.0625rem;
+
+          color: var(--pal-color-white);
+
+          &.reject {
+            background-color: var(--pal-color-d-500);
+          }
+
+          &.uncertain {
+            background-color: var(--pal-color-c-500);
+          }
+
+          &.approve {
+            background-color: var(--pal-color-b-500);
+          }
+        }
+      }
+
+      > .cmp-icon {
+        color: var(--pal-color-a-500);
+      }
+    }
+  }
+
+  &:hover > .content > .change {
+    opacity: initial;
+  }
+}

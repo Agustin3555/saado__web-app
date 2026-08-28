@@ -72,7 +72,7 @@ export const Button = ({
               onScreen: actionState === 'loading',
             })}
           >
-            <Loader />
+            <Loader {...{ size }} />
           </div>
           <Icon
             iconClass="ti ti-x"

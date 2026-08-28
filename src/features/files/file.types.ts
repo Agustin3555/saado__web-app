@@ -1,10 +1,12 @@
+import type { SimpleDocument } from '../docs/document.types'
+
 export interface SimpleFile {
   id: number
 }
 
 export interface File extends SimpleFile {
   obraId: number
-  documentId: number
+  document: SimpleDocument
 
   path: string | null
   createdAt: string

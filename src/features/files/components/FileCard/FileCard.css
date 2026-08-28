@@ -8,23 +8,6 @@
   border-radius: var(--border-radius);
   background-color: var(--pal-color-white);
 
-  > .actions {
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--pal-color-a-150);
-    border-left-width: var(--line-thickness);
-    padding: var(--pal-size-xs);
-
-    > .container {
-      position: sticky;
-      top: var(--layout-gutter);
-
-      display: flex;
-      flex-direction: column;
-      gap: var(--pal-size-xs);
-    }
-  }
-
   > .status {
     font-size: var(--pal-size-font-2xs);
 
@@ -40,8 +23,8 @@
       padding-inline: var(--pal-size-s);
       padding-right: 0.1875rem;
       padding-left: var(--pal-size-2xs);
-      text-transform: uppercase;
 
+      text-transform: uppercase;
       letter-spacing: 0.015625rem;
       writing-mode: sideways-lr;
     }
@@ -56,32 +39,30 @@
     > header {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: var(--pal-size-m);
-      padding: var(--pal-size-m);
 
-      > button {
-        flex-grow: 1;
+      > h1 {
+        padding: var(--pal-size-m);
 
+        font-size: var(--pal-size-font-s);
+        font-weight: 800;
+      }
+
+      > .actions {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: space-between;
         gap: var(--pal-size-xs);
+        margin: var(--pal-size-xs);
+        margin-top: 0.0625rem;
 
-        > h1 {
-          font-size: var(--pal-size-font-s);
-          font-weight: 800;
-        }
-
-        > span {
-          display: flex;
-          align-items: center;
-          gap: var(--pal-size-s);
-
-          font-size: var(--pal-size-font-2xs);
-          font-weight: 600;
+        > .file {
+          --cmp-button-border-color: var(--pal-color-a-100);
 
           color: var(--pal-color-a-500);
+        }
+
+        > .verify {
+          --cmp-button-bg-color: var(--pal-color-b-200);
         }
       }
     }
@@ -100,6 +81,23 @@
 
     > .logs {
       height: 10rem;
+    }
+  }
+
+  > .toggles {
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--pal-color-a-150);
+    border-left-width: var(--line-thickness);
+    padding: var(--pal-size-xs);
+
+    > .container {
+      position: sticky;
+      top: var(--layout-gutter);
+
+      display: flex;
+      flex-direction: column;
+      gap: var(--pal-size-xs);
     }
   }
 }

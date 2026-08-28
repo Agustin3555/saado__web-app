@@ -1,14 +1,13 @@
 .cmp-loader {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   aspect-ratio: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   > span {
     position: absolute;
-    color: var(--pal-color-a-500);
 
     aspect-ratio: 1;
     width: 1em;
@@ -18,27 +17,27 @@
     animation: mulShdSpin 1.2s infinite linear;
   }
 
-  &.s {
-    width: 1rem;
-
-    > span {
-      font-size: 0.1875rem;
-    }
-  }
-
-  &.m {
-    width: 2rem;
-
-    > span {
-      font-size: 0.375rem;
-    }
-  }
-
   &.l {
     width: 3rem;
 
     > span {
-      font-size: 0.5625rem;
+      font-size: 0.25rem;
+    }
+  }
+
+  &.m {
+    width: var(--pal-size-m);
+
+    > span {
+      font-size: 0.15625rem;
+    }
+  }
+
+  &.s {
+    width: 0.875rem;
+
+    > span {
+      font-size: 0.125rem;
     }
   }
 }

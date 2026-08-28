@@ -1,7 +1,9 @@
 import './ContentCard.css'
 import type { ReactNode } from 'react'
 import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
+import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { Button, Icon, Loader } from '@/shared/components'
+import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
 
 type Status = 'loading' | 'noContent' | 'ready'
 
@@ -25,8 +27,14 @@ export const ContentCard = ({
   onDelete,
 }: ContentViewProps) => {
   const selectedObra = useSelectedObraStore(s => s.selectedObra)
+  const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
+  const originsRecord = useOriginsStore(s => s.originsRecord)!
 
-  const filePath = selectedObra?.files.find(f => f.id === id)?.path
+  const file = selectedObra?.files.find(f => f.id === id)
+
+  const title =
+    file &&
+    `${documentsRecord[file.document.id].name} • ${originsRecord[file.document.originId!].name}`
 
   const contentMatch: Record<Status, ReactNode> = {
     loading: <Loader size="s" />,
@@ -44,7 +52,7 @@ export const ContentCard = ({
       <header>
         <h1>
           <Icon {...{ iconClass }} />
-          {filePath}
+          {title}
         </h1>
         <div className="actions">
           {actions}

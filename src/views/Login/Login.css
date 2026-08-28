@@ -26,8 +26,9 @@
 
     > .banner {
       color: var(--pal-color-white);
-      background-image: url('/kelly-sikkema-0oZpRxG5Hkk-unsplash.jpg');
-      background-position: -10rem 0;
+      background-image: url('/kelly-sikkema-0oZpRxG5Hkk-unsplash.webp');
+      background-position: -9.5rem 0;
+      background-size: cover;
 
       > header {
         display: flex;
@@ -93,7 +94,7 @@
       max-width: 25rem;
 
       > .banner {
-        background-position: -6rem -10rem;
+        background-position: 0 -5.25rem;
       }
 
       > form {

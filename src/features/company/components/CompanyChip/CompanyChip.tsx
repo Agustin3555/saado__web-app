@@ -11,10 +11,8 @@ export const CompanyChip = ({ id }: CompanyChip) => {
   if (!id) return null
 
   return (
-    <Chip
-      title="Empresa"
-      iconClass="ti ti-building"
-      value={companiesRecord[id].name}
-    />
+    <Chip title="Empresa" iconClass="ti ti-building">
+      <p>{companiesRecord[id].name}</p>
+    </Chip>
   )
 }

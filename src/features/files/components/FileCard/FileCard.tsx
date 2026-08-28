@@ -1,16 +1,22 @@
 import './FileCard.css'
-import { Button, Icon, Toggle } from '@/shared/components'
-import type { File } from '../../file.types'
-import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
 import { useSelectedContentStore } from '../../store/useSelectedContent.store'
+import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
+import { Button, Toggle } from '@/shared/components'
+import type { File } from '../../file.types'
+import { LogList } from './components'
+import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
+import { OriginChip } from '@/features/origins/components/OriginChip/OriginChip'
 
 interface FileCardProps {
+  status?: 'PROCESS'
   data: File
 }
 
 export const FileCard = ({
-  data: { id, obraId, documentId, path, createdAt, updatedAt },
+  status,
+  data: { id, obraId, document, path, createdAt, updatedAt },
 }: FileCardProps) => {
+  const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
   const selected = useSelectedContentStore(s => s.selected)
   const toggleFile = useSelectedContentStore(s => s.toggleFile)
 
@@ -25,49 +31,66 @@ export const FileCard = ({
       </div>
       <div className="content">
         <header>
-          <button>
-            <h1>{documentId}</h1>
-            {/* <h1>{documentId}</h1> */}
-            {/* TODO: span por Dropdown de actions */}
-            <span>
-              {/* <Button
-                title="Reemplazar archivo"
-                iconClass="ti ti-upload"
-                size="s"
-              />
-              <Button
-                title="Descargar archivo"
-                iconClass="ti ti-download"
-                size="s"
-              /> */}
-              <Icon iconClass="ti ti-file" />
-              {file}
-            </span>
-          </button>
+          <h1 className="text">{documentsRecord[document.id].name}</h1>
+          <div className="actions">
+            <Button
+              handlingClass="file"
+              text={file}
+              iconClass="ti ti-file"
+              size="s"
+              inverted
+              wrap
+            />
+            {/* TODO: Dropdown de actions */}
+            {/* <Button
+              title="Reemplazar archivo"
+              iconClass="ti ti-upload"
+              size="s"
+            />
+            <Button
+              title="Descargar archivo"
+              iconClass="ti ti-download"
+              size="s"
+            /> */}
+            <Button
+              handlingClass="verify"
+              text="Verificar"
+              iconClass="ti ti-zoom-check"
+              size="s"
+              type="primary"
+              actionState={status === 'PROCESS' ? 'loading' : undefined}
+            />
+          </div>
         </header>
         <div className="chips">
+          <OriginChip id={document.originId} />
           <UserActivityChip dateTime={updatedAt} activity="updated" />
           <UserActivityChip dateTime={createdAt} />
         </div>
-        <div className="logs"></div>
+        <LogList fileId={id} />
       </div>
-      <div className="actions">
+      <div className="toggles">
         <div className="container">
           <Toggle
             iconClass="ti ti-eye"
             title="Ver archivo"
             size="m"
-            value={selected.some(i => i.id === id && i.type === 'preview')}
-            onChange={() => toggleFile(id, 'preview')}
+            value={selected.some(i => i.id === id && i.type === 'viewerUrl')}
+            onChange={() => toggleFile(id, 'viewerUrl')}
           />
           <Toggle
-            iconClass="ti ti-text-scan-ai"
+            iconClass="ti ti-text-scan-2"
             title="Ver contenido extraído"
             size="m"
-            value={selected.some(
-              i => i.id === id && i.type === 'extractedText',
-            )}
-            onChange={() => toggleFile(id, 'extractedText')}
+            value={selected.some(i => i.id === id && i.type === 'text')}
+            onChange={() => toggleFile(id, 'text')}
+          />
+          <Toggle
+            iconClass="ti ti-hexagon-letter-d"
+            title="Ver datos extraído"
+            size="m"
+            value={selected.some(i => i.id === id && i.type === 'data')}
+            onChange={() => toggleFile(id, 'data')}
           />
         </div>
       </div>

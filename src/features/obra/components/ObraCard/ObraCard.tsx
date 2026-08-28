@@ -15,35 +15,40 @@ export const ObraCard = ({
 }: ObraCardProps) => {
   const companiesRecord = useCompaniesStore(s => s.companiesRecord)!
 
+  const status = 'Aprobado'
+
   return (
     <li
       className="cmp-obra-card show-animation-item"
       title={name ?? undefined}
       style={varList({ i })}
     >
-      <Link href={`/${id}`}>{numeroExpediente}</Link>
-      <div className="details">
-        <p>
-          <span className="title">Obra:</span>
-          <span className="value">{name ?? '-'}</span>
-        </p>
-        {companyId && (
+      <div className="status">{status}</div>
+      <div className="content">
+        <Link href={`/${id}`}>{numeroExpediente}</Link>
+        <div className="details">
           <p>
-            <span className="title">Empresa:</span>
-            <span className="value">{companiesRecord[companyId].name}</span>
+            <span className="title">Obra:</span>
+            <span className="value">{name ?? '-'}</span>
           </p>
-        )}
-        <p>
-          <span className="title">Actualizado:</span>
-          <span className="value">
-            {Temporal.Instant.from(updatedAt)
-              .toZonedDateTimeISO(Temporal.Now.timeZoneId())
-              .toLocaleString('es-ES', {
-                dateStyle: 'medium',
-                timeStyle: 'short',
-              })}
-          </span>
-        </p>
+          {companyId && (
+            <p>
+              <span className="title">Empresa:</span>
+              <span className="value">{companiesRecord[companyId].name}</span>
+            </p>
+          )}
+          <p>
+            <span className="title">Actualizado:</span>
+            <span className="value">
+              {Temporal.Instant.from(updatedAt)
+                .toZonedDateTimeISO(Temporal.Now.timeZoneId())
+                .toLocaleString('es-ES', {
+                  dateStyle: 'medium',
+                  timeStyle: 'short',
+                })}
+            </span>
+          </p>
+        </div>
       </div>
     </li>
   )

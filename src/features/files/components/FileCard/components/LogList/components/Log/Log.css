@@ -1,0 +1,27 @@
+.cmp-log {
+  &.processing {
+    &:last-child > .cmp-icon {
+      animation: rotate 1s linear infinite;
+    }
+  }
+
+  &.success {
+    --color-a: var(--pal-color-b-500);
+  }
+
+  &.warning {
+    --color-a: var(--pal-color-c-550);
+    --color-b: var(--pal-color-c-100);
+  }
+
+  &.error {
+    --color-a: var(--pal-color-d-500);
+    --color-b: var(--pal-color-d-100);
+  }
+}
+
+@keyframes rotate {
+  to {
+    rotate: 1turn;
+  }
+}

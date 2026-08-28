@@ -5,9 +5,9 @@ import { classList } from '@/shared/helpers'
 
 export interface ChipProps {
   handlingClass?: string
-  title: string
-  iconClass: string
-  value?: string | number
+  title?: string
+  iconClass?: string
+  clip?: boolean
   children?: ReactNode
 }
 
@@ -15,14 +15,16 @@ export const Chip = ({
   handlingClass,
   title,
   iconClass,
-  value,
+  clip = false,
   children,
 }: ChipProps) => {
   return (
-    <li className={classList('cmp-chip', 'ui-s', handlingClass)} {...{ title }}>
-      <Icon {...{ iconClass }} />
-      <span>{value}</span>
+    <div
+      className={classList('cmp-chip', 'ui-s', handlingClass, { clip })}
+      {...{ title }}
+    >
+      {iconClass && <Icon {...{ iconClass }} />}
       {children}
-    </li>
+    </div>
   )
 }

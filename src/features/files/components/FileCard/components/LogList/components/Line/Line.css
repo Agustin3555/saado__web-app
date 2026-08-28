@@ -1,0 +1,51 @@
+.cmp-line {
+  --color-a: var(--pal-color-a-500);
+
+  display: flex;
+  gap: var(--pal-size-xs);
+  padding-inline: var(--pal-size-xs);
+  padding-block: var(--pal-size-2xs);
+
+  border-radius: var(--pal-size-2xs);
+  background-color: var(--color-b);
+
+  > .cmp-icon {
+    /* --cmp-icon-size: 0.875rem; */
+
+    margin-top: var(--pal-size-3xs);
+
+    color: var(--color-a);
+  }
+
+  > .content {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-xs);
+
+    > header {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--pal-size-xs);
+
+      > .title {
+        font-size: var(--pal-size-font-xs);
+      }
+
+      > small {
+        flex-shrink: 0;
+
+        margin-top: var(--pal-size-2xs);
+
+        opacity: 0.375;
+
+        transition: opacity var(--pal-time-xs) ease-out;
+      }
+    }
+  }
+
+  &:hover > .content > header > small {
+    opacity: initial;
+  }
+}

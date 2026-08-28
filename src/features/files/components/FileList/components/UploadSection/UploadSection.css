@@ -39,6 +39,10 @@
     }
   }
 
+  &[inert] {
+    opacity: 0.625;
+  }
+
   &:has(> ul) {
     --padding: var(--pal-size-xs);
 

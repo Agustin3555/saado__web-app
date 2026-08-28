@@ -7,10 +7,10 @@ interface PreviewContentCardProps {
 }
 
 export const PreviewContentCard = ({ fileId }: PreviewContentCardProps) => {
-  const previewItems = useSelectedContentStore(s => s.previewItems)
+  const viewerUrlRecord = useSelectedContentStore(s => s.viewerUrlRecord)
   const toggleFile = useSelectedContentStore(s => s.toggleFile)
 
-  const url = previewItems[fileId]
+  const url = viewerUrlRecord[fileId]
 
   return (
     <ContentCard
@@ -19,7 +19,7 @@ export const PreviewContentCard = ({ fileId }: PreviewContentCardProps) => {
       }
       iconClass="ti ti-eye"
       noContentText="No se puede visualizar este tipo de archivo"
-      onDelete={() => toggleFile(fileId, 'preview')}
+      onDelete={() => toggleFile(fileId, 'viewerUrl')}
       {...{ fileId }}
     >
       {url && (
