@@ -50,6 +50,20 @@
         margin: var(--pal-size-xs);
         margin-top: 0.0625rem;
 
+        > .cmp-dropdown {
+          --cmp-button-bg-color: var(--pal-color-a-50);
+
+          position-area: bottom span-right;
+
+          margin-top: var(--pal-size-3xs);
+          margin-left: var(--pal-size-xs);
+          gap: var(--pal-size-3xs);
+
+          > .cmp-button {
+            justify-content: flex-start;
+          }
+        }
+
         > .file {
           --cmp-button-border-color: var(--pal-color-a-100);
 

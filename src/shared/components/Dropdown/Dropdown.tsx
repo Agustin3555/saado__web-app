@@ -1,11 +1,16 @@
 import './Dropdown.css'
-import { useId, type ReactNode, type RefObject } from 'react'
+import {
+  useId,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+  type RefObject,
+} from 'react'
 import { classList, varList } from '../../helpers'
 
 interface DropdownProps {
   ref?: RefObject<HTMLDivElement | null>
   gallery?: { c: number; r?: number }
-  opener: (popoverTarget: string) => ReactNode
+  opener: (attrs: ButtonHTMLAttributes<HTMLButtonElement>) => ReactNode
   children: ReactNode | ReactNode[]
 }
 
@@ -14,9 +19,11 @@ export const Dropdown = ({ ref, gallery, opener, children }: DropdownProps) => {
 
   return (
     <>
-      {opener(id)}
+      {opener({ popoverTarget: id })}
       <div
-        className={classList('cmp-dropdown', { gallery: !!gallery })}
+        className={classList('cmp-dropdown', 'raised-panel', {
+          gallery: !!gallery,
+        })}
         style={varList({ c: gallery?.c, r: gallery?.r })}
         popover="auto"
         {...{ ref, id }}

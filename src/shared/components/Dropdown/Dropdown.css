@@ -5,12 +5,9 @@
   position-try-fallbacks: flip-block;
 
   flex-direction: column;
-  border-width: var(--line-thickness);
-  border-color: var(--pal-color-n-100);
   padding: var(--gap);
 
   border-radius: calc(var(--pal-size-xs) + var(--gap));
-  box-shadow: var(--pal-shadow-1);
   scale: 0.9;
   opacity: 0;
   transform-origin: top left;

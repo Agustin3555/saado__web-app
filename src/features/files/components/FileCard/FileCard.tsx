@@ -1,7 +1,7 @@
 import './FileCard.css'
 import { useSelectedContentStore } from '../../store/useSelectedContent.store'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
-import { Button, Toggle } from '@/shared/components'
+import { Button, Dropdown, Toggle } from '@/shared/components'
 import type { File } from '../../file.types'
 import { LogList } from './components'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
@@ -33,25 +33,36 @@ export const FileCard = ({
         <header>
           <h1 className="text">{documentsRecord[document.id].name}</h1>
           <div className="actions">
-            <Button
-              handlingClass="file"
-              text={file}
-              iconClass="ti ti-file"
-              size="s"
-              inverted
-              wrap
-            />
-            {/* TODO: Dropdown de actions */}
-            {/* <Button
-              title="Reemplazar archivo"
-              iconClass="ti ti-upload"
-              size="s"
-            />
-            <Button
-              title="Descargar archivo"
-              iconClass="ti ti-download"
-              size="s"
-            /> */}
+            <Dropdown
+              opener={attrs => (
+                <Button
+                  handlingClass="file"
+                  text={file}
+                  iconClass="ti ti-file"
+                  size="s"
+                  inverted
+                  wrap
+                  htmlAttrs={attrs}
+                />
+              )}
+            >
+              {/* TODO: descargar */}
+              <Button
+                text="Descargar"
+                title="Descargar archivo"
+                iconClass="ti ti-download"
+                type="primary"
+                inverted
+              />
+              {/* TODO: reemplazar abriendo un Modal y dentro UploadSection pero limitando a cargar solo 1 archivo */}
+              <Button
+                text="Reemplazar"
+                title="Reemplazar archivo"
+                iconClass="ti ti-upload"
+                type="primary"
+                inverted
+              />
+            </Dropdown>
             <Button
               handlingClass="verify"
               text="Verificar"

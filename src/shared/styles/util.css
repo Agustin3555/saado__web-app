@@ -41,7 +41,7 @@
 }
 
 .modal-form > .content {
-  max-width: 35rem;
+  max-width: 30rem;
 
   color: var(--pal-color-a-850);
 
@@ -53,8 +53,8 @@
     width: 100%;
 
     > h1 {
-      font-size: var(--pal-size-font-l) !important;
-      font-weight: 700 !important;
+      font-size: var(--pal-size-font-l);
+      font-weight: 800;
 
       color: var(--pal-color-a-550);
     }
@@ -66,7 +66,11 @@
     }
 
     > .cmp-button {
+      --cmp-button-bg-color: var(--pal-color-a-500);
+
       align-self: flex-start;
+
+      color: var(--pal-color-white);
     }
   }
 }
@@ -97,4 +101,14 @@
   letter-spacing: 0.0625rem;
 
   color: var(--pal-color-white);
+}
+
+.raised-panel {
+  border-width: var(--line-thickness);
+  border-style: solid;
+  border-color: var(--pal-color-a-100);
+  border-right-width: 0;
+  border-bottom-width: 0;
+
+  box-shadow: var(--pal-shadow-1);
 }

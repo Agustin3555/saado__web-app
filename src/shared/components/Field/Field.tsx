@@ -20,8 +20,8 @@ export const Field = ({ label, iconClass, desc, children }: Field) => (
       </div>
       {desc && (
         <Dropdown
-          opener={popoverTarget => (
-            <button type="button" {...{ popoverTarget }}>
+          opener={attrs => (
+            <button type="button" {...attrs}>
               <Icon iconClass="fa-solid fa-info-circle" />
             </button>
           )}
