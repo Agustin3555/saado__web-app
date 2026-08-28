@@ -23,7 +23,7 @@ export const ObraCard = ({
       title={name ?? undefined}
       style={varList({ i })}
     >
-      <div className="status">{status}</div>
+      <div className="status-text">{status}</div>
       <div className="content">
         <Link href={`/${id}`}>{numeroExpediente}</Link>
         <div className="details">

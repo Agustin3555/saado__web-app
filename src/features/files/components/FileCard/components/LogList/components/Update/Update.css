@@ -19,12 +19,6 @@
         background-color: var(--pal-color-white);
 
         &.document {
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.0625rem;
-
-          color: var(--pal-color-white);
-
           &.reject {
             background-color: var(--pal-color-d-500);
           }

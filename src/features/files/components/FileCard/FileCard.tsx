@@ -26,7 +26,7 @@ export const FileCard = ({
   return (
     <article className="cmp-file-card">
       <div className="status">
-        <span>Aprobado</span>
+        <span className="status-text">Aprobado</span>
         {/* <span>{statusId}</span> */}
       </div>
       <div className="content">

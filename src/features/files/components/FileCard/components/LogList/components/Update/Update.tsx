@@ -18,7 +18,7 @@ const VERDICT_MATCH: Record<VerdictType, string> = {
 const VerdictChip = ({ verdict }: { verdict: VerdictType }) => {
   return (
     <Chip handlingClass={classList('document', verdict.toLowerCase())}>
-      <p>{VERDICT_MATCH[verdict]}</p>
+      <p className="status-text">{VERDICT_MATCH[verdict]}</p>
     </Chip>
   )
 }

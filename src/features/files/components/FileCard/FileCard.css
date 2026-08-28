@@ -9,14 +9,11 @@
   background-color: var(--pal-color-white);
 
   > .status {
-    font-size: var(--pal-size-font-2xs);
-
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
-    color: var(--pal-color-white);
     background-color: var(--pal-color-b-500);
 
-    > span {
+    > .status-text {
       position: sticky;
       top: var(--layout-gutter);
 
@@ -24,8 +21,6 @@
       padding-right: 0.1875rem;
       padding-left: var(--pal-size-2xs);
 
-      text-transform: uppercase;
-      letter-spacing: 0.015625rem;
       writing-mode: sideways-lr;
     }
   }

@@ -10,15 +10,10 @@
 
   transition: outline-width var(--pal-time-2xs) ease;
 
-  > .status {
+  > .status-text {
     padding-inline: var(--pal-size-xs);
     padding-block: var(--pal-size-2xs);
 
-    font-size: var(--pal-size-font-2xs);
-    text-transform: uppercase;
-    letter-spacing: 0.015625rem;
-
-    color: var(--pal-color-white);
     background-color: var(--pal-color-b-500);
   }
 
