@@ -3,9 +3,11 @@ import { useSelectedContentStore } from '../../store/useSelectedContent.store'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { Button, Dropdown, Toggle } from '@/shared/components'
 import type { File } from '../../file.types'
-import { LogList } from './components'
+import { ChangeVerdictButton, LogList } from './components'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
 import { OriginChip } from '@/features/origins/components/OriginChip/OriginChip'
+import { classList } from '@/shared/helpers'
+import { getVerdict } from '../../helpers/getVerdict.helper'
 
 interface FileCardProps {
   status?: 'PROCESS'
@@ -14,7 +16,7 @@ interface FileCardProps {
 
 export const FileCard = ({
   status,
-  data: { id, obraId, document, path, createdAt, updatedAt },
+  data: { id, obraId, document, path, verdict, createdAt, updatedAt },
 }: FileCardProps) => {
   const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
   const selected = useSelectedContentStore(s => s.selected)
@@ -25,9 +27,8 @@ export const FileCard = ({
 
   return (
     <article className="cmp-file-card">
-      <div className="status">
-        <span className="status-text">Aprobado</span>
-        {/* <span>{statusId}</span> */}
+      <div className={classList('status', getVerdict(verdict).id)}>
+        <ChangeVerdictButton {...{ verdict }} />
       </div>
       <div className="content">
         <header>

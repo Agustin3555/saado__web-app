@@ -61,16 +61,20 @@ input,
 textarea {
   border: none;
   min-width: 0;
-  outline: none;
 
   line-height: normal;
 
   background: transparent;
+  outline: none;
 
   &::placeholder {
     color: inherit;
     opacity: 0.5;
   }
+}
+
+textarea {
+  line-height: 1.4;
 }
 
 button {

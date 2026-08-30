@@ -11,17 +11,25 @@
   > .status {
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
-    background-color: var(--pal-color-b-500);
 
-    > .status-text {
-      position: sticky;
-      top: var(--layout-gutter);
+    &.undefined {
+      background-color: var(--pal-color-n-500);
+    }
 
-      padding-inline: var(--pal-size-s);
-      padding-right: 0.1875rem;
-      padding-left: var(--pal-size-2xs);
+    &.rejected {
+      background-color: var(--pal-color-d-500);
+    }
 
-      writing-mode: sideways-lr;
+    &.uncertain {
+      background-color: var(--pal-color-c-500);
+    }
+
+    &.approved {
+      background-color: var(--pal-color-b-500);
+    }
+
+    &:hover > .cmp-change-verdict-button > .cmp-icon {
+      opacity: initial;
     }
   }
 
@@ -55,9 +63,9 @@
 
           position-area: bottom span-right;
 
+          gap: var(--pal-size-3xs);
           margin-top: var(--pal-size-3xs);
           margin-left: var(--pal-size-xs);
-          gap: var(--pal-size-3xs);
 
           > .cmp-button {
             justify-content: flex-start;

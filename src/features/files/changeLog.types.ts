@@ -11,6 +11,7 @@ export interface UpdateData {
   valueType: ValueType
   prevValue: unknown
   newValue: unknown
+  comments?: string
 }
 
 type ChangeLogType = 'LOG' | 'UPDATE' | 'START_BLOCK' | 'END_BLOCK'

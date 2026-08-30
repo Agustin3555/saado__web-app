@@ -1,0 +1,28 @@
+.cmp-change-verdict-button {
+  --cmp-icon-size: var(--pal-size-s);
+
+  position: sticky;
+  top: var(--layout-gutter);
+
+  display: flex;
+  align-items: center;
+  gap: var(--ui-gap);
+  padding-inline: var(--ui-padding-inline);
+  padding-right: 0.1875rem;
+  padding-left: var(--pal-size-2xs);
+
+  writing-mode: sideways-lr;
+
+  border-radius: var(--pal-size-2xs);
+  border-top-left-radius: var(--pal-size-s);
+  border-top-right-radius: 0;
+
+  > .cmp-icon {
+    rotate: 0.25turn;
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: color-mix(in srgb, transparent, #000 12.5%);
+  }
+}

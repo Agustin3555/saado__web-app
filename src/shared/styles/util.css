@@ -97,6 +97,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.0625rem;
+  word-spacing: 0.125rem;
 
   color: var(--pal-color-white);
 }
@@ -104,7 +105,7 @@
 .raised-panel {
   border-width: var(--line-thickness);
   border-style: solid;
-  border-color: var(--pal-color-a-100);
+  border-color: var(--pal-color-a-200);
   border-right-width: 0;
   border-bottom-width: 0;
 

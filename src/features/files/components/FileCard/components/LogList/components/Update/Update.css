@@ -19,7 +19,11 @@
         background-color: var(--pal-color-white);
 
         &.document {
-          &.reject {
+          &.undefined {
+            background-color: var(--pal-color-n-500);
+          }
+
+          &.rejected {
             background-color: var(--pal-color-d-500);
           }
 
@@ -27,7 +31,7 @@
             background-color: var(--pal-color-c-500);
           }
 
-          &.approve {
+          &.approved {
             background-color: var(--pal-color-b-500);
           }
         }
@@ -35,6 +39,30 @@
 
       > .cmp-icon {
         color: var(--pal-color-a-500);
+      }
+
+      > .cmp-dropdown {
+        position-area: top;
+
+        margin: var(--pal-size-2xs);
+        padding: var(--pal-size-m);
+        max-width: 25rem;
+
+        font-size: var(--pal-size-font-xs);
+
+        > .cmp-icon {
+          --cmp-icon-size: 1.25rem;
+
+          position: absolute;
+          top: 0.375rem;
+          left: 0.375rem;
+
+          color: var(--pal-color-a-300);
+        }
+
+        > p {
+          padding-top: var(--pal-size-m);
+        }
       }
     }
   }

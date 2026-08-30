@@ -105,8 +105,8 @@ export const changeLogs: ChangeLog[] = [
       message: 'Veredicto actualizado',
       byUserId: 5,
       valueType: 'verdict',
-      prevValue: 'APPROVE',
-      newValue: 'REJECT',
+      prevValue: 'APPROVED',
+      newValue: 'REJECTED',
     },
   },
   {
