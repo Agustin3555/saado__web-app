@@ -111,3 +111,15 @@
 
   box-shadow: var(--pal-shadow-1);
 }
+
+.hover-highlight {
+  outline-width: 0;
+  outline-style: solid;
+  outline-color: var(--pal-color-a-200);
+
+  transition: outline-width var(--pal-time-2xs) ease;
+
+  &:hover {
+    outline-width: 0.1875rem;
+  }
+}

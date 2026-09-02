@@ -1,9 +1,23 @@
+import './NewObraButton.css'
 import { useRef } from 'react'
 import { useSubmitAction } from '@/shared/hooks/useSubmitAction.hook'
 import { useObrasStore } from '../../store/useObras.store'
-import { Button, Field, Icon, Input, Modal } from '@/shared/components'
+import {
+  Banner,
+  Button,
+  Field,
+  Input,
+  Modal,
+  Select,
+  type SelectProps,
+} from '@/shared/components'
 import { CompanySelect } from '@/features/company/components/CompanySelect/CompanySelect'
+import { TIPO_CONTRATACION_INFO } from '../../obra.const'
 import { toast } from 'sonner'
+
+const tipoContratacionOptions: SelectProps['options'] = Object.entries(
+  TIPO_CONTRATACION_INFO,
+).map(([key, value]) => ({ value: key, label: value }))
 
 export const NewObraButton = () => {
   const modalRef = useRef<HTMLDialogElement>(null)
@@ -16,6 +30,7 @@ export const NewObraButton = () => {
 
       const data = {
         companyId: formValues.get.number('companyId')!,
+        tipoContratacion: formValues.get.number('tipoContratacion')!,
         name: formValues.get.string('name'),
         numeroExpediente: formValues.get.string('numeroExpediente')!,
       }
@@ -32,13 +47,12 @@ export const NewObraButton = () => {
       ref={modalRef}
       opener={attrs => (
         <button
-          className="new"
+          className="cmp-new-obra-button hover-highlight"
           title="Crear una nueva obra"
           type="button"
           {...attrs}
         >
-          <Icon iconClass="ti ti-plus" />
-          Nuevo obra
+          <Banner text="Nueva obra" iconClass="ti ti-square-rounded-plus" />
         </button>
       )}
     >
@@ -48,10 +62,12 @@ export const NewObraButton = () => {
           <Field label="Número de expediente">
             <Input htmlAttrs={{ name: 'numeroExpediente', required: true }} />
           </Field>
-          {/* TODO */}
-          {/* <Field label="Tipo de contratación">
-            Select de Tipo de contratación
-          </Field> */}
+          <Field label="Tipo de contratación">
+            <Select
+              options={tipoContratacionOptions}
+              htmlAttrs={{ name: 'tipoContratacion', required: true }}
+            />
+          </Field>
           <Field label="Empresa">
             <CompanySelect />
           </Field>

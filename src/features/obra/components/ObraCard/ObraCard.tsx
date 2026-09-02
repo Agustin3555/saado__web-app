@@ -19,7 +19,7 @@ export const ObraCard = ({
 
   return (
     <li
-      className="cmp-obra-card show-animation-item"
+      className="cmp-obra-card hover-highlight show-animation-item"
       title={name ?? undefined}
       style={varList({ i })}
     >

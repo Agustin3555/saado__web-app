@@ -14,7 +14,7 @@ export const Field = ({ label, iconClass, desc, children }: Field) => (
   <label className="cmp-field ui-s">
     <header>
       <div className="title">
-        {iconClass && <Icon {...{ iconClass }} />}
+        {iconClass && <Icon handlingClass="leading" {...{ iconClass }} />}
         <span>{label}</span>
         <Icon iconClass="ti ti-asterisk" />
       </div>

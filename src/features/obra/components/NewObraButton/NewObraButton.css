@@ -1,0 +1,7 @@
+.cmp-new-obra-button {
+  border-width: var(--line-thickness);
+  border-style: solid;
+  border-color: var(--pal-color-a-200);
+
+  border-radius: var(--pal-size-xs);
+}

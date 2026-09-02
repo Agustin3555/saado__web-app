@@ -1,4 +1,6 @@
 .cmp-banner {
+  --cmp-icon-size: var(--pal-size-l);
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,10 +8,6 @@
   gap: var(--pal-size-s);
 
   color: var(--pal-color-a-500);
-
-  > .cmp-icon {
-    --cmp-icon-size: var(--pal-size-l);
-  }
 
   > small {
     text-align: center;
