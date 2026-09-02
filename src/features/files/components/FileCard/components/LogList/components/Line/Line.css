@@ -1,6 +1,8 @@
-.cmp-line {
+:root {
   --color-a: var(--pal-color-a-500);
+}
 
+.cmp-line {
   display: flex;
   gap: var(--pal-size-xs);
   padding-inline: var(--pal-size-xs);
@@ -10,7 +12,7 @@
   background-color: var(--color-b);
 
   > .cmp-icon {
-    /* --cmp-icon-size: 0.875rem; */
+    --cmp-icon-size: 0.875rem;
 
     margin-top: var(--pal-size-3xs);
 
@@ -30,6 +32,10 @@
       gap: var(--pal-size-xs);
 
       > .title {
+        display: flex;
+        align-items: flex-end;
+        gap: var(--pal-size-s);
+
         font-size: var(--pal-size-font-xs);
       }
 

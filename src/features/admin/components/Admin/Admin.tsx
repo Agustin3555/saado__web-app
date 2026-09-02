@@ -1,5 +1,6 @@
 import './Admin.css'
 import { useEffect, useState } from 'react'
+import { useSocketStore } from '@/infra/ws/useSocket.store'
 import { useUsersStore } from '@/features/users/store/useUsers.store'
 import { useCompaniesStore } from '@/features/company/store/useCompanies.store'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
@@ -11,6 +12,8 @@ import { Documentation } from '@/views/Documentation/Documentation'
 import { Loader } from '@/shared/components'
 
 export const Admin = () => {
+  const connect = useSocketStore(s => s.connect)
+  const disconnect = useSocketStore(s => s.disconnect)
   const users = useUsersStore(s => s.users)
   const companies = useCompaniesStore(s => s.companies)
   const refetchUsers = useUsersStore(s => s.refetchUsers)
@@ -24,11 +27,23 @@ export const Admin = () => {
   const handleClose = () => setAsideIsOpen(false)
 
   useEffect(() => {
+    connect()
     refetchUsers()
     refetchCompanies()
     refetchDocuments()
     refetchOrigins()
-  }, [refetchCompanies, refetchDocuments, refetchOrigins, refetchUsers])
+
+    return () => {
+      disconnect()
+    }
+  }, [
+    connect,
+    disconnect,
+    refetchCompanies,
+    refetchDocuments,
+    refetchOrigins,
+    refetchUsers,
+  ])
 
   return (
     <div className="cmp-admin">

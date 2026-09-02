@@ -28,7 +28,7 @@ export const FileCard = ({
   return (
     <article className="cmp-file-card">
       <div className={classList('status', getVerdict(verdict).id)}>
-        <ChangeVerdictButton {...{ verdict }} />
+        <ChangeVerdictButton fileId={id} {...{ verdict }} />
       </div>
       <div className="content">
         <header>
@@ -42,7 +42,6 @@ export const FileCard = ({
                   iconClass="ti ti-file"
                   size="s"
                   inverted
-                  wrap
                   htmlAttrs={attrs}
                 />
               )}

@@ -1,6 +1,7 @@
 import './ChangeVerdictButton.css'
 import { useRef } from 'react'
 import { useSubmitAction } from '@/shared/hooks/useSubmitAction.hook'
+import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
 import {
   Button,
   Field,
@@ -9,16 +10,21 @@ import {
   Select,
   TextArea,
 } from '@/shared/components'
-import type { File } from '@/features/files/file.types'
+import type { File, VerdictType } from '@/features/files/file.types'
 import { getVerdict } from '@/features/files/helpers/getVerdict.helper'
 import { VERDICT_MATCH } from '@/features/files/file.const'
 import { toast } from 'sonner'
+import { privateInstance } from '@/infra/http/axios/instances'
 
 interface ChangeVerdictButtonProps {
+  fileId: number
   verdict: File['verdict']
 }
 
-export const ChangeVerdictButton = ({ verdict }: ChangeVerdictButtonProps) => {
+export const ChangeVerdictButton = ({
+  fileId,
+  verdict,
+}: ChangeVerdictButtonProps) => {
   const modalRef = useRef<HTMLDialogElement>(null)
 
   const verdictOptions = Object.entries(VERDICT_MATCH).map(([key, value]) => ({
@@ -31,12 +37,32 @@ export const ChangeVerdictButton = ({ verdict }: ChangeVerdictButtonProps) => {
       if (!modalRef.current) return
       const modal = modalRef.current
 
+      const newVerdict = formValues.get.string('verdict') as VerdictType
+
       const data = {
-        verdict: formValues.get.string('verdict')!,
+        verdict: newVerdict,
         comments: formValues.get.string('comments'),
       }
 
-      // await newObra(data)
+      await privateInstance.patch(`files/${fileId}`, data)
+
+      useSelectedObraStore.setState(store => {
+        const { selectedObra } = store
+        if (!selectedObra) return store
+
+        const fileIndex = selectedObra.files.findIndex(f => f.id === fileId)
+        if (fileIndex === -1) return store
+
+        const newSelectedObra: typeof selectedObra = {
+          ...selectedObra,
+          files: selectedObra.files.map(f =>
+            f.id === fileId ? { ...f, verdict: newVerdict } : f,
+          ),
+        }
+
+        return { selectedObra: newSelectedObra }
+      })
+
       modal.close()
       toast.success('Veredicto actualizado con éxito')
     },

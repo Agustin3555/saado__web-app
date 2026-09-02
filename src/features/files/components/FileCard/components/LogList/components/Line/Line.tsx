@@ -8,6 +8,7 @@ interface LineProps extends Pick<ChangeLog, 'createdAt'> {
   handlingClass: string
   iconClass: string
   title: string
+  actions?: ReactNode
   children?: ReactNode
 }
 
@@ -16,6 +17,7 @@ export const Line = ({
   iconClass,
   title,
   createdAt,
+  actions,
   children,
 }: LineProps) => {
   const formattedDateTime = Temporal.Instant.from(createdAt)
@@ -30,7 +32,10 @@ export const Line = ({
       <Icon {...{ iconClass }} />
       <div className="content">
         <header>
-          <p className="title text">{title}</p>
+          <p className="title text">
+            {title}
+            {actions}
+          </p>
           <small>{formattedDateTime}</small>
         </header>
         {children}

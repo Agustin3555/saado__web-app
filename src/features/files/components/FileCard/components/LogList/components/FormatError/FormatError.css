@@ -1,0 +1,10 @@
+.cmp-format-error {
+  --color-a: var(--pal-color-c-600);
+  --color-b: var(--pal-color-c-100);
+
+  > .content > header > .title > .cmp-dropdown {
+    padding: var(--pal-size-s);
+
+    font-size: var(--pal-size-font-xs);
+  }
+}

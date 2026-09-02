@@ -3,6 +3,9 @@
   flex-direction: column;
 
   > .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-width: 0;
     border-style: solid;
     border-color: var(--pal-color-a-150);
@@ -12,6 +15,10 @@
 
     transition: height var(--pal-time-m) ease;
 
+    > .cmp-banner {
+      flex-grow: 1;
+    }
+
     > ul {
       display: flex;
       flex-direction: column;
@@ -19,6 +26,23 @@
       padding: var(--pal-size-xs);
 
       list-style: none;
+    }
+
+    > .loader-container {
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 0;
+
+      overflow: hidden;
+
+      transition: height var(--pal-time-s) ease;
+
+      &.loading {
+        height: 2rem;
+      }
     }
   }
 

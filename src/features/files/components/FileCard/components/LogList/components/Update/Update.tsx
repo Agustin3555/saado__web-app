@@ -31,7 +31,7 @@ const DocumentChip = ({ id }: { id: number | null }) => {
   )
 }
 
-const DataChip = ({ object }: { object: any | null }) => {
+const DataChip = ({ object }: { object: unknown }) => {
   return object === null ? (
     <Chip iconClass="ti ti-circle-dashed" />
   ) : (
