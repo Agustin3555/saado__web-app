@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { catchError } from '../interceptors'
+import { useGlobalConfigStore } from '@/shared/store/useGlobalConfig.store'
 
-// TODO: obtener desde un store que sincroniza con localStorage
-const baseURL = 'http://localhost:3000/v1'
+const { apiUrl } = useGlobalConfigStore.getState()
+const baseURL = `${apiUrl}/v1`
 const publicInstance = axios.create({ baseURL })
 
 publicInstance.interceptors.response.use(undefined, catchError)

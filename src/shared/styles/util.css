@@ -9,7 +9,7 @@
 
 .ui-m {
   --ui-gap: var(--pal-size-xs);
-  --ui-padding-inline: var(--pal-size-m);
+  --ui-padding-inline: var(--pal-size-s);
   --ui-height: var(--pal-size-xl);
   --ui-font-size: var(--pal-size-font-xs);
   --ui-icon-size: var(--pal-size-m);

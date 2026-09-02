@@ -1,13 +1,12 @@
 .cmp-dropdown {
-  --gap: var(--pal-size-3xs);
-
   position-area: bottom;
   position-try-fallbacks: flip-block;
 
   flex-direction: column;
-  padding: var(--gap);
+  margin: var(--pal-size-2xs);
+  padding: var(--pal-size-m);
 
-  border-radius: calc(var(--pal-size-xs) + var(--gap));
+  border-radius: var(--pal-size-xs);
   scale: 0.9;
   opacity: 0;
   transform-origin: top left;

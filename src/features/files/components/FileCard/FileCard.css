@@ -64,8 +64,7 @@
           position-area: bottom span-right;
 
           gap: var(--pal-size-3xs);
-          margin-top: var(--pal-size-3xs);
-          margin-left: var(--pal-size-xs);
+          padding: var(--pal-size-3xs);
 
           > .cmp-button {
             justify-content: flex-start;

@@ -1,104 +1,118 @@
 .cmp-login {
-  align-content: center;
-  padding: var(--pal-size-xl);
+  display: flex;
+  flex-direction: column;
   height: 100%;
 
-  > .card {
+  > header {
     display: flex;
-    flex-wrap: wrap;
-    margin-inline: auto;
-    max-width: 50rem;
+    justify-content: flex-end;
+    padding: var(--pal-size-xs);
+    padding-bottom: 0;
+  }
 
-    border-radius: var(--pal-size-s);
-    background-color: var(--pal-color-white);
-    box-shadow: var(--pal-shadow-1);
-    overflow: hidden;
+  > .container {
+    flex-grow: 1;
+    align-content: center;
+    padding: var(--pal-size-xl);
+    padding-top: 0;
 
-    h1 {
-      font-size: var(--pal-size-font-l);
-      font-weight: 800;
-    }
-
-    > * {
-      flex-grow: 1;
-      flex-basis: 50%;
-    }
-
-    > .banner {
-      color: var(--pal-color-white);
-      background-image: url('/kelly-sikkema-0oZpRxG5Hkk-unsplash.webp');
-      background-position: -9.5rem 0;
-      background-size: cover;
-
-      > header {
-        display: flex;
-        justify-content: space-between;
-        padding: var(--pal-size-m);
-
-        background: linear-gradient(var(--pal-color-a-900), transparent);
-
-        > .title {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-
-          > h1 {
-            font-size: var(--pal-size-font-m);
-          }
-
-          > h2 {
-            max-width: 15rem;
-
-            font-size: var(--pal-size-font-2xs);
-            text-wrap: balance;
-          }
-        }
-
-        > .logo {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          aspect-ratio: 1;
-          width: 3.5rem;
-
-          border-radius: var(--pal-size-xs);
-          background-color: var(--pal-color-a-50);
-
-          > img {
-            height: var(--pal-size-l);
-          }
-        }
-      }
-    }
-
-    > form {
+    > .card {
       display: flex;
-      flex-direction: column;
-      gap: var(--pal-size-2xl);
-      padding: 4rem;
+      flex-wrap: wrap;
+      margin-inline: auto;
+      max-width: 50rem;
 
-      > .fields {
-        display: flex;
-        flex-direction: column;
-        gap: var(--pal-size-s);
+      border-radius: var(--pal-size-s);
+      background-color: var(--pal-color-white);
+      box-shadow: var(--pal-shadow-1);
+      overflow: hidden;
+
+      h1 {
+        font-size: var(--pal-size-font-l);
+        font-weight: 800;
       }
 
-      > .cmp-button {
-        --cmp-button-bg-color: var(--pal-color-a-500);
-
-        color: var(--pal-color-white);
+      > * {
+        flex-grow: 1;
+        flex-basis: 50%;
       }
-    }
-
-    @media (width < 45rem) {
-      max-width: 25rem;
 
       > .banner {
-        background-position: 0 -5.25rem;
+        color: var(--pal-color-white);
+        background-image: url('/kelly-sikkema-0oZpRxG5Hkk-unsplash.webp');
+        background-position: -9.5rem 0;
+        background-size: cover;
+
+        > header {
+          display: flex;
+          justify-content: space-between;
+          padding: var(--pal-size-m);
+
+          background: linear-gradient(var(--pal-color-a-900), transparent);
+
+          > .title {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            > h1 {
+              font-size: var(--pal-size-font-m);
+            }
+
+            > h2 {
+              max-width: 15rem;
+
+              font-size: var(--pal-size-font-2xs);
+              text-wrap: balance;
+            }
+          }
+
+          > .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            width: 3.5rem;
+
+            border-radius: var(--pal-size-xs);
+            background-color: var(--pal-color-a-50);
+
+            > img {
+              height: var(--pal-size-l);
+            }
+          }
+        }
       }
 
       > form {
-        padding: var(--pal-size-2xl);
+        display: flex;
+        flex-direction: column;
+        gap: var(--pal-size-2xl);
+        padding: 4rem;
+
+        > .fields {
+          display: flex;
+          flex-direction: column;
+          gap: var(--pal-size-s);
+        }
+
+        > .cmp-button {
+          --cmp-button-bg-color: var(--pal-color-a-500);
+
+          color: var(--pal-color-white);
+        }
+      }
+
+      @media (width < 45rem) {
+        max-width: 25rem;
+
+        > .banner {
+          background-position: 0 -5.25rem;
+        }
+
+        > form {
+          padding: var(--pal-size-2xl);
+        }
       }
     }
   }

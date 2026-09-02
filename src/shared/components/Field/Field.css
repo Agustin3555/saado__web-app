@@ -9,14 +9,14 @@
     justify-content: space-between;
 
     > .title {
-      --cmp-icon-size: var(--pal-size-font-xs);
+      --cmp-icon-size: var(--ui-icon-size);
 
       display: flex;
       align-items: center;
-      gap: var(--pal-size-s);
+      gap: var(--ui-gap);
 
-      font-size: var(--pal-size-font-2xs);
-      font-weight: 700;
+      font-size: var(--ui-font-size);
+      font-weight: 800;
       text-transform: uppercase;
 
       > .ti-asterisk {

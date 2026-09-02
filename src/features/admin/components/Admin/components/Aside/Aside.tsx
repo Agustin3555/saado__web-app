@@ -1,8 +1,8 @@
 import './Aside.css'
+import { useLocation } from 'wouter'
+import { Button, GlobalConfigButton } from '@/shared/components'
 import { ViewButton, type ViewButtonProps } from '../ViewButton/ViewButton'
 import { classList } from '@/shared/helpers'
-import { useLocation } from 'wouter'
-import { Button } from '@/shared/components/Button/Button'
 
 const viewButtons: ViewButtonProps[] = [
   {
@@ -35,6 +35,8 @@ export const Aside = ({ isOpen, handleClose }: AsideProps) => {
     <aside className={classList('cmp-aside', { isOpen })}>
       <button title="Cerrar panel lateral" onClick={handleClose} />
       <div className="container">
+        {/* TODO: todos los botones deben estar en ambos tipos */}
+
         <div className="aside expand">
           <img
             src="/imagotipo.png"
@@ -50,6 +52,7 @@ export const Aside = ({ isOpen, handleClose }: AsideProps) => {
             ))}
           </nav>
         </div>
+
         <div className="aside collapse">
           <img
             src="/logo.png"
@@ -68,6 +71,7 @@ export const Aside = ({ isOpen, handleClose }: AsideProps) => {
           <div className="bot">
             <Button title="Cambios" iconClass="ti ti-git-commit" size="l" />
             <Button title="Ayuda" iconClass="ti ti-help" size="l" />
+            <GlobalConfigButton size="l" />
           </div>
         </div>
       </div>

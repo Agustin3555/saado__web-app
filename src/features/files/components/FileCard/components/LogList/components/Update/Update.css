@@ -44,8 +44,6 @@
       > .cmp-dropdown {
         position-area: top;
 
-        margin: var(--pal-size-2xs);
-        padding: var(--pal-size-m);
         max-width: 25rem;
 
         font-size: var(--pal-size-font-xs);

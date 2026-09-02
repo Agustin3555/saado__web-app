@@ -11,7 +11,7 @@ interface Field {
 }
 
 export const Field = ({ label, iconClass, desc, children }: Field) => (
-  <label className="cmp-field">
+  <label className="cmp-field ui-s">
     <header>
       <div className="title">
         {iconClass && <Icon {...{ iconClass }} />}

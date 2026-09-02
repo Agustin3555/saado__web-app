@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { io, Socket } from 'socket.io-client'
+import { useGlobalConfigStore } from '@/shared/store/useGlobalConfig.store'
 
 interface SocketStore {
   socket?: Socket
@@ -15,11 +16,8 @@ export const useSocketStore = create<SocketStore>((set, get) => ({
     const { connected } = get().socket ?? {}
     if (connected) return
 
-    // TODO: obtener desde un store que sincroniza con localStorage
-    const socket = io('http://localhost:3000', {
-      transports: ['websocket'],
-      reconnection: true,
-    })
+    const { apiUrl } = useGlobalConfigStore.getState()
+    const socket = io(apiUrl, { transports: ['websocket'], reconnection: true })
 
     socket.on('connect', () => set({ isConnected: true }))
     socket.on('disconnect', () => set({ isConnected: false }))
