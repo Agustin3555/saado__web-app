@@ -2,8 +2,8 @@ import './ContentCard.css'
 import type { ReactNode } from 'react'
 import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
-import { Button, Icon, Loader } from '@/shared/components'
 import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
+import { Banner, Button, Icon, Loader } from '@/shared/components'
 
 type Status = 'loading' | 'noContent' | 'ready'
 
@@ -40,8 +40,7 @@ export const ContentCard = ({
     loading: <Loader size="s" />,
     noContent: (
       <div className="void">
-        <Icon iconClass="ti ti-circle-dashed-x" />
-        <p>{noContentText}</p>
+        <Banner text={noContentText} />
       </div>
     ),
     ready: children,

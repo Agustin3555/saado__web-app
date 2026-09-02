@@ -9,29 +9,15 @@
     background-color var(--pal-time-s) ease-out;
 
   > label {
-    --cmp-icon-size: var(--pal-size-l);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--pal-size-m);
     border-width: var(--pal-size-3xs);
     border-style: dashed;
     border-color: var(--pal-color-a-200);
     padding: var(--pal-size-xl);
 
     border-radius: var(--pal-size-s);
-    color: var(--pal-color-a-500);
     cursor: pointer;
 
     transition: border-radius var(--pal-time-s) ease-out;
-
-    > span {
-      font-size: var(--pal-size-font-2xs);
-      text-align: center;
-      text-wrap: balance;
-    }
 
     &.drag-over,
     &:hover {

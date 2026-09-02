@@ -43,15 +43,8 @@
     background-color: var(--pal-color-a-100);
 
     > .void {
-      --cmp-icon-size: var(--pal-size-l);
-
       display: contents;
-      gap: var(--pal-size-l);
       padding: var(--pal-size-xl);
-
-      > p {
-        font-size: var(--pal-size-font-2xs);
-      }
     }
 
     &:has(> .cmp-loader, > .void) {

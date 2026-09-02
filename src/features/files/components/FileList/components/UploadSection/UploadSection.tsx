@@ -1,11 +1,11 @@
 import './UploadSection.css'
 import { useState, type ChangeEventHandler, type DragEventHandler } from 'react'
 import { useHandleAction } from '@/shared/hooks/useHandleAction.hook'
-import { Button, Icon } from '@/shared/components'
+import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
+import { Banner, Button } from '@/shared/components'
 import { classList, varList } from '@/shared/helpers'
 import { toast } from 'sonner'
 import { privateInstance } from '@/infra/http/axios/instances'
-import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
 
 const MAX_FILE_SIZE = 1024 * 1024 * 500
 
@@ -149,11 +149,10 @@ export const UploadSection = ({ obraId }: UploadSectionProps) => {
           hidden
           onChange={handleChange}
         />
-        <Icon iconClass="ti ti-file-plus" />
-        <span className="text">
-          Selecciona o suelta los archivos aquí (hasta{' '}
-          {formatBytes(MAX_FILE_SIZE)} por archivo)
-        </span>
+        <Banner
+          text={`Selecciona o suelta los archivos aquí (hasta ${formatBytes(MAX_FILE_SIZE)} por archivo)`}
+          iconClass="ti ti-file-plus"
+        />
       </label>
       {toUpload.length !== 0 && (
         <>

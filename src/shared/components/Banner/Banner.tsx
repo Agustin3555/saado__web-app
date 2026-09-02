@@ -13,7 +13,7 @@ export const Banner = ({
   return (
     <div className="cmp-banner">
       <Icon {...{ iconClass }} />
-      <small>{text}</small>
+      <small className="text">{text}</small>
     </div>
   )
 }
