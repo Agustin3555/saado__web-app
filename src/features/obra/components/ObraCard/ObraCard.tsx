@@ -3,6 +3,7 @@ import { useCompaniesStore } from '@/features/company/store/useCompanies.store'
 import { Link } from 'wouter'
 import type { SimpleObra } from '../../obra.types'
 import { varList } from '@/shared/helpers/varList.helper'
+import { TIPO_CONTRATACION_INFO } from '../../obra.const'
 
 interface ObraCardProps {
   i?: number
@@ -11,11 +12,9 @@ interface ObraCardProps {
 
 export const ObraCard = ({
   i,
-  data: { id, companyId, numeroExpediente, name, updatedAt },
+  data: { id, companyId, tipoContratacion, name, numeroExpediente, updatedAt },
 }: ObraCardProps) => {
   const companiesRecord = useCompaniesStore(s => s.companiesRecord)!
-
-  const status = 'Aprobado'
 
   return (
     <li
@@ -23,10 +22,16 @@ export const ObraCard = ({
       title={name ?? undefined}
       style={varList({ i })}
     >
-      <div className="status-text">{status}</div>
+      <div className="status-text">Aprobado</div>
       <div className="content">
         <Link href={`/${id}`}>{numeroExpediente}</Link>
         <div className="details">
+          <p>
+            <span className="title">Tipo de contratación:</span>
+            <span className="value">
+              {TIPO_CONTRATACION_INFO[tipoContratacion]}
+            </span>
+          </p>
           <p>
             <span className="title">Obra:</span>
             <span className="value">{name ?? '-'}</span>

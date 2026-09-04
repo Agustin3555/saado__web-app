@@ -25,7 +25,7 @@
     max-height: 100%;
 
     border-radius: var(--pal-size-xs);
-    background-color: var(--pal-color-a-100);
+    background-color: var(--pal-color-a-50);
     box-shadow: var(--pal-shadow-1);
     translate: 0 var(--pal-size-xl);
     overflow: auto;

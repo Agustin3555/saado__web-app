@@ -14,7 +14,7 @@
 
 :root {
   --line-thickness: 0.0625rem;
-  --pill-radius: 100rem;
+  --pill-radius: 10rem;
   --transition-dummy: outline-width 0s;
 }
 

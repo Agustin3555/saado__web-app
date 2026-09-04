@@ -2,6 +2,7 @@ import './ObraHeader.css'
 import type { Obra } from '@/features/obra/obra.types'
 import { CompanyChip } from '@/features/company/components/CompanyChip/CompanyChip'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
+import { VerdictButton } from './components'
 
 interface ObraHeaderProps {
   data: Pick<
@@ -34,6 +35,7 @@ export const ObraHeader = ({
         <strong>{name ?? '-'}</strong>
       </h1>
       <ul>
+        <VerdictButton />
         <CompanyChip id={companyId} />
         <UserActivityChip
           userId={updatedByUserId}

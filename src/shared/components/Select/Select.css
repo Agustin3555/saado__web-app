@@ -37,6 +37,7 @@
     font-size: var(--ui-font-size);
 
     border-radius: calc(var(--border-radius) - var(--picker-padding));
+    cursor: pointer;
 
     &::checkmark {
       display: none;
@@ -64,9 +65,9 @@
     border-right-width: 0;
     border-bottom-width: 0;
     padding: var(--picker-padding);
-    max-height: 19.5rem;
-    border-radius: var(--border-radius);
+    max-height: 19.25rem;
 
+    border-radius: var(--border-radius);
     box-shadow: var(--pal-shadow-1);
     scale: 0.95;
     opacity: 0;
@@ -82,11 +83,13 @@
 
   &::picker(select):popover-open {
     margin-block: var(--pal-size-2xs);
+
     scale: initial;
     opacity: initial;
 
     @starting-style {
       margin-block: var(--pal-size-m);
+
       scale: 0.95;
       opacity: 0;
     }
