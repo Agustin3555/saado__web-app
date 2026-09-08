@@ -53,10 +53,10 @@ export const Admin = () => {
           <Aside isOpen={asideIsOpen} {...{ handleClose }} />
           <main>
             <Switch>
-              <Route path="/dashboard" children={<Dashboard />} />
-              <Route path="/documentation" children={<Documentation />} nest />
+              <Route path="/panel" children={<Dashboard />} />
+              <Route path="/contrataciones" children={<Documentation />} nest />
               {/* <Route path="/checks" children={ <Checks />} /> */}
-              <Route children={<Redirect to="/dashboard" />} />
+              <Route children={<Redirect to="/panel" />} />
             </Switch>
           </main>
         </>

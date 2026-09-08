@@ -6,17 +6,17 @@ import { classList } from '@/shared/helpers'
 
 const viewButtons: ViewButtonProps[] = [
   {
-    name: 'dashboard',
-    title: 'Panel',
+    name: 'panel',
+    title: 'Panel de control',
     iconClass: 'ti ti-layout-dashboard',
   },
   {
-    name: 'documentation',
-    title: 'Documentaciones',
+    name: 'contrataciones',
+    title: 'Contrataciones',
     iconClass: 'ti ti-folder-search',
   },
   {
-    name: 'checks',
+    name: 'controles',
     title: 'Controles',
     iconClass: 'ti ti-list-check',
   },

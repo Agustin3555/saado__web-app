@@ -2,6 +2,7 @@
   border-width: var(--line-thickness);
   border-style: solid;
   border-color: var(--pal-color-a-200);
+  min-height: 8rem;
 
   border-radius: var(--pal-size-xs);
 }
