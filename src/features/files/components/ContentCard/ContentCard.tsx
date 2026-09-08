@@ -1,6 +1,6 @@
 import './ContentCard.css'
 import type { ReactNode } from 'react'
-import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
+import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
 import { Banner, Button, Icon, Loader } from '@/shared/components'
@@ -26,11 +26,13 @@ export const ContentCard = ({
   children,
   onDelete,
 }: ContentViewProps) => {
-  const selectedObra = useSelectedObraStore(s => s.selectedObra)
+  const selectedProcurement = useSelectedProcurementStore(
+    s => s.selectedProcurement,
+  )
   const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
   const originsRecord = useOriginsStore(s => s.originsRecord)!
 
-  const file = selectedObra?.files.find(f => f.id === id)
+  const file = selectedProcurement?.files.find(f => f.id === id)
 
   const title =
     file &&

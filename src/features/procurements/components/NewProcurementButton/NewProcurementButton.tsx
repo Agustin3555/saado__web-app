@@ -1,7 +1,7 @@
-import './NewObraButton.css'
+import './NewProcurementButton.css'
 import { useRef } from 'react'
 import { useSubmitAction } from '@/shared/hooks/useSubmitAction.hook'
-import { useObrasStore } from '../../store/useObras.store'
+import { useProcurementsStore } from '../../store/useProcurements.store'
 import {
   Banner,
   Button,
@@ -12,16 +12,16 @@ import {
   type SelectProps,
 } from '@/shared/components'
 import { CompanySelect } from '@/features/company/components/CompanySelect/CompanySelect'
-import { TIPO_CONTRATACION_INFO } from '../../obra.const'
+import { PROCUREMENT_TYPE_INFO } from '../../procurement.const'
 import { toast } from 'sonner'
 
-const tipoContratacionOptions: SelectProps['options'] = Object.entries(
-  TIPO_CONTRATACION_INFO,
+const procurementTypeOptions: SelectProps['options'] = Object.entries(
+  PROCUREMENT_TYPE_INFO,
 ).map(([key, value]) => ({ value: key, label: value }))
 
-export const NewObraButton = () => {
+export const NewProcurementButton = () => {
   const modalRef = useRef<HTMLDialogElement>(null)
-  const newObra = useObrasStore(s => s.newObra)
+  const newProcurement = useProcurementsStore(s => s.newProcurement)
 
   const { handleSubmit, actionState } = useSubmitAction(
     async ({ formValues }) => {
@@ -30,14 +30,16 @@ export const NewObraButton = () => {
 
       const data = {
         companyId: formValues.get.number('companyId')!,
-        tipoContratacion: formValues.get.number('tipoContratacion')!,
+        procurementType: formValues.get.string('procurementType')!,
         name: formValues.get.string('name'),
         numeroExpediente: formValues.get.string('numeroExpediente')!,
       }
 
-      // await newObra(data)
+      // TODO: capturar el error de unicidad de name
+      await newProcurement(data)
+
       modal.close()
-      toast.success('Obra creada con éxito')
+      toast.success('Contratación creada con éxito')
     },
   )
 
@@ -47,25 +49,28 @@ export const NewObraButton = () => {
       ref={modalRef}
       opener={attrs => (
         <button
-          className="cmp-new-obra-button hover-highlight"
-          title="Crear una nueva obra"
+          className="cmp-new-procurement-button hover-highlight"
+          title="Crear una nueva contratación"
           type="button"
           {...attrs}
         >
-          <Banner text="Nueva obra" iconClass="ti ti-square-rounded-plus" />
+          <Banner
+            text="Nueva contratación"
+            iconClass="ti ti-square-rounded-plus"
+          />
         </button>
       )}
     >
       <form onSubmit={handleSubmit}>
-        <h1>Nueva obra</h1>
+        <h1>Nueva procurement</h1>
         <div className="fields">
           <Field label="Número de expediente">
             <Input htmlAttrs={{ name: 'numeroExpediente', required: true }} />
           </Field>
           <Field label="Tipo de contratación">
             <Select
-              options={tipoContratacionOptions}
-              htmlAttrs={{ name: 'tipoContratacion', required: true }}
+              options={procurementTypeOptions}
+              htmlAttrs={{ name: 'procurementType', required: true }}
             />
           </Field>
           <Field label="Empresa">

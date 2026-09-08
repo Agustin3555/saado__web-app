@@ -1,7 +1,7 @@
 import './UploadSection.css'
 import { useState, type ChangeEventHandler, type DragEventHandler } from 'react'
 import { useHandleAction } from '@/shared/hooks/useHandleAction.hook'
-import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
+import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
 import { Banner, Button } from '@/shared/components'
 import { classList, varList } from '@/shared/helpers'
 import { toast } from 'sonner'
@@ -38,13 +38,15 @@ const formatBytes = (bytes: number) => {
 }
 
 interface UploadSectionProps {
-  obraId: number
+  procurementId: number
 }
 
-export const UploadSection = ({ obraId }: UploadSectionProps) => {
+export const UploadSection = ({ procurementId }: UploadSectionProps) => {
   const [dragOver, setDragOver] = useState(false)
   const [toUpload, setToUpload] = useState<File[]>([])
-  const refetchSelectedObra = useSelectedObraStore(s => s.refetchSelectedObra)
+  const refetchSelectedProcurement = useSelectedProcurementStore(
+    s => s.refetchSelectedProcurement,
+  )
 
   const addFiles = (incomingFiles: FileList | null) => {
     if (!incomingFiles) return
@@ -102,7 +104,7 @@ export const UploadSection = ({ obraId }: UploadSectionProps) => {
     if (toUpload.length === 0) return
 
     const formData = new FormData()
-    formData.append('obraId', String(obraId))
+    formData.append('procurementId', String(procurementId))
     toUpload.forEach(file => formData.append('files', file))
 
     const {
@@ -126,7 +128,7 @@ export const UploadSection = ({ obraId }: UploadSectionProps) => {
       `${omittedCount} archivo${omittedCount === 0 ? '' : 's'} omitido${omittedCount === 0 ? '' : 's'}`,
     )
 
-    await refetchSelectedObra()
+    await refetchSelectedProcurement()
     setToUpload([])
   })
 

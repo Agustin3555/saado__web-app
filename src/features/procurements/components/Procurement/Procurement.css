@@ -1,5 +1,5 @@
-.cmp-obra {
-  container: --cmp-obra / inline-size;
+.cmp-procurement {
+  container: --cmp-procurement / inline-size;
 
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
     grid-auto-flow: column;
     gap: var(--pal-size-xl);
 
-    @container --cmp-obra (width <= 65rem) {
+    @container --cmp-procurement (width <= 65rem) {
       grid-auto-flow: row;
     }
   }

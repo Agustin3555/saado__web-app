@@ -16,14 +16,14 @@ interface FileCardProps {
 
 export const FileCard = ({
   status,
-  data: { id, obraId, document, path, verdict, createdAt, updatedAt },
+  data: { id, procurementId, document, path, verdict, createdAt, updatedAt },
 }: FileCardProps) => {
   const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
   const selected = useSelectedContentStore(s => s.selected)
   const toggleFile = useSelectedContentStore(s => s.toggleFile)
 
   const file = path?.split('/').pop()
-  const name = `checkbox-${obraId}`
+  const name = `checkbox-${procurementId}`
 
   return (
     <article className="cmp-file-card">

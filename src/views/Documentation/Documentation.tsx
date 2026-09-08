@@ -1,33 +1,33 @@
 import './Documentation.css'
 import { useEffect } from 'react'
-import { useObrasStore } from '@/features/obra/store/useObras.store'
-import { NewObraButton } from '@/features/obra/components/NewObraButton/NewObraButton'
-import { ObraCard } from '@/features/obra/components/ObraCard/ObraCard'
-import { Obra } from '@/features/obra/components/Obra/Obra'
+import { useProcurementsStore } from '@/features/procurements/store/useProcurements.store'
+import { NewProcurementButton } from '@/features/procurements/components/NewProcurementButton/NewProcurementButton'
+import { ProcurementCard } from '@/features/procurements/components/ProcurementCard/ProcurementCard'
+import { Procurement } from '@/features/procurements/components/Procurement/Procurement'
 import { Route } from 'wouter'
 
 export const Documentation = () => {
-  const obras = useObrasStore(s => s.obras)
-  const refetchObras = useObrasStore(s => s.refetchObras)
+  const procurements = useProcurementsStore(s => s.procurements)
+  const refetchProcurements = useProcurementsStore(s => s.refetchProcurements)
 
   useEffect(() => {
-    if (!obras) refetchObras()
-  }, [obras, refetchObras])
+    if (!procurements) refetchProcurements()
+  }, [procurements, refetchProcurements])
 
   return (
     <div className="cmp-documentation">
       <Route path="/">
         <article className="result">
           <ul>
-            <NewObraButton />
-            {obras?.map((o, i) => (
-              <ObraCard key={o.id} data={o} {...{ i }} />
+            <NewProcurementButton />
+            {procurements?.map((o, i) => (
+              <ProcurementCard key={o.id} data={o} {...{ i }} />
             ))}
           </ul>
         </article>
       </Route>
       <Route path={'/:id'}>
-        <Obra />
+        <Procurement />
       </Route>
     </div>
   )

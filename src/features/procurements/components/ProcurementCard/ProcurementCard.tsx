@@ -1,24 +1,24 @@
-import './ObraCard.css'
+import './ProcurementCard.css'
 import { useCompaniesStore } from '@/features/company/store/useCompanies.store'
 import { Link } from 'wouter'
-import type { SimpleObra } from '../../obra.types'
+import type { SimpleProcurement } from '../../procurement.types'
 import { varList } from '@/shared/helpers/varList.helper'
-import { TIPO_CONTRATACION_INFO } from '../../obra.const'
+import { PROCUREMENT_TYPE_INFO } from '../../procurement.const'
 
-interface ObraCardProps {
+interface ProcurementCardProps {
   i?: number
-  data: SimpleObra
+  data: SimpleProcurement
 }
 
-export const ObraCard = ({
+export const ProcurementCard = ({
   i,
-  data: { id, companyId, tipoContratacion, name, numeroExpediente, updatedAt },
-}: ObraCardProps) => {
+  data: { id, companyId, procurementType, name, numeroExpediente, updatedAt },
+}: ProcurementCardProps) => {
   const companiesRecord = useCompaniesStore(s => s.companiesRecord)!
 
   return (
     <li
-      className="cmp-obra-card hover-highlight show-animation-item"
+      className="cmp-procurement-card hover-highlight show-animation-item"
       title={name ?? undefined}
       style={varList({ i })}
     >
@@ -29,11 +29,11 @@ export const ObraCard = ({
           <p>
             <span className="title">Tipo de contratación:</span>
             <span className="value">
-              {TIPO_CONTRATACION_INFO[tipoContratacion]}
+              {PROCUREMENT_TYPE_INFO[procurementType]}
             </span>
           </p>
           <p>
-            <span className="title">Obra:</span>
+            <span className="title">Contratación:</span>
             <span className="value">{name ?? '-'}</span>
           </p>
           {companyId && (

@@ -1,12 +1,12 @@
-import './ObraHeader.css'
-import type { Obra } from '@/features/obra/obra.types'
+import './ProcurementHeader.css'
+import type { Procurement } from '@/features/procurements/procurement.types'
 import { CompanyChip } from '@/features/company/components/CompanyChip/CompanyChip'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
 import { VerdictButton } from './components'
 
-interface ObraHeaderProps {
+interface ProcurementHeaderProps {
   data: Pick<
-    Obra,
+    Procurement,
     | 'companyId'
     | 'createdByUserId'
     | 'updatedByUserId'
@@ -17,7 +17,7 @@ interface ObraHeaderProps {
   >
 }
 
-export const ObraHeader = ({
+export const ProcurementHeader = ({
   data: {
     companyId,
     createdByUserId,
@@ -27,9 +27,9 @@ export const ObraHeader = ({
     createdAt,
     updatedAt,
   },
-}: ObraHeaderProps) => {
+}: ProcurementHeaderProps) => {
   return (
-    <header className="cmp-obra-header">
+    <header className="cmp-procurement-header">
       <h1 className="text">
         <span>{numeroExpediente}</span>
         <strong>{name ?? '-'}</strong>

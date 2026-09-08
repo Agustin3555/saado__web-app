@@ -1,7 +1,7 @@
 import './ChangeVerdictButton.css'
 import { useRef } from 'react'
 import { useSubmitAction } from '@/shared/hooks/useSubmitAction.hook'
-import { useSelectedObraStore } from '@/features/obra/store/useSelectedObra.store'
+import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
 import {
   Button,
   Field,
@@ -46,21 +46,23 @@ export const ChangeVerdictButton = ({
 
       await privateInstance.patch(`files/${fileId}`, data)
 
-      useSelectedObraStore.setState(store => {
-        const { selectedObra } = store
-        if (!selectedObra) return store
+      useSelectedProcurementStore.setState(store => {
+        const { selectedProcurement } = store
+        if (!selectedProcurement) return store
 
-        const fileIndex = selectedObra.files.findIndex(f => f.id === fileId)
+        const fileIndex = selectedProcurement.files.findIndex(
+          f => f.id === fileId,
+        )
         if (fileIndex === -1) return store
 
-        const newSelectedObra: typeof selectedObra = {
-          ...selectedObra,
-          files: selectedObra.files.map(f =>
+        const newSelectedProcurement: typeof selectedProcurement = {
+          ...selectedProcurement,
+          files: selectedProcurement.files.map(f =>
             f.id === fileId ? { ...f, verdict: newVerdict } : f,
           ),
         }
 
-        return { selectedObra: newSelectedObra }
+        return { selectedProcurement: newSelectedProcurement }
       })
 
       modal.close()

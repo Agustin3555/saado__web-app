@@ -1,16 +1,16 @@
 import './FileList.css'
 import { FileCard } from '@/features/files/components/FileCard/FileCard'
-import type { Obra } from '@/features/obra/obra.types'
+import type { Procurement } from '@/features/procurements/procurement.types'
 import { UploadSection } from './components'
 
 interface FileListProps {
-  data: Pick<Obra, 'id' | 'files'>
+  data: Pick<Procurement, 'id' | 'files'>
 }
 
 export const FileList = ({ data: { id, files } }: FileListProps) => {
   return (
     <div className="cmp-file-list">
-      <UploadSection obraId={id} />
+      <UploadSection procurementId={id} />
       {files.map(f => (
         <FileCard key={f.id} data={f} />
       ))}

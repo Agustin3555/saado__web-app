@@ -7,7 +7,7 @@ export interface SimpleFile {
 }
 
 export interface File extends SimpleFile {
-  obraId: number
+  procurementId: number
   document: SimpleDocument
 
   path: string | null

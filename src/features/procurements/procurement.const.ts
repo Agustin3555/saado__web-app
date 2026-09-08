@@ -1,6 +1,6 @@
-import type { TipoContratacion } from './obra.types'
+import type { ProcurementType } from './procurement.types'
 
-export const TIPO_CONTRATACION_INFO: Record<TipoContratacion, string> = {
+export const PROCUREMENT_TYPE_INFO: Record<ProcurementType, string> = {
   CONT_DIRECTA: 'Contratación Directa',
   CONC_PRECIOS: 'Concurso de Precios',
   LIC_PRIV: 'Licitación Privada',
