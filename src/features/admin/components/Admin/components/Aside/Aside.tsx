@@ -1,26 +1,9 @@
 import './Aside.css'
 import { useLocation } from 'wouter'
 import { Button, GlobalConfigButton } from '@/shared/components'
-import { ViewButton, type ViewButtonProps } from '../ViewButton/ViewButton'
+import { ViewButton } from '../ViewButton/ViewButton'
 import { classList } from '@/shared/helpers'
-
-const viewButtons: ViewButtonProps[] = [
-  {
-    name: 'panel',
-    title: 'Panel de control',
-    iconClass: 'ti ti-layout-dashboard',
-  },
-  {
-    name: 'contrataciones',
-    title: 'Contrataciones',
-    iconClass: 'ti ti-folder-search',
-  },
-  {
-    name: 'controles',
-    title: 'Controles',
-    iconClass: 'ti ti-list-check',
-  },
-]
+import { VIEWS_INFO } from '@/features/admin/admin.const'
 
 interface AsideProps {
   isOpen: boolean
@@ -43,7 +26,7 @@ export const Aside = ({ isOpen, handleClose }: AsideProps) => {
             alt="Imagotipo de la Dirección de Licitaciones y Contrataciones del Chaco"
           />
           <nav>
-            {viewButtons.map(v => (
+            {VIEWS_INFO.map(v => (
               <ViewButton
                 key={v.name}
                 selected={currentView === v.name}
@@ -59,7 +42,7 @@ export const Aside = ({ isOpen, handleClose }: AsideProps) => {
             alt="Logo de la Dirección de Licitaciones y Contrataciones del Chaco"
           />
           <nav>
-            {viewButtons.map(v => (
+            {VIEWS_INFO.map(v => (
               <ViewButton
                 key={v.name}
                 selected={currentView === v.name}

@@ -8,7 +8,8 @@ import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
 import { Redirect, Route, Switch } from 'wouter'
 import { Aside, Header } from './components'
 import { Dashboard } from '@/views/Dashboard/Dashboard'
-import { Documentation } from '@/views/Documentation/Documentation'
+import { Procurements } from '@/views/Procurements/Procurements'
+import { CheckManager } from '@/views/CheckManager/CheckManager'
 import { Loader } from '@/shared/components'
 
 export const Admin = () => {
@@ -54,8 +55,8 @@ export const Admin = () => {
           <main>
             <Switch>
               <Route path="/panel" children={<Dashboard />} />
-              <Route path="/contrataciones" children={<Documentation />} nest />
-              {/* <Route path="/checks" children={ <Checks />} /> */}
+              <Route path="/contrataciones" children={<Procurements />} nest />
+              <Route path="/controles" children={<CheckManager />} />
               <Route children={<Redirect to="/panel" />} />
             </Switch>
           </main>

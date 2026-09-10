@@ -1,4 +1,4 @@
-import './Documentation.css'
+import './Procurements.css'
 import { useEffect } from 'react'
 import { useProcurementsStore } from '@/features/procurements/store/useProcurements.store'
 import { NewProcurementButton } from '@/features/procurements/components/NewProcurementButton/NewProcurementButton'
@@ -6,7 +6,7 @@ import { ProcurementCard } from '@/features/procurements/components/ProcurementC
 import { Procurement } from '@/features/procurements/components/Procurement/Procurement'
 import { Route } from 'wouter'
 
-export const Documentation = () => {
+export const Procurements = () => {
   const procurements = useProcurementsStore(s => s.procurements)
   const refetchProcurements = useProcurementsStore(s => s.refetchProcurements)
 
@@ -15,7 +15,7 @@ export const Documentation = () => {
   }, [procurements, refetchProcurements])
 
   return (
-    <div className="cmp-documentation">
+    <div className="cmp-procurements">
       <Route path="/">
         <article className="result">
           <ul>
