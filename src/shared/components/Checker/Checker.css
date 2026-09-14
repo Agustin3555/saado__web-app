@@ -1,0 +1,37 @@
+.cmp-checker {
+  align-content: center;
+  border-width: var(--line-thickness);
+  border-style: solid;
+  border-color: currentColor;
+  aspect-ratio: 1;
+  width: calc(var(--ui-icon-size) * 1.25);
+
+  border-radius: var(--pal-size-2xs);
+
+  transition: background-color var(--pal-time-xs) ease-out;
+
+  > .cmp-icon {
+    --cmp-icon-size: var(--ui-icon-size);
+
+    margin-inline: auto;
+
+    color: var(--pal-color-white);
+    scale: 0;
+
+    transition: scale var(--pal-time-s) ease;
+  }
+
+  input[type='radio'] ~ & {
+    border-radius: 100%;
+  }
+
+  input:checked ~ & {
+    border: none;
+
+    background-color: currentColor;
+
+    > .cmp-icon {
+      scale: initial;
+    }
+  }
+}

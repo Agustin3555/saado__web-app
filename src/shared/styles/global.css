@@ -40,6 +40,8 @@ small {
 strong {
   font-weight: 800;
 
+  color: var(--pal-color-black);
+
   &.stroke {
     letter-spacing: 0.0625rem;
     -webkit-text-stroke: 0.0625rem var(--pal-color-a-850);

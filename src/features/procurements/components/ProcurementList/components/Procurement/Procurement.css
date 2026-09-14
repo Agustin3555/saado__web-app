@@ -1,0 +1,12 @@
+.cmp-procurement {
+  > section {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    gap: var(--pal-size-xl);
+
+    @container --cmp-resource (width <= 65rem) {
+      grid-auto-flow: row;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.cmp-document-card {
+  > .content > ul {
+    gap: var(--pal-size-2xl);
+
+    > .types {
+      flex-grow: 1;
+
+      flex-direction: row !important;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }
+}

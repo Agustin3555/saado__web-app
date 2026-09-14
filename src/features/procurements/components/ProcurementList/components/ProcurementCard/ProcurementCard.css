@@ -1,0 +1,8 @@
+.cmp-procurement-card {
+  > .status-text {
+    padding-inline: var(--pal-size-xs);
+    padding-block: var(--pal-size-2xs);
+
+    background-color: var(--pal-color-b-500);
+  }
+}

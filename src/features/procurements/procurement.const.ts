@@ -1,3 +1,4 @@
+import type { SelectProps } from '@/shared/components'
 import type { ProcurementType } from './procurement.types'
 
 export const PROCUREMENT_TYPE_INFO: Record<ProcurementType, string> = {
@@ -6,3 +7,7 @@ export const PROCUREMENT_TYPE_INFO: Record<ProcurementType, string> = {
   LIC_PRIV: 'Licitación Privada',
   LIC_PUBL: 'Licitación Pública',
 }
+
+export const PROCUREMENT_TYPE_OPTIONS: SelectProps['options'] = Object.entries(
+  PROCUREMENT_TYPE_INFO,
+).map(([key, value]) => ({ value: key, label: value }))

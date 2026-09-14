@@ -10,7 +10,7 @@ export interface ToggleProps {
   iconClass?: string
   size?: 's' | 'm'
   style?: Style
-  value: boolean
+  value?: boolean
   setValue?: Dispatch<SetStateAction<boolean>>
   onChange?: () => void
 }

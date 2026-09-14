@@ -1,0 +1,41 @@
+.cmp-checkbox-list {
+  display: grid;
+  gap: var(--pal-size-2xs);
+  border: none;
+
+  > label {
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-s);
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-a-100);
+    padding-inline: calc((var(--ui-height) - var(--ui-icon-size) * 1.25) / 2);
+    height: var(--ui-height);
+
+    font-size: var(--ui-font-size);
+
+    border-radius: var(--ui-border-radius);
+    cursor: pointer;
+
+    transition: background-color var(--pal-time-xs) ease-out;
+
+    > .cmp-checker {
+      color: var(--pal-color-a-300);
+    }
+
+    &:has(> input:checked) {
+      border-color: var(--pal-color-b-150);
+
+      background-color: var(--pal-color-b-150);
+
+      > .cmp-checker {
+        color: var(--pal-color-b-500);
+      }
+    }
+
+    &:hover {
+      background-color: var(--pal-color-a-100);
+    }
+  }
+}

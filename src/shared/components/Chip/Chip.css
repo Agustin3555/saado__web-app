@@ -2,19 +2,33 @@
   display: flex;
   align-items: center;
   gap: var(--ui-gap);
-  padding-inline: var(--ui-padding-inline);
-  height: var(--ui-height);
 
   font-size: var(--ui-font-size);
 
-  border-radius: var(--pill-radius);
-  background-color: var(--pal-color-a-50);
   overflow: hidden;
 
   > .cmp-icon {
     --cmp-icon-size: var(--ui-icon-size);
 
     color: var(--pal-color-a-500);
+  }
+
+  > .label {
+    flex-shrink: 0;
+  }
+
+  &.pill {
+    padding-inline: var(--ui-padding-inline);
+    height: var(--ui-height);
+
+    border-radius: var(--pill-radius);
+    background-color: var(--pal-color-a-50);
+  }
+
+  &.detail {
+    > .label {
+      color: var(--pal-color-a-500);
+    }
   }
 
   &.clip {

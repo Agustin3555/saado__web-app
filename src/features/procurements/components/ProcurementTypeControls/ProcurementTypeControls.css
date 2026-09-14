@@ -1,0 +1,45 @@
+.cmp-procurement-type-controls {
+  border-radius: var(--pal-size-xs);
+  background-color: var(--pal-color-white);
+
+  > header {
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-m);
+    padding-inline: var(--pal-size-s);
+    padding-block: var(--pal-size-xs);
+
+    > label {
+      color: var(--pal-color-b-500);
+      cursor: pointer;
+    }
+
+    > .group {
+      flex-grow: 1;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > h1 {
+        font-size: var(--pal-size-font-xs);
+        font-weight: 800;
+      }
+    }
+
+    &:has(> label) {
+      padding: var(--pal-size-xs);
+    }
+  }
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-2xs);
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--pal-color-a-150);
+    border-bottom-width: var(--line-thickness);
+    padding: var(--pal-size-2xs);
+  }
+}

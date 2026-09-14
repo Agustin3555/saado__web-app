@@ -13,6 +13,7 @@ interface FormValues<M extends SubmitActionMode = 'edit'> {
     boolean: (key: string) => boolean | EmptyValueForMode<M>
   }
   getAll: {
+    string: (key: string) => string[] | EmptyValueForMode<M>
     number: (key: string) => number[] | EmptyValueForMode<M>
   }
 }
@@ -79,6 +80,13 @@ export const useSubmitAction = <
         },
       },
       getAll: {
+        string: key => {
+          validateField(key)
+          const values = formData.getAll(key) as string[]
+
+          if (values.length === 0) return emptyValue
+          return values
+        },
         number: key => {
           validateField(key)
           const values = formData.getAll(key)

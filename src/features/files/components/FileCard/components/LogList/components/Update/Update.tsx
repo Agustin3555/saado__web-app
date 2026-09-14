@@ -9,6 +9,12 @@ import { classList } from '@/shared/helpers'
 import type { File } from '@/features/files/file.types'
 import { getVerdict } from '@/features/files/helpers/getVerdict.helper'
 
+// BUG: errores con los chips
+
+const VoidChip = () => {
+  return <Chip iconClass="ti ti-circle-dashed" />
+}
+
 const VerdictChip = ({ verdict }: { verdict: File['verdict'] }) => {
   const { id, text } = getVerdict(verdict)
 
@@ -23,9 +29,9 @@ const DocumentChip = ({ id }: { id: number | null }) => {
   const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
 
   return id === null ? (
-    <Chip iconClass="ti ti-circle-dashed" />
+    <VoidChip />
   ) : (
-    <Chip title={documentsRecord[id].name} clip>
+    <Chip label={documentsRecord[id].name} clip>
       <p>{documentsRecord[id].name}</p>
     </Chip>
   )
@@ -33,7 +39,7 @@ const DocumentChip = ({ id }: { id: number | null }) => {
 
 const DataChip = ({ object }: { object: unknown }) => {
   return object === null ? (
-    <Chip iconClass="ti ti-circle-dashed" />
+    <VoidChip />
   ) : (
     <Chip clip>
       <code>{JSON.stringify(object)}</code>

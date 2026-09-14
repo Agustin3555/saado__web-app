@@ -1,6 +1,6 @@
 import { Route, Switch, Redirect } from 'wouter'
 import { IsAuthenticated } from '@/app/guards/IsAuthenticated/IsAuthenticated'
-import { Admin } from '@/features/admin/components/Admin/Admin'
+import { Admin } from '@/views/Admin/Admin'
 import { Login } from '@/views/Login/Login'
 
 export const Router = () => (

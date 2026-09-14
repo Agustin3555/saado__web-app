@@ -4,18 +4,18 @@ import { Chip, JoinChips, type ChipProps } from '@/shared/components'
 
 type Activity = 'created' | 'updated'
 
-const infoMap: Record<Activity, Pick<ChipProps, 'title' | 'iconClass'>> = {
+const infoMap: Record<Activity, { action: string; iconClass: string }> = {
   created: {
-    title: 'Creado',
+    action: 'Creado',
     iconClass: 'ti ti-target',
   },
   updated: {
-    title: 'Actualizado',
+    action: 'Actualizado',
     iconClass: 'ti ti-clock-edit',
   },
 }
 
-interface UserActivityChipProps {
+interface UserActivityChipProps extends Pick<ChipProps, 'type'> {
   dateTime?: string
   userId?: number
   activity?: Activity
@@ -25,6 +25,7 @@ export const UserActivityChip = ({
   activity = 'created',
   userId,
   dateTime,
+  type,
 }: UserActivityChipProps) => {
   const usersRecord = useUsersStore(s => s.usersRecord)!
 
@@ -54,8 +55,10 @@ export const UserActivityChip = ({
       {shortDateTime && longDateTime && (
         <Chip
           handlingClass="datetime"
-          title={`${info.title} el ${longDateTime}`}
+          label={`${info.action} el`}
+          value={longDateTime}
           iconClass={info.iconClass}
+          {...{ type }}
         >
           <p>{shortDateTime}</p>
         </Chip>
@@ -63,7 +66,9 @@ export const UserActivityChip = ({
       {user && (
         <Chip
           handlingClass="user"
-          title={`${info.title} por ${user.lastName}, ${user.firstName}`}
+          label={`${info.action} por`}
+          value={`${user.lastName}, ${user.firstName}`}
+          {...{ type }}
         >
           <div className="icon"></div>
           <span>{user.lastName}</span>

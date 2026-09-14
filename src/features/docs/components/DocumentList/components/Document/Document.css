@@ -1,0 +1,31 @@
+.cmp-document {
+  > section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-xl);
+
+    > .cmp-toggle {
+      align-self: flex-start;
+    }
+
+    > .in-procurement-type {
+      --show-animation-item-delay: 20ms;
+
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(100%, var(--column-min-width, 16rem)), 1fr)
+      );
+      gap: var(--pal-size-s);
+
+      list-style: none;
+    }
+
+    &:has(> .cmp-toggle > input:not(:checked))
+      > .in-procurement-type
+      *:is(label) {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}

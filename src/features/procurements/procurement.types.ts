@@ -12,7 +12,7 @@ export interface SimpleProcurement {
 
   procurementType: ProcurementType
   name: string | null
-  numeroExpediente: string | null
+  numeroExpediente: string
   updatedAt: string
 }
 
