@@ -3,8 +3,11 @@
     > header {
       > .text {
         text-decoration: none;
+        text-decoration-thickness: 10px;
+        text-underline-offset: 0.1875rem;
 
         &:hover {
+          text-decoration: underline var(--pal-color-a-150) var(--pal-size-3xs);
           color: var(--pal-color-a-500);
         }
       }
