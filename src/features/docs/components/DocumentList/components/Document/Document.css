@@ -17,15 +17,6 @@
         minmax(min(100%, var(--column-min-width, 16rem)), 1fr)
       );
       gap: var(--pal-size-s);
-
-      list-style: none;
-    }
-
-    &:has(> .cmp-toggle > input:not(:checked))
-      > .in-procurement-type
-      *:is(label) {
-      opacity: 0.5;
-      pointer-events: none;
     }
   }
 }

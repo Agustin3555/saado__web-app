@@ -24,8 +24,6 @@
       flex-direction: column;
       gap: var(--pal-size-2xs);
       padding: var(--pal-size-xs);
-
-      list-style: none;
     }
 
     > .loader-container {

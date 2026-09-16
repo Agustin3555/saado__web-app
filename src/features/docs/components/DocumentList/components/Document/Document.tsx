@@ -1,5 +1,5 @@
 import './Document.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'wouter'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { useSelectedDocumentStore } from '@/features/docs/store/useSelectedDocument.store'
@@ -10,8 +10,10 @@ import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivity
 import { ProcurementTypeControls } from '@/features/procurements/components/ProcurementTypeControls/ProcurementTypeControls'
 import { PROCUREMENT_TYPE_INFO } from '@/features/procurements/procurement.const'
 import type { ProcurementType } from '@/features/procurements/procurement.types'
+import { classList } from '@/shared/helpers'
 
 export const Document = () => {
+  const [isEditing, setIsEditing] = useState(false)
   const [, setLocation] = useLocation()
   const { id } = useParams<{ id: string }>()
   const selectedDocument = useSelectedDocumentStore(s => s.selectedDocument)
@@ -40,12 +42,21 @@ export const Document = () => {
   const { originId, name, updatedAt, createdAt, procurementTypes, controls } =
     selectedDocument
 
+  const globalControls = controls.filter(c => !c.procurementType)
+
   return (
     <Resource
       handlingClass="cmp-document"
       title={name}
       detailsSlot={
         <>
+          <Toggle
+            title="Activar edición"
+            iconClass="ti ti-pencil"
+            size="s"
+            style="switch"
+            onChange={() => setIsEditing(prev => !prev)}
+          />
           <OriginChip id={originId} />
           <Chip
             label="Controles"
@@ -57,24 +68,21 @@ export const Document = () => {
         </>
       }
       contentSlot={
-        <section>
-          <Toggle
-            title="Activar edición"
-            iconClass="ti ti-pencil"
-            size="s"
-            style="switch"
-          />
+        <section className={classList({ isEditing })}>
           <div className="in-procurement-type">
-            <ProcurementTypeControls />
+            <ProcurementTypeControls controls={globalControls} />
             {Object.keys(PROCUREMENT_TYPE_INFO).map(t => {
               const isActive = procurementTypes.find(
                 ({ procurementType }) => procurementType === t,
               )?.isActive
 
+              const typeControls = controls.filter(c => c.procurementType === t)
+
               return (
                 <ProcurementTypeControls
                   key={t}
                   type={t as ProcurementType}
+                  controls={typeControls}
                   {...{ isActive }}
                 />
               )

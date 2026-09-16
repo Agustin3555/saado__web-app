@@ -16,4 +16,9 @@ export const VIEWS_INFO: ViewButtonProps[] = [
     title: 'Documentos',
     iconClass: 'ti ti-folder-open',
   },
+  {
+    name: 'controles',
+    title: 'Controles',
+    iconClass: 'ti ti-list-check',
+  },
 ]

@@ -27,6 +27,7 @@ export const ResourceCard = ({
     <li
       className={classList(
         'cmp-resource-card',
+        'card-style',
         'hover-highlight',
         'show-animation-item',
         handlingClass,
@@ -35,9 +36,12 @@ export const ResourceCard = ({
     >
       {statusSlot}
       <div className="content">
-        <Link className="text" href={`/${id}`}>
-          {title}
-        </Link>
+        <header>
+          <Link className="text" href={`/${id}`}>
+            {title}
+          </Link>
+        </header>
+        <hr />
         <ul className={detailsStyle}>{children}</ul>
       </div>
     </li>

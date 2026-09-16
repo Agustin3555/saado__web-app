@@ -11,6 +11,8 @@ import { Dashboard } from '@/views/Dashboard/Dashboard'
 import { ProcurementList } from '@/features/procurements/components/ProcurementList/ProcurementList'
 import { DocumentList } from '@/features/docs/components/DocumentList/DocumentList'
 import { Loader } from '@/shared/components'
+import { ControlList } from '@/features/controls/components/ControlList/ControlList'
+import { useControlsStore } from '@/features/controls/store/useControls.store'
 
 export const Admin = () => {
   const connect = useSocketStore(s => s.connect)
@@ -19,6 +21,7 @@ export const Admin = () => {
   const refetchCompanies = useCompaniesStore(s => s.refetchCompanies)
   const refetchDocuments = useDocumentsStore(s => s.refetchDocuments)
   const refetchOrigins = useOriginsStore(s => s.refetchOrigins)
+  const refetchControls = useControlsStore(s => s.refetchControls)
   const [asideIsOpen, setAsideIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -35,12 +38,14 @@ export const Admin = () => {
           refetchCompanies(),
           refetchDocuments(),
           refetchOrigins(),
+          refetchControls(),
         ])
       } finally {
         setIsLoading(false)
       }
     }
 
+    // toast.promise(refetchAll, { loading: 'Cargando' })
     refetchAll()
     connect()
 
@@ -52,6 +57,7 @@ export const Admin = () => {
     refetchDocuments,
     refetchOrigins,
     refetchUsers,
+    refetchControls,
   ])
 
   return (
@@ -72,6 +78,7 @@ export const Admin = () => {
                 nest
               />
               <Route path="/documentos" children={<DocumentList />} nest />
+              <Route path="/controles" children={<ControlList />} />
               <Route children={<Redirect to="/panel" />} />
             </Switch>
           </main>

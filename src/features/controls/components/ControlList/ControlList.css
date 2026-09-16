@@ -1,4 +1,6 @@
-.cmp-collection-router {
+.cmp-control-list {
+  --column-min-width: 32rem;
+
   display: flex;
   flex-direction: column;
   gap: var(--pal-size-xl);

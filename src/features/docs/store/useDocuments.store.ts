@@ -16,6 +16,7 @@ interface DocumentsStore {
     type: ProcurementType,
     isActive: boolean,
   ) => Promise<void>
+  addDocumentControl: (documentId: number, id: number) => void
 }
 
 export const useDocumentsStore = create<DocumentsStore>((set, get) => ({
@@ -63,5 +64,17 @@ export const useDocumentsStore = create<DocumentsStore>((set, get) => ({
 
     if (isActive) toast.success(msg)
     else toast.info(msg)
+  },
+
+  addDocumentControl: (documentId, id) => {
+    const prevDocuments = get().documents
+    if (!prevDocuments) return
+
+    const documents = prevDocuments.map(d =>
+      d.id === documentId ? { ...d, controls: [...d.controls, id] } : d,
+    )
+
+    set({ documents })
+    get().syncDocumentsRecord()
   },
 }))

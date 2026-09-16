@@ -16,7 +16,6 @@ export const CollectionRouter = ({
   list,
   resource,
 }: CollectionRouterProps) => {
-  // TODO: mostrar la carga de list de alguna manera
   return (
     <div className={classList('cmp-collection-router', handlingClass)}>
       <Route path="/">

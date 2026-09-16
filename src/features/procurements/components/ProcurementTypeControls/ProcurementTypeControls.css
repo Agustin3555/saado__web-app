@@ -11,15 +11,22 @@
 
     > label {
       color: var(--pal-color-b-500);
+      opacity: 0.5;
       cursor: pointer;
+      pointer-events: none;
+
+      .is-editing & {
+        opacity: initial;
+        pointer-events: initial;
+      }
     }
 
     > .group {
       flex-grow: 1;
 
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
 
       > h1 {
         font-size: var(--pal-size-font-xs);
@@ -39,7 +46,20 @@
     border-width: 0;
     border-style: solid;
     border-color: var(--pal-color-a-150);
-    border-bottom-width: var(--line-thickness);
-    padding: var(--pal-size-2xs);
+    border-top-width: var(--line-thickness);
+    padding: var(--pal-size-xs);
+
+    > .cmp-button {
+      margin-top: var(--pal-size-2xs);
+
+      border-radius: var(--pal-size-2xs);
+      color: var(--pal-color-a-500);
+
+      display: none;
+
+      .is-editing & {
+        display: flex;
+      }
+    }
   }
 }

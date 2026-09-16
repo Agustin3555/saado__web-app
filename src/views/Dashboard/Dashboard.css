@@ -36,8 +36,6 @@
       flex-wrap: wrap;
       gap: var(--pal-size-s);
 
-      list-style: none;
-
       > li {
         display: flex;
         gap: var(--pal-size-s);

@@ -59,6 +59,21 @@ p {
   text-wrap: pretty;
 }
 
+ul {
+  list-style: none;
+}
+
+textarea {
+  line-height: 1.4;
+}
+
+button {
+  border: none;
+
+  background-color: transparent;
+  cursor: pointer;
+}
+
 input,
 textarea {
   border: none;
@@ -73,15 +88,4 @@ textarea {
     color: inherit;
     opacity: 0.5;
   }
-}
-
-textarea {
-  line-height: 1.4;
-}
-
-button {
-  border: none;
-
-  background-color: transparent;
-  cursor: pointer;
 }

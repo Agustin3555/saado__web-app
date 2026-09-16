@@ -1,37 +1,17 @@
 .cmp-resource-card {
-  --gap: var(--pal-size-m);
-
-  border-radius: var(--pal-size-xs);
-  background-color: var(--pal-color-white);
-  overflow: hidden;
-
   > .content {
-    padding: var(--gap);
+    > header {
+      > .text {
+        text-decoration: none;
 
-    > a {
-      display: block;
-      padding-bottom: var(--pal-size-s);
-
-      font-size: var(--pal-size-font-m);
-      font-weight: 800;
-      text-decoration: none;
-
-      color: var(--pal-color-n-600);
-
-      &:hover {
-        color: var(--pal-color-a-500);
+        &:hover {
+          color: var(--pal-color-a-500);
+        }
       }
     }
 
     > ul {
-      display: flex;
-      flex-direction: column;
-      gap: var(--pal-size-2xs);
-      border-width: 0;
-      border-style: solid;
-      border-color: var(--pal-color-a-150);
-      border-top-width: var(--line-thickness);
-      padding-top: var(--pal-size-m);
+      gap: var(--card-style-items-gap);
 
       > ul:first-child {
         flex-shrink: 0;

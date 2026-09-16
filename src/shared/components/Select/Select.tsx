@@ -16,7 +16,9 @@ export const Select = ({ options, size = 'l', htmlAttrs }: SelectProps) => {
         <selectedcontent></selectedcontent>
         <Icon iconClass="ti ti-chevron-down" />
       </button>
-      <option className="ui-m">-</option>
+      <option className="ui-m" value="">
+        -
+      </option>
       {options?.map(({ value, label }) => (
         <option key={value} className="ui-m" {...{ value }}>
           {label}

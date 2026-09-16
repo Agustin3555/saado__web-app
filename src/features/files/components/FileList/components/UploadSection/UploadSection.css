@@ -50,8 +50,6 @@
     gap: var(--pal-size-2xs);
     max-width: fit-content;
 
-    list-style: none;
-
     > li {
       display: flex;
       align-items: center;

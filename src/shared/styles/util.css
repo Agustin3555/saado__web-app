@@ -28,6 +28,7 @@
 .text {
   line-height: 1.3;
   text-wrap: pretty;
+  white-space: pre-wrap;
 }
 
 .paragraphs {
@@ -100,8 +101,8 @@
   font-size: var(--pal-size-font-2xs);
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.0625rem;
   word-spacing: 0.125rem;
+  letter-spacing: 0.0625rem;
 
   color: var(--pal-color-white);
 }
@@ -125,5 +126,52 @@
 
   &:hover {
     outline-width: 0.1875rem;
+  }
+}
+
+.card-style {
+  --card-style-items-gap: var(--pal-size-2xs);
+  --padding: var(--pal-size-m);
+
+  border-radius: var(--pal-size-xs);
+  background-color: var(--pal-color-white);
+  overflow: hidden;
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding);
+    padding: var(--padding);
+
+    > header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--pal-size-l);
+
+      > .text {
+        display: block;
+
+        font-size: var(--pal-size-font-m);
+        font-weight: 800;
+
+        color: var(--pal-color-n-600);
+      }
+
+      > .actions {
+        > .cmp-button {
+          color: var(--pal-color-a-500);
+        }
+      }
+    }
+
+    > hr {
+      color: var(--pal-color-a-150);
+    }
+
+    > ul {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

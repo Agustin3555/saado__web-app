@@ -14,6 +14,16 @@ export interface SimpleDocument {
   controls: unknown[]
 }
 
+export interface RelDocumentControl {
+  id: number
+  controlId: number
+  verifierId: number | null
+
+  procurementType: ProcurementType | null
+}
+
 export interface Document extends SimpleDocument {
   createdAt: string
+
+  controls: RelDocumentControl[]
 }
