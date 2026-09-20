@@ -1,13 +1,13 @@
 import './Update.css'
 import type { ReactNode } from 'react'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
-import { Button, Chip, Dropdown, Icon } from '@/shared/components'
+import { Chip, CurrentCommentButton, Icon } from '@/shared/components'
 import type { ChangeLog, UpdateData } from '@/features/files/changeLog.types'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
 import { Line } from '../Line/Line'
 import { classList } from '@/shared/helpers'
 import type { File } from '@/features/files/file.types'
-import { getVerdict } from '@/features/files/helpers/getVerdict.helper'
+import { VERDICT_MATCH } from '@/features/files/file.const'
 
 // BUG: errores con los chips
 
@@ -16,11 +16,11 @@ const VoidChip = () => {
 }
 
 const VerdictChip = ({ verdict }: { verdict: File['verdict'] }) => {
-  const { id, text } = getVerdict(verdict)
+  const { id, title } = VERDICT_MATCH[verdict]
 
   return (
-    <Chip handlingClass={classList('document', id)}>
-      <p className="status-text">{text}</p>
+    <Chip handlingClass={classList('verdict', id)}>
+      <p className="verdict-value">{title}</p>
     </Chip>
   )
 }
@@ -79,21 +79,7 @@ export const Update = ({
         <div className="new">{value(newValue)}</div>
         <p>por</p>
         <UserActivityChip userId={byUserId} activity="updated" />
-        {comments && (
-          <Dropdown
-            opener={attrs => (
-              <Button
-                title="Ver comentario"
-                iconClass="ti ti-message"
-                size="s"
-                htmlAttrs={attrs}
-              />
-            )}
-          >
-            <Icon iconClass="ti ti-quote" />
-            <p className="text">{comments}</p>
-          </Dropdown>
-        )}
+        {comments && <CurrentCommentButton comment={comments} />}
       </div>
     </Line>
   )

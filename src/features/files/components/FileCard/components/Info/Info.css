@@ -1,0 +1,35 @@
+.cmp-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-m);
+  padding: var(--pal-size-m);
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--pal-size-2xs);
+
+    > .total {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--pal-size-m);
+    }
+
+    &.info {
+      gap: var(--pal-size-l);
+    }
+  }
+
+  > .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--pal-size-m);
+
+    > .cmp-icon {
+      color: var(--pal-color-a-500);
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.cmp-tabs {
+  display: flex;
+  flex-direction: column;
+
+  > .tab-list {
+    --gap: var(--pal-size-m);
+
+    position: relative;
+
+    display: flex;
+    gap: var(--pal-size-l);
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--pal-color-a-150);
+    border-bottom-width: var(--line-thickness);
+    padding-inline: var(--gap);
+
+    font-size: var(--ui-font-size);
+
+    > label {
+      --cmp-icon-size: var(--ui-icon-size);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--ui-gap);
+      padding-right: 0.0625rem;
+      height: var(--pal-size-xl);
+
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.015625rem;
+
+      color: var(--pal-color-n-500);
+
+      &:has(> input:checked) {
+        color: var(--pal-color-a-850);
+      }
+
+      &:has(> input:not(:checked)) {
+        cursor: pointer;
+      }
+
+      &:hover {
+        color: var(--pal-color-a-500);
+      }
+    }
+
+    > .indicator {
+      position: absolute;
+      bottom: var(--line-thickness);
+
+      height: 0.125rem;
+
+      border-radius: var(--pill-radius);
+      background-color: var(--pal-color-a-500);
+
+      transition:
+        width var(--pal-time-s) ease,
+        left var(--pal-time-s) ease;
+    }
+  }
+}

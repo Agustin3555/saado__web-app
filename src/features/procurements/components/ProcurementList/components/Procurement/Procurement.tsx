@@ -44,6 +44,7 @@ export const Procurement = () => {
   const {
     name,
     companyId,
+    verdict,
     updatedByUserId,
     createdByUserId,
     numeroExpediente,
@@ -59,7 +60,7 @@ export const Procurement = () => {
       subtitle={name ?? '-'}
       detailsSlot={
         <>
-          <VerdictButton />
+          <VerdictButton data={{ verdict }} />
           <CompanyChip id={companyId} />
           <UserActivityChip
             userId={updatedByUserId}

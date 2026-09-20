@@ -1,10 +1,17 @@
 import { privateInstance } from '@/infra/http/axios/instances'
 import { create } from 'zustand'
 import type { Procurement } from '../procurement.types'
+import type { FileControl, VerdictType } from '@/features/files/file.types'
 
 interface SelectedProcurementStore {
   selectedProcurement?: Procurement
   refetchSelectedProcurement: (procurementId?: number) => Promise<void>
+  updateFileControlVerdict: (data: {
+    fileId: number
+    controlId: number
+    verdict: VerdictType
+    verdictCommentary?: string
+  }) => Promise<void>
 }
 
 export const useSelectedProcurementStore = create<SelectedProcurementStore>(
@@ -22,6 +29,34 @@ export const useSelectedProcurementStore = create<SelectedProcurementStore>(
         await privateInstance.get<Procurement>(`procurements/${id}`)
 
       set({ selectedProcurement })
+    },
+
+    updateFileControlVerdict: async ({ fileId, controlId, ...data }) => {
+      const { data: newFileControl } = await privateInstance.patch<FileControl>(
+        `files/${fileId}/controls/${controlId}`,
+        data,
+      )
+
+      const prevProcurement = get().selectedProcurement
+      if (!prevProcurement) return
+
+      const procurement = {
+        ...prevProcurement,
+        files: prevProcurement.files.map(f =>
+          f.id === fileId
+            ? {
+                ...f,
+                fileControls: f.fileControls.map(fc =>
+                  fc.controlId === controlId
+                    ? { ...fc, ...newFileControl }
+                    : fc,
+                ),
+              }
+            : f,
+        ),
+      }
+
+      set({ selectedProcurement: procurement })
     },
   }),
 )

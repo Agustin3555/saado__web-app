@@ -1,0 +1,46 @@
+.cmp-control-item {
+  display: flex;
+  align-items: center;
+  gap: var(--pal-size-m);
+  padding: var(--pal-size-2xs);
+
+  font-size: var(--pal-size-font-xs);
+
+  border-radius: var(--pal-size-2xs);
+  background-color: var(--pal-color-a-50);
+  overflow: hidden;
+
+  > .verdict-group {
+    display: flex;
+    gap: var(--pal-size-2xs);
+    width: 8.5rem;
+
+    > .cmp-change-verdict-button {
+      background-color: var(--verdict-bg-color);
+    }
+  }
+
+  > p {
+    flex-grow: 1;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  > .verify {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-gap);
+    border-width: var(--line-thickness);
+    border-style: solid;
+    border-color: var(--pal-color-a-150);
+    padding-inline: var(--ui-padding-inline);
+    padding-left: var(--pal-size-2xs);
+    height: var(--ui-height);
+
+    font-size: var(--ui-font-size);
+
+    border-radius: var(--ui-border-radius);
+  }
+}

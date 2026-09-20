@@ -4,7 +4,7 @@
 
   color: var(--pal-color-white);
 
-  > .status-text {
+  > .verdict-value {
     display: flex;
     align-items: center;
     gap: var(--ui-gap);
@@ -14,11 +14,11 @@
     border-radius: calc(var(--ui-height) / 2);
     border-top-right-radius: var(--ui-border-radius);
     border-bottom-right-radius: var(--ui-border-radius);
-    background-color: var(--bg-color);
+    background-color: var(--verdict-bg-color);
   }
 
   > .cmp-button {
-    --cmp-button-bg-color: var(--bg-color);
+    --cmp-button-bg-color: var(--verdict-bg-color);
   }
 
   > .cmp-modal > .content {
@@ -68,13 +68,5 @@
         }
       }
     }
-  }
-
-  &.approve {
-    --bg-color: var(--pal-color-c-500);
-  }
-
-  &.reject {
-    --bg-color: var(--pal-color-d-500);
   }
 }

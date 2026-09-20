@@ -1,4 +1,4 @@
-import type { File } from '../files/file.types'
+import type { File, VerdictType } from '../files/file.types'
 
 export type ProcurementType =
   | 'CONT_DIRECTA'
@@ -10,6 +10,8 @@ export interface SimpleProcurement {
   id: number
   companyId: number | null
 
+  verdict: VerdictType
+  verdictCommentary: string | null
   procurementType: ProcurementType
   name: string | null
   numeroExpediente: string

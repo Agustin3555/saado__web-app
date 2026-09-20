@@ -61,7 +61,7 @@ export const Document = () => {
           <Chip
             label="Controles"
             value={controls.length}
-            iconClass="ti ti-stack-3"
+            iconClass="ti ti-ai-agent"
           />
           <UserActivityChip dateTime={updatedAt} activity="updated" />
           <UserActivityChip dateTime={createdAt} />

@@ -97,14 +97,32 @@
     calc(var(--i, 1) * var(--show-animation-item-delay)) ease forwards;
 }
 
-.status-text {
-  font-size: var(--pal-size-font-2xs);
-  font-weight: 800;
-  text-transform: uppercase;
-  word-spacing: 0.125rem;
-  letter-spacing: 0.0625rem;
+.verdict {
+  .verdict-value {
+    font-size: var(--pal-size-font-2xs);
+    font-weight: 800;
+    text-transform: uppercase;
+    word-spacing: 0.125rem;
+    letter-spacing: 0.0625rem;
 
-  color: var(--pal-color-white);
+    color: var(--pal-color-white);
+  }
+
+  &.undefined {
+    --verdict-bg-color: var(--pal-color-n-500);
+  }
+
+  &.rejected {
+    --verdict-bg-color: var(--pal-color-d-500);
+  }
+
+  &.uncertain {
+    --verdict-bg-color: var(--pal-color-c-500);
+  }
+
+  &.approved {
+    --verdict-bg-color: var(--pal-color-b-500);
+  }
 }
 
 .raised-panel {

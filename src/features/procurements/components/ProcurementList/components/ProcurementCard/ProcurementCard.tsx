@@ -5,6 +5,8 @@ import { ProcurementTypeChip } from '../../../ProcurementTypeChip/ProcurementTyp
 import { CompanyChip } from '@/features/company/components/CompanyChip/CompanyChip'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
 import type { SimpleProcurement } from '../../../../procurement.types'
+import { classList } from '@/shared/helpers'
+import { VERDICT_MATCH } from '@/features/files/file.const'
 
 interface ProcurementCardProps extends Pick<ResourceCardProps, 'i'> {
   data: SimpleProcurement
@@ -12,13 +14,27 @@ interface ProcurementCardProps extends Pick<ResourceCardProps, 'i'> {
 
 export const ProcurementCard = ({
   i,
-  data: { id, companyId, procurementType, name, numeroExpediente, updatedAt },
+  data: {
+    id,
+    companyId,
+    verdict,
+    procurementType,
+    name,
+    numeroExpediente,
+    updatedAt,
+  },
 }: ProcurementCardProps) => {
+  const verdictInfo = VERDICT_MATCH[verdict]
+
   return (
     <ResourceCard
-      handlingClass="cmp-procurement-card"
+      handlingClass={classList(
+        'cmp-procurement-card',
+        'verdict',
+        verdictInfo.id,
+      )}
       title={numeroExpediente}
-      statusSlot={<div className="status-text">Aprobado</div>}
+      statusSlot={<div className="verdict-value">{verdictInfo.title}</div>}
       {...{ i, id }}
     >
       <ProcurementTypeChip value={procurementType} type="detail" />

@@ -1,0 +1,55 @@
+.cmp-file-card-header {
+  display: flex;
+  flex-direction: column;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--pal-color-a-150);
+  border-bottom-width: var(--line-thickness);
+
+  .cmp-dropdown {
+    --cmp-button-bg-color: var(--pal-color-a-50);
+
+    position-area: bottom span-right;
+
+    gap: var(--pal-size-3xs);
+    padding: var(--pal-size-3xs);
+
+    > .cmp-button {
+      justify-content: flex-start;
+    }
+  }
+
+  .cmp-button.ui-s {
+    --cmp-button-border-color: var(--pal-color-a-100);
+
+    color: var(--pal-color-a-500);
+  }
+
+  > .top {
+    display: flex;
+    justify-content: space-between;
+
+    > h1 {
+      padding: var(--pal-size-m);
+      padding-bottom: 1.125rem;
+
+      font-size: var(--pal-size-font-s);
+      font-weight: 800;
+    }
+
+    > .cmp-button {
+      --padding: var(--pal-size-xs);
+
+      margin-top: var(--padding);
+      margin-right: var(--padding);
+    }
+  }
+
+  > .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pal-size-xs);
+    margin: var(--pal-size-xs);
+    margin-top: 0.0625rem;
+  }
+}

@@ -1,8 +1,8 @@
 .cmp-procurement-card {
-  > .status-text {
+  > .verdict-value {
     padding-inline: var(--pal-size-xs);
     padding-block: var(--pal-size-2xs);
 
-    background-color: var(--pal-color-b-500);
+    background-color: var(--verdict-bg-color);
   }
 }

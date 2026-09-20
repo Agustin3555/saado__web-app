@@ -9,7 +9,7 @@
     }
 
     > .in-procurement-type {
-      --show-animation-item-delay: 20ms;
+      --show-animation-item-delay: 25ms;
 
       display: grid;
       grid-template-columns: repeat(

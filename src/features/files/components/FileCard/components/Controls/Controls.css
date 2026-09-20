@@ -1,0 +1,12 @@
+.cmp-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-xs);
+  padding: var(--pal-size-xs);
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-2xs);
+  }
+}

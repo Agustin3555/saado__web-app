@@ -8,28 +8,21 @@
   border-radius: var(--border-radius);
   background-color: var(--pal-color-white);
 
-  > .status {
+  > .verdict {
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
+    background-color: var(--verdict-bg-color);
 
-    &.undefined {
-      background-color: var(--pal-color-n-500);
-    }
+    > .cmp-change-verdict-button {
+      position: sticky;
+      top: var(--layout-gutter);
 
-    &.rejected {
-      background-color: var(--pal-color-d-500);
-    }
+      border-top-left-radius: var(--pal-size-s);
+      border-top-right-radius: 0;
 
-    &.uncertain {
-      background-color: var(--pal-color-c-500);
-    }
-
-    &.approved {
-      background-color: var(--pal-color-b-500);
-    }
-
-    &:hover > .cmp-change-verdict-button > .cmp-icon {
-      opacity: initial;
+      &:hover {
+        background-color: color-mix(in srgb, transparent, #000 12.5%);
+      }
     }
   }
 
@@ -38,66 +31,7 @@
 
     display: flex;
     flex-direction: column;
-
-    > header {
-      display: flex;
-      flex-direction: column;
-
-      > h1 {
-        padding: var(--pal-size-m);
-
-        font-size: var(--pal-size-font-s);
-        font-weight: 800;
-      }
-
-      > .actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: var(--pal-size-xs);
-        margin: var(--pal-size-xs);
-        margin-top: 0.0625rem;
-
-        > .cmp-dropdown {
-          --cmp-button-bg-color: var(--pal-color-a-50);
-
-          position-area: bottom span-right;
-
-          gap: var(--pal-size-3xs);
-          padding: var(--pal-size-3xs);
-
-          > .cmp-button {
-            justify-content: flex-start;
-          }
-        }
-
-        > .file {
-          --cmp-button-border-color: var(--pal-color-a-100);
-
-          color: var(--pal-color-a-500);
-        }
-
-        > .verify {
-          --cmp-button-bg-color: var(--pal-color-b-200);
-        }
-      }
-    }
-
-    > .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--pal-size-xs);
-      border-width: 0;
-      border-style: solid;
-      border-color: var(--pal-color-a-150);
-      border-top-width: var(--line-thickness);
-      border-bottom-width: var(--line-thickness);
-      padding: var(--pal-size-xs);
-    }
-
-    > .logs {
-      height: 10rem;
-    }
+    width: 100%;
   }
 
   > .toggles {

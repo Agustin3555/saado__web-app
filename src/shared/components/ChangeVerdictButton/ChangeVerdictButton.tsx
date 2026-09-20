@@ -1,7 +1,6 @@
 import './ChangeVerdictButton.css'
 import { useRef } from 'react'
 import { useSubmitAction } from '@/shared/hooks/useSubmitAction.hook'
-import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
 import {
   Button,
   Field,
@@ -10,26 +9,32 @@ import {
   Select,
   TextArea,
 } from '@/shared/components'
-import type { File, VerdictType } from '@/features/files/file.types'
-import { getVerdict } from '@/features/files/helpers/getVerdict.helper'
+import type { VerdictType } from '@/features/files/file.types'
 import { VERDICT_MATCH } from '@/features/files/file.const'
 import { toast } from 'sonner'
-import { privateInstance } from '@/infra/http/axios/instances'
+import { classList } from '@/shared/helpers'
 
-interface ChangeVerdictButtonProps {
-  fileId: number
-  verdict: File['verdict']
+interface ChangeVerdictData {
+  verdict: VerdictType
+  verdictCommentary?: string
+}
+
+export interface ChangeVerdictButtonProps {
+  verdict: VerdictType
+  orientation?: 'horizontal' | 'vertical'
+  onChange: (data: ChangeVerdictData) => Promise<void>
 }
 
 export const ChangeVerdictButton = ({
-  fileId,
   verdict,
+  orientation = 'horizontal',
+  onChange,
 }: ChangeVerdictButtonProps) => {
   const modalRef = useRef<HTMLDialogElement>(null)
 
   const verdictOptions = Object.entries(VERDICT_MATCH).map(([key, value]) => ({
     value: key,
-    label: value,
+    label: value.title,
   }))
 
   const { handleSubmit, actionState } = useSubmitAction(
@@ -37,32 +42,9 @@ export const ChangeVerdictButton = ({
       if (!modalRef.current) return
       const modal = modalRef.current
 
-      const newVerdict = formValues.get.string('verdict') as VerdictType
-
-      const data = {
-        verdict: newVerdict,
-        comments: formValues.get.string('comments'),
-      }
-
-      await privateInstance.patch(`files/${fileId}`, data)
-
-      useSelectedProcurementStore.setState(store => {
-        const { selectedProcurement } = store
-        if (!selectedProcurement) return store
-
-        const fileIndex = selectedProcurement.files.findIndex(
-          f => f.id === fileId,
-        )
-        if (fileIndex === -1) return store
-
-        const newSelectedProcurement: typeof selectedProcurement = {
-          ...selectedProcurement,
-          files: selectedProcurement.files.map(f =>
-            f.id === fileId ? { ...f, verdict: newVerdict } : f,
-          ),
-        }
-
-        return { selectedProcurement: newSelectedProcurement }
+      await onChange({
+        verdict: formValues.get.string('verdict') as VerdictType,
+        verdictCommentary: formValues.get.string('verdictCommentary'),
       })
 
       modal.close()
@@ -76,12 +58,17 @@ export const ChangeVerdictButton = ({
       ref={modalRef}
       opener={attrs => (
         <button
-          className="cmp-change-verdict-button status-text ui-s"
+          className={classList(
+            'cmp-change-verdict-button',
+            'verdict-value',
+            'ui-s',
+            orientation,
+          )}
           title="Cambiar veredicto"
           {...attrs}
         >
           <Icon iconClass="ti ti-pencil" />
-          {getVerdict(verdict).text}
+          {VERDICT_MATCH[verdict].title}
         </button>
       )}
     >
@@ -95,7 +82,7 @@ export const ChangeVerdictButton = ({
             />
           </Field>
           <Field label="Comentarios">
-            <TextArea htmlAttrs={{ name: 'comments' }} />
+            <TextArea htmlAttrs={{ name: 'verdictCommentary' }} />
           </Field>
         </div>
         <Button

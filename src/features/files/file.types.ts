@@ -1,9 +1,18 @@
 import type { SimpleDocument } from '../docs/document.types'
 
-export type VerdictType = 'REJECTED' | 'UNCERTAIN' | 'APPROVED'
+// FIXME: algunos componentes no reconocen UNDEFINED
+export type VerdictType = 'UNDEFINED' | 'REJECTED' | 'UNCERTAIN' | 'APPROVED'
 
 export interface SimpleFile {
   id: number
+}
+
+export interface FileControl {
+  id: number
+  controlId: number
+
+  verdict: VerdictType
+  verdictCommentary: string | null
 }
 
 export interface File extends SimpleFile {
@@ -11,7 +20,10 @@ export interface File extends SimpleFile {
   document: SimpleDocument
 
   path: string | null
-  verdict: VerdictType | null
+  verdict: VerdictType
+  verdictCommentary: string | null
   createdAt: string
   updatedAt: string
+
+  fileControls: FileControl[]
 }

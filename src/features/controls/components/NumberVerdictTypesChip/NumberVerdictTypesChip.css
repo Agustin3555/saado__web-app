@@ -1,0 +1,16 @@
+.cmp-number-verdict-types-chip {
+  background-color: color-mix(
+    transparent,
+    var(--verdict-bg-color) 12.5%
+  ) !important;
+
+  &::before {
+    aspect-ratio: 1;
+    width: var(--pal-size-s);
+
+    content: '';
+
+    border-radius: 50%;
+    background-color: var(--verdict-bg-color);
+  }
+}

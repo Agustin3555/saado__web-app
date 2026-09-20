@@ -3,20 +3,31 @@ import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
 import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
 import { Button, Icon, Modal } from '@/shared/components'
+import type { Procurement } from '@/features/procurements/procurement.types'
+import { VERDICT_MATCH } from '@/features/files/file.const'
 import { classList } from '@/shared/helpers'
 
-export const VerdictButton = () => {
+interface VerdictButtonProps {
+  data: Pick<Procurement, 'verdict'>
+}
+
+export const VerdictButton = ({ data: { verdict } }: VerdictButtonProps) => {
   const documents = useDocumentsStore(s => s.documents)!
   const originsRecord = useOriginsStore(s => s.originsRecord)!
   const { files } = useSelectedProcurementStore(s => s.selectedProcurement)!
 
-  const verdict = documents.length === files.length ? 'approve' : 'reject'
+  const verdictInfo = VERDICT_MATCH[verdict]
 
   return (
-    <li className={classList('cmp-verdict-button', 'ui-s', verdict)}>
-      <p className="status-text">
-        {verdict === 'approve' ? 'Aprobado' : 'Rechazado'}
-      </p>
+    <li
+      className={classList(
+        'cmp-verdict-button',
+        'ui-s',
+        'verdict',
+        verdictInfo.id,
+      )}
+    >
+      <p className="verdict-value">{verdictInfo.title}</p>
       <Modal
         opener={attrs => (
           <Button
@@ -30,7 +41,7 @@ export const VerdictButton = () => {
         <article>
           <h1>Requisitos</h1>
           <p className="text">
-            {verdict === 'approve'
+            {verdict === 'APPROVED'
               ? 'Esta contratación cumple con todos los requisitos de documentación para avanzar.'
               : 'Se requiere la siguiente documentación:'}
           </p>

@@ -1,84 +1,79 @@
 import './FileCard.css'
 import { useSelectedContentStore } from '../../store/useSelectedContent.store'
-import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
-import { Button, Dropdown, Toggle } from '@/shared/components'
+import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
+import {
+  ChangeVerdictButton,
+  Tabs,
+  Toggle,
+  type ChangeVerdictButtonProps,
+  type TabsProps,
+} from '@/shared/components'
 import type { File } from '../../file.types'
-import { ChangeVerdictButton, LogList } from './components'
-import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
-import { OriginChip } from '@/features/origins/components/OriginChip/OriginChip'
+import { Controls, FileCardHeader, Info, LogList } from './components'
 import { classList } from '@/shared/helpers'
-import { getVerdict } from '../../helpers/getVerdict.helper'
+import { VERDICT_MATCH } from '../../file.const'
+import { privateInstance } from '@/infra/http/axios/instances'
 
 interface FileCardProps {
-  status?: 'PROCESS'
   data: File
 }
 
 export const FileCard = ({
-  status,
-  data: { id, procurementId, document, path, verdict, createdAt, updatedAt },
+  data: { id, document, path, verdict, createdAt, updatedAt, fileControls },
 }: FileCardProps) => {
-  const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
   const selected = useSelectedContentStore(s => s.selected)
   const toggleFile = useSelectedContentStore(s => s.toggleFile)
 
-  const file = path?.split('/').pop()
-  const name = `checkbox-${procurementId}`
+  const panels: TabsProps['panels'] = [
+    {
+      label: 'Resumen',
+      iconClass: 'ti ti-info-square-rounded',
+      component: <Info data={{ createdAt, updatedAt, fileControls }} />,
+    },
+    {
+      label: 'Controles',
+      iconClass: 'ti ti-checkbox',
+      component: <Controls data={{ id, fileControls }} />,
+    },
+    // {
+    //   label: 'Historial',
+    //   iconClass: 'ti ti-history',
+    //   component: <LogList fileId={id} />,
+    // },
+  ]
+
+  const onChange: ChangeVerdictButtonProps['onChange'] = async data => {
+    await privateInstance.patch(`files/${id}`, data)
+
+    useSelectedProcurementStore.setState(s => {
+      const { selectedProcurement } = s
+      if (!selectedProcurement) return s
+
+      const fileIndex = selectedProcurement.files.findIndex(f => f.id === id)
+      if (fileIndex === -1) return s
+
+      const newSelectedProcurement: typeof selectedProcurement = {
+        ...selectedProcurement,
+        files: selectedProcurement.files.map(f =>
+          f.id === id ? { ...f, verdict: data.verdict } : f,
+        ),
+      }
+
+      return { selectedProcurement: newSelectedProcurement }
+    })
+  }
 
   return (
     <article className="cmp-file-card">
-      <div className={classList('status', getVerdict(verdict).id)}>
-        <ChangeVerdictButton fileId={id} {...{ verdict }} />
+      <div className={classList('verdict', VERDICT_MATCH[verdict].id)}>
+        <ChangeVerdictButton
+          orientation="vertical"
+          {...{ verdict, onChange }}
+        />
       </div>
       <div className="content">
-        <header>
-          <h1 className="text">{documentsRecord[document.id].name}</h1>
-          <div className="actions">
-            <Dropdown
-              opener={attrs => (
-                <Button
-                  handlingClass="file"
-                  text={file}
-                  iconClass="ti ti-file"
-                  size="s"
-                  inverted
-                  htmlAttrs={attrs}
-                />
-              )}
-            >
-              {/* TODO: descargar */}
-              <Button
-                text="Descargar"
-                title="Descargar archivo"
-                iconClass="ti ti-download"
-                type="primary"
-                inverted
-              />
-              {/* TODO: reemplazar abriendo un Modal y dentro UploadSection pero limitando a cargar solo 1 archivo */}
-              <Button
-                text="Reemplazar"
-                title="Reemplazar archivo"
-                iconClass="ti ti-upload"
-                type="primary"
-                inverted
-              />
-            </Dropdown>
-            <Button
-              handlingClass="verify"
-              text="Verificar"
-              iconClass="ti ti-zoom-check"
-              size="s"
-              type="primary"
-              actionState={status === 'PROCESS' ? 'loading' : undefined}
-            />
-          </div>
-        </header>
-        <div className="chips">
-          <OriginChip id={document.originId} />
-          <UserActivityChip dateTime={updatedAt} activity="updated" />
-          <UserActivityChip dateTime={createdAt} />
-        </div>
-        <LogList fileId={id} />
+        <FileCardHeader data={{ document, path }} />
+        <Tabs {...{ panels }} />
       </div>
       <div className="toggles">
         <div className="container">
