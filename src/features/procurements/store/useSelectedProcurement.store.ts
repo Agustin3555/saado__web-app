@@ -2,6 +2,7 @@ import { privateInstance } from '@/infra/http/axios/instances'
 import { create } from 'zustand'
 import type { Procurement } from '../procurement.types'
 import type { FileControl, VerdictType } from '@/features/files/file.types'
+import { toast } from 'sonner'
 
 interface SelectedProcurementStore {
   selectedProcurement?: Procurement
@@ -12,6 +13,7 @@ interface SelectedProcurementStore {
     verdict: VerdictType
     verdictCommentary?: string
   }) => Promise<void>
+  addFileControls: (fileId: number) => Promise<void>
 }
 
 export const useSelectedProcurementStore = create<SelectedProcurementStore>(
@@ -57,6 +59,33 @@ export const useSelectedProcurementStore = create<SelectedProcurementStore>(
       }
 
       set({ selectedProcurement: procurement })
+    },
+
+    addFileControls: async fileId => {
+      const {
+        data: { added, fileControls },
+      } = await privateInstance.post<{
+        added: number
+        fileControls: FileControl[]
+      }>(`files/${fileId}/controls/add`)
+
+      const prevProcurement = get().selectedProcurement
+      if (!prevProcurement) return
+
+      const procurement = {
+        ...prevProcurement,
+        files: prevProcurement.files.map(f =>
+          f.id === fileId ? { ...f, fileControls } : f,
+        ),
+      }
+
+      set({ selectedProcurement: procurement })
+
+      toast.success(
+        added
+          ? `Controles agregados: ${added}`
+          : 'No hay mas controles que agregar',
+      )
     },
   }),
 )

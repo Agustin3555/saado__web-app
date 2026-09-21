@@ -46,10 +46,10 @@ export const ControlItem = ({
       <p className="text" title={controlsRecord[controlId].name}>
         {controlsRecord[controlId].name}
       </p>
-      <button className="verify ui-s">
+      {/* <button className="verify ui-s">
         <GlowIA />
         Verificar
-      </button>
+      </button> */}
     </li>
   )
 }

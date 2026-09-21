@@ -4,6 +4,12 @@
   gap: var(--pal-size-xs);
   padding: var(--pal-size-xs);
 
+  > .actions {
+    > .add-controls {
+      color: var(--pal-color-a-500);
+    }
+  }
+
   > ul {
     display: flex;
     flex-direction: column;
