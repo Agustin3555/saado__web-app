@@ -4,8 +4,6 @@ export interface SimpleCompany {
 }
 
 export interface Company extends SimpleCompany {
-  createdByUserId: number
-  updatedByUserId: number
   email: string | null
   createdAt: string
   updatedAt: string

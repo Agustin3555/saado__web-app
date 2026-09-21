@@ -45,8 +45,6 @@ export const Procurement = () => {
     name,
     companyId,
     verdict,
-    updatedByUserId,
-    createdByUserId,
     numeroExpediente,
     updatedAt,
     createdAt,
@@ -62,12 +60,8 @@ export const Procurement = () => {
         <>
           <VerdictButton data={{ verdict }} />
           <CompanyChip id={companyId} />
-          <UserActivityChip
-            userId={updatedByUserId}
-            dateTime={updatedAt}
-            activity="updated"
-          />
-          <UserActivityChip userId={createdByUserId} dateTime={createdAt} />
+          <UserActivityChip dateTime={updatedAt} activity="updated" />
+          <UserActivityChip dateTime={createdAt} />
         </>
       }
       contentSlot={

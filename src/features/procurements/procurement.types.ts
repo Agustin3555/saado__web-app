@@ -19,9 +19,6 @@ export interface SimpleProcurement {
 }
 
 export interface Procurement extends SimpleProcurement {
-  createdByUserId: number
-  updatedByUserId: number
-
   createdAt: string
   files: File[]
 }
