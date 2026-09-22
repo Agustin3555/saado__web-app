@@ -1,0 +1,31 @@
+.cmp-confirm-modal > .content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-l);
+  padding: var(--pal-size-m);
+  max-width: 17rem;
+
+  font-size: var(--pal-size-font-xs);
+
+  > .buttons {
+    display: flex;
+    gap: var(--pal-size-xs);
+    width: 100%;
+
+    > .cmp-button {
+      flex-grow: 1;
+    }
+
+    > .cancel {
+      --cmp-button-border-color: var(--pal-color-d-200);
+
+      color: var(--pal-color-d-700);
+    }
+
+    > .yes {
+      --cmp-button-bg-color: var(--pal-color-a-500);
+
+      color: var(--pal-color-white);
+    }
+  }
+}

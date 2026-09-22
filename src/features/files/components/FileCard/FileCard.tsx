@@ -72,7 +72,7 @@ export const FileCard = ({
         />
       </div>
       <div className="content">
-        <FileCardHeader data={{ document, path }} />
+        <FileCardHeader data={{ id, document, path }} />
         <Tabs {...{ panels }} />
       </div>
       <div className="toggles">

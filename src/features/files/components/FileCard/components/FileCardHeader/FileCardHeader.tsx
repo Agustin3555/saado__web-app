@@ -1,19 +1,26 @@
 import './FileCardHeader.css'
+import { useHandleAction } from '@/shared/hooks/useHandleAction.hook'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
-import { Button, Dropdown } from '@/shared/components'
+import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
+import { Button, ConfirmModal, Dropdown } from '@/shared/components'
 import { OriginChip } from '@/features/origins/components/OriginChip/OriginChip'
 import type { File } from '@/features/files/file.types'
 
 interface FileCardHeaderProps {
-  data: Pick<File, 'path' | 'document'>
+  data: Pick<File, 'id' | 'path' | 'document'>
 }
 
 export const FileCardHeader = ({
-  data: { document, path },
+  data: { id, document, path },
 }: FileCardHeaderProps) => {
   const documentsRecord = useDocumentsStore(s => s.documentsRecord)!
+  const deleteFile = useSelectedProcurementStore(s => s.deleteFile)
 
   const file = path?.split('/').pop()
+
+  const deleteAction = useHandleAction(async () => {
+    await deleteFile(id)
+  })
 
   return (
     <header className="cmp-file-card-header">
@@ -29,12 +36,20 @@ export const FileCardHeader = ({
             />
           )}
         >
-          <Button
-            text="Eliminar"
-            title="Eliminar archivo"
-            iconClass="ti ti-trash"
-            type="primary"
-            inverted
+          <ConfirmModal
+            message="Se eliminará este archivo"
+            onAction={deleteAction.onAction}
+            opener={attrs => (
+              <Button
+                text="Eliminar"
+                title="Eliminar archivo"
+                iconClass="ti ti-trash"
+                type="primary"
+                inverted
+                actionState={deleteAction.actionState}
+                htmlAttrs={attrs}
+              />
+            )}
           />
         </Dropdown>
       </div>

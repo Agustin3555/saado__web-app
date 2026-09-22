@@ -8,7 +8,7 @@ import {
 } from 'react'
 import { classList } from '../../helpers'
 
-interface ModalProps {
+export interface ModalProps {
   ref?: RefObject<HTMLDialogElement | null>
   // FIXME: Sobreescribir el modulo global
   opener?: (

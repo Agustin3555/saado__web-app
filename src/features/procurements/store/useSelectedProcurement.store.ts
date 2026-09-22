@@ -14,6 +14,7 @@ interface SelectedProcurementStore {
     verdictCommentary?: string
   }) => Promise<void>
   addFileControls: (fileId: number) => Promise<void>
+  deleteFile: (fileId: number) => Promise<void>
 }
 
 export const useSelectedProcurementStore = create<SelectedProcurementStore>(
@@ -86,6 +87,22 @@ export const useSelectedProcurementStore = create<SelectedProcurementStore>(
           ? `Controles agregados: ${added}`
           : 'No hay mas controles que agregar',
       )
+    },
+
+    deleteFile: async fileId => {
+      await privateInstance.delete(`files/${fileId}`)
+
+      const prevProcurement = get().selectedProcurement
+      if (!prevProcurement) return
+
+      const procurement = {
+        ...prevProcurement,
+        files: prevProcurement.files.filter(f => f.id !== fileId),
+      }
+
+      set({ selectedProcurement: procurement })
+
+      toast.success('Archivo eliminado con éxito')
     },
   }),
 )
