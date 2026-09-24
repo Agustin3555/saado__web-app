@@ -8,9 +8,10 @@ import { Resource } from '@/shared/layouts'
 import { ContentView } from './components'
 import { FileList } from '@/features/files/components/FileList/FileList'
 import { VerdictButton } from './components/VerdictButton/VerdictButton'
-import { CompanyChip } from '@/features/company/components/CompanyChip/CompanyChip'
+import { CompanyChip } from '@/features/companies/components/CompanyChip/CompanyChip'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
 import { Loader } from '@/shared/components'
+import { ProcurementTypeChip } from '../../../ProcurementTypeChip/ProcurementTypeChip'
 
 export const Procurement = () => {
   const [, setLocation] = useLocation()
@@ -45,6 +46,7 @@ export const Procurement = () => {
     name,
     companyId,
     verdict,
+    procurementType,
     numeroExpediente,
     updatedAt,
     createdAt,
@@ -59,6 +61,7 @@ export const Procurement = () => {
       detailsSlot={
         <>
           <VerdictButton data={{ verdict }} />
+          <ProcurementTypeChip value={procurementType} />
           <CompanyChip id={companyId} />
           <UserActivityChip dateTime={updatedAt} activity="updated" />
           <UserActivityChip dateTime={createdAt} />

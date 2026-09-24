@@ -1,7 +1,7 @@
 import './DocumentControl.css'
 import { useControlsStore } from '@/features/controls/store/useControls.store'
 import { GlowIA, Icon } from '@/shared/components'
-import { UpsetControlButton } from '@/features/controls/components/UpsetControlButton/UpsetControlButton'
+import { UpsertControlButton } from '@/features/controls/components/UpsetControlButton/UpsetControlButton'
 import { type RelDocumentControl } from '../../document.types'
 
 interface DocumentControlProps {
@@ -13,9 +13,9 @@ export const DocumentControl = ({ data }: DocumentControlProps) => {
 
   return (
     <li className="cmp-document-control">
-      <UpsetControlButton
+      <UpsertControlButton
         procurementType={data.procurementType}
-        action="update"
+        action="UPDATE"
         data={{
           id: data.id,
           controlId: data.controlId,

@@ -1,0 +1,14 @@
+.cmp-company-card {
+  > .content > ul {
+    gap: var(--pal-size-l);
+
+    .desc {
+      font-size: var(--pal-size-font-xs);
+    }
+
+    > ul {
+      display: flex;
+      gap: var(--card-style-items-gap);
+    }
+  }
+}

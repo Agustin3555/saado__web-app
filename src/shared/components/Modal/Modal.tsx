@@ -9,19 +9,19 @@ import {
 import { classList } from '../../helpers'
 
 export interface ModalProps {
+  handlingClass?: string
   ref?: RefObject<HTMLDialogElement | null>
-  // FIXME: Sobreescribir el modulo global
   opener?: (
+    // FIXME: Sobreescribir el modulo global, en vez de unir tipos
     attrs: ButtonHTMLAttributes<HTMLButtonElement> & {
       command?: string
       commandFor?: string
     },
   ) => ReactNode
   children: ReactNode | ReactNode[]
-  handlingClass?: string
 }
 
-export const Modal = ({ ref, opener, children, handlingClass }: ModalProps) => {
+export const Modal = ({ handlingClass, ref, opener, children }: ModalProps) => {
   const id = useId()
 
   const handleClick: MouseEventHandler<HTMLDialogElement> = e => {
@@ -33,16 +33,11 @@ export const Modal = ({ ref, opener, children, handlingClass }: ModalProps) => {
   }
 
   return (
-    <>
+    <div className={classList('cmp-modal', handlingClass)}>
       {opener && opener({ command: 'show-modal', commandFor: id })}
-      <dialog
-        className={classList('cmp-modal', handlingClass)}
-        popover="auto"
-        onClick={handleClick}
-        {...{ id, ref }}
-      >
+      <dialog popover="auto" onClick={handleClick} {...{ id, ref }}>
         <div className="content">{children}</div>
       </dialog>
-    </>
+    </div>
   )
 }

@@ -15,6 +15,7 @@
     padding: var(--pal-size-xl);
 
     border-radius: var(--pal-size-s);
+    color: var(--pal-color-a-500);
     cursor: pointer;
 
     transition: border-radius var(--pal-time-s) ease-out;

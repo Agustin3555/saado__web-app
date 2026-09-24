@@ -7,8 +7,6 @@
   justify-content: center;
   gap: var(--pal-size-s);
 
-  color: var(--pal-color-a-500);
-
   > small {
     text-align: center;
     text-wrap: balance;

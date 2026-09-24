@@ -21,4 +21,9 @@ export const VIEWS_INFO: ViewButtonProps[] = [
     title: 'Controles',
     iconClass: 'ti ti-list-check',
   },
+  {
+    name: 'empresas',
+    title: 'Empresas',
+    iconClass: 'ti ti-building-factory-2',
+  },
 ]

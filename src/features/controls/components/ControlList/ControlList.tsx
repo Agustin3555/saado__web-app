@@ -1,6 +1,6 @@
 import './ControlList.css'
 import { useControlsStore } from '../../store/useControls.store'
-import { ControlCard, NewControlButton } from './components'
+import { ControlCard, UpsertControlButton } from './components'
 
 export const ControlList = () => {
   const controls = useControlsStore(s => s.controls)
@@ -9,7 +9,7 @@ export const ControlList = () => {
     <div className="cmp-control-list">
       <article className="result">
         <ul>
-          <NewControlButton />
+          <UpsertControlButton action="NEW" />
           {controls?.map((c, i) => (
             <ControlCard key={c.id} data={c} {...{ i }} />
           ))}

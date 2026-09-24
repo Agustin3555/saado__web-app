@@ -2,10 +2,9 @@ import './ControlItem.css'
 import { useControlsStore } from '@/features/controls/store/useControls.store'
 import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
 import {
-  ChangeVerdictButton,
-  CurrentCommentButton,
   GlowIA,
-  type ChangeVerdictButtonProps,
+  VerdictManager,
+  type ChangeVerdictModalButtonProps,
 } from '@/shared/components'
 import type { File } from '@/features/files/file.types'
 import { classList } from '@/shared/helpers'
@@ -25,7 +24,7 @@ export const ControlItem = ({
     s => s.updateFileControlVerdict,
   )
 
-  const onChange: ChangeVerdictButtonProps['onChange'] = async data => {
+  const onChange: ChangeVerdictModalButtonProps['onChange'] = async data => {
     await updateFileControlVerdict({ fileId, controlId, ...data })
   }
 
@@ -37,12 +36,7 @@ export const ControlItem = ({
         VERDICT_MATCH[verdict].id,
       )}
     >
-      <div className="verdict-group">
-        <ChangeVerdictButton {...{ verdict, onChange }} />
-        {verdictCommentary && (
-          <CurrentCommentButton comment={verdictCommentary} />
-        )}
-      </div>
+      <VerdictManager data={{ verdict, verdictCommentary }} {...{ onChange }} />
       <p className="text" title={controlsRecord[controlId].name}>
         {controlsRecord[controlId].name}
       </p>

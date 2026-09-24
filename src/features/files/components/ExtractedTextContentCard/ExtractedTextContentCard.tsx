@@ -1,8 +1,10 @@
 import './ExtractedTextContentCard.css'
 import { useHandleAction } from '@/shared/hooks/useHandleAction.hook'
 import { useSelectedContentStore } from '@/features/files/store/useSelectedContent.store'
-import { Button } from '@/shared/components'
+import { Button, Toggle } from '@/shared/components'
 import { ContentCard } from '../ContentCard/ContentCard'
+import { useState } from 'react'
+import { classList } from '@/shared/helpers'
 
 interface ExtractedTextContentCardProps {
   fileId: number
@@ -11,6 +13,7 @@ interface ExtractedTextContentCardProps {
 export const ExtractedTextContentCard = ({
   fileId,
 }: ExtractedTextContentCardProps) => {
+  const [textWrap, setTextWrap] = useState(false)
   const textRecord = useSelectedContentStore(s => s.textRecord)
   const toggleFile = useSelectedContentStore(s => s.toggleFile)
 
@@ -22,6 +25,7 @@ export const ExtractedTextContentCard = ({
 
   return (
     <ContentCard
+      handlingClass="cmp-extracted-text-content-card"
       status={
         fileContent === undefined
           ? 'loading'
@@ -33,18 +37,27 @@ export const ExtractedTextContentCard = ({
       noContentText="No se encontró contenido extraído de este archivo"
       onDelete={() => toggleFile(fileId, 'text')}
       actions={
-        fileContent && (
-          <Button
-            iconClass="ti ti-copy"
-            title="Copiar contenido"
+        <>
+          <Toggle
+            title="Ver saltos y espacios"
+            iconClass="ti ti-text-wrap"
             size="s"
-            {...copyAction}
+            value={textWrap}
+            setValue={() => setTextWrap(prev => !prev)}
           />
-        )
+          {fileContent && (
+            <Button
+              iconClass="ti ti-copy"
+              title="Copiar contenido"
+              size="s"
+              {...copyAction}
+            />
+          )}
+        </>
       }
       {...{ fileId }}
     >
-      <p className="cmp-extracted-text-content-card text">{fileContent}</p>
+      <p className={classList('text', { wrap: textWrap })}>{fileContent}</p>
     </ContentCard>
   )
 }

@@ -1,2 +1,2 @@
 export * from './ControlCard/ControlCard'
-export * from './NewControlButton/NewControlButton'
+export * from './UpsertControlButton/UpsertControlButton'

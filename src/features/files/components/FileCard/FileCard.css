@@ -1,8 +1,6 @@
 .cmp-file-card {
   --border-radius: var(--pal-size-s);
 
-  position: relative;
-
   display: flex;
 
   border-radius: var(--border-radius);
@@ -13,16 +11,11 @@
     border-bottom-left-radius: var(--border-radius);
     background-color: var(--verdict-bg-color);
 
-    > .cmp-change-verdict-button {
+    > .cmp-verdict-manager {
       position: sticky;
       top: var(--layout-gutter);
 
-      border-top-left-radius: var(--pal-size-s);
-      border-top-right-radius: 0;
-
-      &:hover {
-        background-color: color-mix(in srgb, transparent, #000 12.5%);
-      }
+      border-top-left-radius: var(--border-radius);
     }
   }
 

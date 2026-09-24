@@ -1,23 +1,23 @@
-import './ControlCard.css'
-import type { Control } from '@/features/controls/control.types'
+import './CompanyCard.css'
 import { UserActivityChip } from '@/features/users/UserActivityChip/UserActivityChip'
-import { Chip } from '@/shared/components'
-import { UpsertControlButton } from '..'
+import { Chip, EmailChip } from '@/shared/components'
+import { CompanyUpsertButton } from '../CompanyUpsertButton/CompanyUpsertButton'
+import type { Company } from '@/features/companies/company.types'
 import { classList, varList } from '@/shared/helpers'
 
-interface ControlCardProps {
+interface CompanyCardProps {
   i: number
-  data: Control
+  data: Company
 }
 
-export const ControlCard = ({
+export const CompanyCard = ({
   i,
-  data: { id, name, description, createdAt, updatedAt, documents },
-}: ControlCardProps) => {
+  data: { id, name, email, createdAt, updatedAt, _count },
+}: CompanyCardProps) => {
   return (
     <li
       className={classList(
-        'cmp-control-card',
+        'cmp-company-card',
         'card-style',
         'hover-highlight',
         'show-animation-item',
@@ -28,25 +28,23 @@ export const ControlCard = ({
         <header>
           <h1 className="text">{name}</h1>
           <div className="actions">
-            <UpsertControlButton
+            <CompanyUpsertButton
               action="UPDATE"
-              currentData={{ id, name, description }}
+              currentData={{ id, name, email }}
             />
           </div>
         </header>
         <hr />
         <ul>
-          {description && (
-            <li>
-              <p className="desc text">{description}</p>
-            </li>
-          )}
           <ul>
-            <Chip
-              label="En documentos"
-              value={documents.length}
-              iconClass="ti ti-folder-open"
-            />
+            <EmailChip {...{ email }} />
+            {_count && (
+              <Chip
+                label="Cantidad de contrataciones"
+                value={_count.procurements}
+                iconClass="ti ti-file-certificate"
+              />
+            )}
             <UserActivityChip dateTime={createdAt} />
             <UserActivityChip dateTime={updatedAt} activity="updated" />
           </ul>

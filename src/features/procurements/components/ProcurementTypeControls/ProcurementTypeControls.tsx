@@ -3,7 +3,7 @@ import type { ChangeEventHandler } from 'react'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { useSelectedDocumentStore } from '@/features/docs/store/useSelectedDocument.store'
 import { Checker } from '@/shared/components'
-import { UpsetControlButton } from '@/features/controls/components/UpsetControlButton/UpsetControlButton'
+import { UpsertControlButton } from '@/features/controls/components/UpsetControlButton/UpsetControlButton'
 import { PROCUREMENT_TYPE_INFO } from '../../procurement.const'
 import type { ProcurementType } from '../../procurement.types'
 import type { RelDocumentControl } from '@/features/docs/document.types'
@@ -57,7 +57,7 @@ export const ProcurementTypeControls = ({
         {controls.map(c => (
           <DocumentControl key={c.id} data={c} />
         ))}
-        <UpsetControlButton procurementType={type ?? null} />
+        <UpsertControlButton procurementType={type ?? null} />
       </ul>
     </article>
   )

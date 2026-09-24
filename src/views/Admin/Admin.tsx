@@ -2,7 +2,7 @@ import './Admin.css'
 import { useEffect, useState } from 'react'
 import { useSocketStore } from '@/infra/ws/useSocket.store'
 import { useUsersStore } from '@/features/users/store/useUsers.store'
-import { useCompaniesStore } from '@/features/company/store/useCompanies.store'
+import { useCompaniesStore } from '@/features/companies/store/useCompanies.store'
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
 import { Redirect, Route, Switch } from 'wouter'
@@ -13,6 +13,18 @@ import { DocumentList } from '@/features/docs/components/DocumentList/DocumentLi
 import { Loader } from '@/shared/components'
 import { ControlList } from '@/features/controls/components/ControlList/ControlList'
 import { useControlsStore } from '@/features/controls/store/useControls.store'
+import { CompanyList } from '@/features/companies/components/CompanyList/CompanyList'
+
+// const routes = (
+//   <>
+//     <Route path="/panel" children={<Dashboard />} />
+//     {/* BUG: parado en ".../contrataciones/25", al darle a actualizar, navega a ".../contrataciones" */}
+//     <Route path="/contrataciones" children={<ProcurementList />} nest />
+//     <Route path="/documentos" children={<DocumentList />} nest />
+//     <Route path="/controles" children={<ControlList />} />
+//     <Route path="/empresas" children={<CompanyList />} />
+//   </>
+// )
 
 export const Admin = () => {
   const connect = useSocketStore(s => s.connect)
@@ -35,7 +47,7 @@ export const Admin = () => {
       try {
         await Promise.all([
           refetchUsers(),
-          refetchCompanies(),
+          refetchCompanies('REF'),
           refetchDocuments(),
           refetchOrigins(),
           refetchControls(),
@@ -79,6 +91,8 @@ export const Admin = () => {
               />
               <Route path="/documentos" children={<DocumentList />} nest />
               <Route path="/controles" children={<ControlList />} />
+              <Route path="/empresas" children={<CompanyList />} />
+
               <Route children={<Redirect to="/panel" />} />
             </Switch>
           </main>

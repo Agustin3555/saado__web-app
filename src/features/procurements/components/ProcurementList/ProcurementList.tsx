@@ -1,11 +1,8 @@
 import { useEffect } from 'react'
 import { useProcurementsStore } from '@/features/procurements/store/useProcurements.store'
 import { CollectionRouter } from '@/shared/layouts'
-import {
-  NewProcurementButton,
-  Procurement,
-  ProcurementCard,
-} from './components'
+import { Procurement, ProcurementCard } from './components'
+import { ProcurementUpsertButton } from '../ProcurementUpsertButton/ProcurementUpsertButton'
 
 export const ProcurementList = () => {
   const procurements = useProcurementsStore(s => s.procurements)
@@ -18,7 +15,7 @@ export const ProcurementList = () => {
   return (
     <CollectionRouter
       handlingClass="cmp-procurement-list"
-      newResource={<NewProcurementButton />}
+      newResource={<ProcurementUpsertButton action="NEW" />}
       list={procurements?.map((o, i) => (
         <ProcurementCard key={o.id} data={o} {...{ i }} />
       ))}

@@ -3,31 +3,46 @@
   flex-direction: column;
 
   border-radius: var(--pal-size-xs);
+  background-color: var(--pal-color-a-100);
   overflow: hidden;
 
   > header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    padding: var(--pal-size-2xs);
-    height: var(--pal-size-xl);
-
-    color: var(--pal-color-white);
-    background-color: var(--pal-color-a-500);
+    background-color: var(--pal-color-a-50);
 
     > h1 {
+      flex-grow: 1;
+
       display: flex;
       align-items: center;
       gap: var(--pal-size-xs);
-      padding-left: var(--pal-size-2xs);
+      padding-inline: var(--pal-size-xs);
+      padding-block: var(--pal-size-2xs);
 
       font-size: var(--pal-size-font-xs);
+
+      border-bottom-right-radius: var(--pal-size-m);
+      color: var(--pal-color-white);
+      background: linear-gradient(
+        to right,
+        var(--pal-color-a-500) 20rem,
+        var(--pal-color-d-250)
+      );
     }
 
     > .actions {
       display: flex;
       gap: var(--pal-size-2xs);
+      border-width: var(--line-thickness);
+      border-style: solid;
+      border-color: var(--pal-color-a-200);
+      border-bottom-width: 0;
+      border-left-width: 0;
+      padding: var(--pal-size-2xs);
+      padding-left: var(--pal-size-l);
+
+      border-top-right-radius: var(--pal-size-xs);
     }
   }
 
@@ -40,7 +55,6 @@
     border-bottom-left-radius: var(--pal-size-xs);
     border-bottom-right-radius: var(--pal-size-xs);
     color: var(--pal-color-a-500);
-    background-color: var(--pal-color-a-100);
 
     > .void {
       display: contents;

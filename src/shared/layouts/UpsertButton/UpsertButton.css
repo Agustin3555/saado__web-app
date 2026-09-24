@@ -1,0 +1,14 @@
+.cmp-upsert-button {
+  > button {
+    color: var(--pal-color-a-500);
+
+    &.new {
+      border-width: var(--line-thickness);
+      border-style: solid;
+      border-color: var(--pal-color-a-200);
+      min-height: 7rem;
+
+      border-radius: var(--pal-size-xs);
+    }
+  }
+}

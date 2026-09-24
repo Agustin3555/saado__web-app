@@ -1,0 +1,10 @@
+.cmp-email-chip {
+  > a {
+    text-decoration-color: var(--pal-color-a-200);
+    text-underline-offset: 2px;
+
+    &:hover {
+      text-decoration-color: var(--pal-color-b-500);
+    }
+  }
+}

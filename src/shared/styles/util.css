@@ -41,39 +41,41 @@
   }
 }
 
-.modal-form > .content {
-  max-width: 30rem;
+.modal-form {
+  --cmp-modal-max-width: 30rem;
 
-  > form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--pal-size-2xl);
-    padding: var(--pal-size-l);
-    width: 100%;
-
-    > h1 {
-      font-size: var(--pal-size-font-l);
-      font-weight: 800;
-
-      color: var(--pal-color-a-550);
-    }
-
-    > p {
-      font-size: var(--pal-size-font-2xs);
-    }
-
-    > .fields {
+  > dialog > .content {
+    > form {
       display: flex;
       flex-direction: column;
-      gap: var(--pal-size-s);
-    }
+      gap: var(--pal-size-2xl);
+      padding: var(--pal-size-l);
+      width: 100%;
 
-    > .cmp-button {
-      --cmp-button-bg-color: var(--pal-color-a-500);
+      > h1 {
+        font-size: var(--pal-size-font-l);
+        font-weight: 800;
 
-      align-self: flex-start;
+        color: var(--pal-color-a-550);
+      }
 
-      color: var(--pal-color-white);
+      > p {
+        font-size: var(--pal-size-font-2xs);
+      }
+
+      > .fields {
+        display: flex;
+        flex-direction: column;
+        gap: var(--pal-size-s);
+      }
+
+      > .cmp-button {
+        --cmp-button-bg-color: var(--pal-color-a-500);
+
+        align-self: flex-start;
+
+        color: var(--pal-color-white);
+      }
     }
   }
 }

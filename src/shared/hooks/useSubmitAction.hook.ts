@@ -6,7 +6,7 @@ type EmptyValueForMode<M extends SubmitActionMode> = M extends 'create'
   ? undefined
   : null
 
-interface FormValues<M extends SubmitActionMode = 'edit'> {
+export interface FormValues<M extends SubmitActionMode = 'edit'> {
   get: {
     string: (key: string) => string | EmptyValueForMode<M>
     number: (key: string) => number | EmptyValueForMode<M>

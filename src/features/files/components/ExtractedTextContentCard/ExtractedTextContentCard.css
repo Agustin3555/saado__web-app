@@ -1,7 +1,14 @@
-.cmp-extracted-text-content-card {
-  padding: var(--pal-size-l);
+.cmp-extracted-text-content-card > .content {
+  > .text {
+    padding: var(--pal-size-m);
 
-  font-size: var(--pal-size-font-xs);
+    font-size: var(--pal-size-font-xs);
+    white-space: initial;
 
-  color: var(--pal-color-a-850);
+    color: var(--pal-color-a-850);
+
+    &.wrap {
+      white-space: pre-wrap;
+    }
+  }
 }

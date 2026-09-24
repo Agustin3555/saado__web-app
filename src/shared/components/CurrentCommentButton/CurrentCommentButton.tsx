@@ -2,12 +2,15 @@ import './CurrentCommentButton.css'
 import { Button, Dropdown, Icon } from '..'
 
 interface CurrentCommentButtonProps {
-  comment: string
+  comment?: string | null
 }
 
+// TODO: deprecarlo
 export const CurrentCommentButton = ({
   comment,
 }: CurrentCommentButtonProps) => {
+  if (!comment) return null
+
   return (
     <Dropdown
       opener={attrs => (

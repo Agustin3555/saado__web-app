@@ -2,10 +2,12 @@ import './FileCard.css'
 import { useSelectedContentStore } from '../../store/useSelectedContent.store'
 import { useSelectedProcurementStore } from '@/features/procurements/store/useSelectedProcurement.store'
 import {
-  ChangeVerdictButton,
+  ChangeVerdictModalButton,
+  CurrentCommentButton,
   Tabs,
   Toggle,
-  type ChangeVerdictButtonProps,
+  VerdictManager,
+  type ChangeVerdictModalButtonProps,
   type TabsProps,
 } from '@/shared/components'
 import type { File } from '../../file.types'
@@ -19,7 +21,16 @@ interface FileCardProps {
 }
 
 export const FileCard = ({
-  data: { id, document, path, verdict, createdAt, updatedAt, fileControls },
+  data: {
+    id,
+    document,
+    verdict,
+    verdictCommentary,
+    path,
+    createdAt,
+    updatedAt,
+    fileControls,
+  },
 }: FileCardProps) => {
   const selected = useSelectedContentStore(s => s.selected)
   const toggleFile = useSelectedContentStore(s => s.toggleFile)
@@ -42,9 +53,10 @@ export const FileCard = ({
     // },
   ]
 
-  const onChange: ChangeVerdictButtonProps['onChange'] = async data => {
+  const onChange: ChangeVerdictModalButtonProps['onChange'] = async data => {
     await privateInstance.patch(`files/${id}`, data)
 
+    // TODO: crear un método en el store
     useSelectedProcurementStore.setState(s => {
       const { selectedProcurement } = s
       if (!selectedProcurement) return s
@@ -55,7 +67,13 @@ export const FileCard = ({
       const newSelectedProcurement: typeof selectedProcurement = {
         ...selectedProcurement,
         files: selectedProcurement.files.map(f =>
-          f.id === id ? { ...f, verdict: data.verdict } : f,
+          f.id === id
+            ? {
+                ...f,
+                verdict: data.verdict,
+                verdictCommentary: data.verdictCommentary ?? null,
+              }
+            : f,
         ),
       }
 
@@ -66,9 +84,10 @@ export const FileCard = ({
   return (
     <article className="cmp-file-card">
       <div className={classList('verdict', VERDICT_MATCH[verdict].id)}>
-        <ChangeVerdictButton
+        <VerdictManager
+          data={{ verdict, verdictCommentary }}
           orientation="vertical"
-          {...{ verdict, onChange }}
+          {...{ onChange }}
         />
       </div>
       <div className="content">

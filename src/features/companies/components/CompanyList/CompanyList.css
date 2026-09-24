@@ -1,0 +1,28 @@
+.cmp-company-list {
+  --column-min-width: 32rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-xl);
+  height: 100%;
+
+  > .result {
+    padding-block: var(--layout-gutter);
+
+    > ul {
+      --show-animation-item-delay: 25ms;
+
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(100%, var(--column-min-width, 16rem)), 1fr)
+      );
+      gap: var(--pal-size-s);
+    }
+  }
+
+  &:has(> .cmp-loader) {
+    align-items: center;
+    justify-content: center;
+  }
+}

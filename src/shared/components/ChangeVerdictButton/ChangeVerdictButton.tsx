@@ -19,17 +19,18 @@ interface ChangeVerdictData {
   verdictCommentary?: string
 }
 
-export interface ChangeVerdictButtonProps {
+export interface ChangeVerdictModalButtonProps {
   verdict: VerdictType
   orientation?: 'horizontal' | 'vertical'
   onChange: (data: ChangeVerdictData) => Promise<void>
 }
 
-export const ChangeVerdictButton = ({
+// TODO: deprecarlo
+export const ChangeVerdictModalButton = ({
   verdict,
   orientation = 'horizontal',
   onChange,
-}: ChangeVerdictButtonProps) => {
+}: ChangeVerdictModalButtonProps) => {
   const modalRef = useRef<HTMLDialogElement>(null)
 
   const verdictOptions = Object.entries(VERDICT_MATCH).map(([key, value]) => ({
@@ -54,16 +55,11 @@ export const ChangeVerdictButton = ({
 
   return (
     <Modal
-      handlingClass="modal-form"
+      handlingClass="cmp-change-verdict-modal-button modal-form"
       ref={modalRef}
       opener={attrs => (
         <button
-          className={classList(
-            'cmp-change-verdict-button',
-            'verdict-value',
-            'ui-s',
-            orientation,
-          )}
+          className={classList('verdict-value', 'ui-s', orientation)}
           title="Cambiar veredicto"
           {...attrs}
         >

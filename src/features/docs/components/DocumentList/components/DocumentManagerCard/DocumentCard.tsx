@@ -25,12 +25,12 @@ export const DocumentCard = ({
     >
       <ul>
         <OriginChip id={originId} type="detail" />
+        <Chip label="Controles" value={controls.length} type="detail" />
         <UserActivityChip
           dateTime={updatedAt}
           activity="updated"
           type="detail"
         />
-        <Chip label="Controles" value={controls.length} type="detail" />
       </ul>
       <ul className="types">
         {activeProcurementTypes.map(({ procurementType }) => (

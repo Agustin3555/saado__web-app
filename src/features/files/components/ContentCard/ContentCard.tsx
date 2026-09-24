@@ -4,10 +4,12 @@ import { useSelectedProcurementStore } from '@/features/procurements/store/useSe
 import { useDocumentsStore } from '@/features/docs/store/useDocuments.store'
 import { useOriginsStore } from '@/features/origins/store/useOrigins.store'
 import { Banner, Button, Icon, Loader } from '@/shared/components'
+import { classList } from '@/shared/helpers'
 
 type Status = 'loading' | 'noContent' | 'ready'
 
 interface ContentViewProps {
+  handlingClass?: string
   fileId: number
   status: Status
   iconClass: string
@@ -18,6 +20,7 @@ interface ContentViewProps {
 }
 
 export const ContentCard = ({
+  handlingClass,
   fileId: id,
   status,
   iconClass,
@@ -49,11 +52,17 @@ export const ContentCard = ({
   }
 
   return (
-    <article className="cmp-content-card show-animation-item">
+    <article
+      className={classList(
+        'cmp-content-card',
+        'show-animation-item',
+        handlingClass,
+      )}
+    >
       <header>
         <h1>
           <Icon {...{ iconClass }} />
-          {title}
+          <div className="text">{title}</div>
         </h1>
         <div className="actions">
           {actions}

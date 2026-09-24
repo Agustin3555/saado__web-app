@@ -1,31 +1,34 @@
-.cmp-confirm-modal > .content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pal-size-l);
-  padding: var(--pal-size-m);
-  max-width: 17rem;
+.cmp-confirm-modal {
+  --cmp-modal-max-width: 17rem;
 
-  font-size: var(--pal-size-font-xs);
-
-  > .buttons {
+  > dialog > .content {
     display: flex;
-    gap: var(--pal-size-xs);
-    width: 100%;
+    flex-direction: column;
+    gap: var(--pal-size-l);
+    padding: var(--pal-size-m);
 
-    > .cmp-button {
-      flex-grow: 1;
-    }
+    font-size: var(--pal-size-font-xs);
 
-    > .cancel {
-      --cmp-button-border-color: var(--pal-color-d-200);
+    > .buttons {
+      display: flex;
+      gap: var(--pal-size-xs);
+      width: 100%;
 
-      color: var(--pal-color-d-700);
-    }
+      > .cmp-button {
+        flex-grow: 1;
+      }
 
-    > .yes {
-      --cmp-button-bg-color: var(--pal-color-a-500);
+      > .cancel {
+        --cmp-button-border-color: var(--pal-color-d-200);
 
-      color: var(--pal-color-white);
+        color: var(--pal-color-d-700);
+      }
+
+      > .yes {
+        --cmp-button-bg-color: var(--pal-color-a-500);
+
+        color: var(--pal-color-white);
+      }
     }
   }
 }
